@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     public PlayerHealth playerHealth;
 
     /// <summary>
-    /// The Total Health of the player (Added up from all fingers)
+    /// The Total Health of the player
     /// </summary>
     public int playerHealthTotal;
 
