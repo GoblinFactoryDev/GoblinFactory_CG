@@ -32,6 +32,8 @@ public class CardHand : MonoBehaviour
     [SerializeField] public List<CardData> availableCards = new List<CardData>();
 
     #region Slot System Variables
+    //match the slot card in the waypoint lists and the card lists to return it
+    //check for slot position and if so +1 or -1 index to shift list
     //Slot poisitons gameobject
     [SerializeField] private List<Transform> slotsWaypoints;
     //tracking for controller movement (moving through cards)
