@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270c97ac9af9dd84fa961a911a901da4, type: 3}
+  m_Name: Pair Of Fangs
+  m_EditorClassIdentifier: 
+  cardName: Pair Of Fangs
+  cardType: 0
+  description: Caster Chooses a finger, both fingers of that type on the opposing
+    players hands take X DMG
+  icon: {fileID: 21300000, guid: 6597fccf1f304a64b8f1d822854db3dd, type: 3}
+  cost: 2
+  damage: 1
+  difficulty: 5
