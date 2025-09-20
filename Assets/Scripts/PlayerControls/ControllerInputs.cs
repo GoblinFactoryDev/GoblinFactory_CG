@@ -30,7 +30,10 @@ public class ControllerInputs : MonoBehaviour
         ControllerNavHand();
         SlotAndCardMovementSystemSwitch();
         SelectingInput();
-        DeselectingInput();
+        if (SlotsMode)
+        {
+            DeselectingInput();
+        }
     }
 
 

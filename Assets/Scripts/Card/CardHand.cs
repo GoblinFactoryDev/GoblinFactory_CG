@@ -40,6 +40,8 @@ public class CardHand : MonoBehaviour
     public int _currentSlotIndex = 0;
     //list of cards currently in slots
     [SerializeField] private List<Card> _cardsInSlots = new List<Card>();
+    //last hand waypoints
+    private List<Transform> _previousPosition = new List<Transform>();
     //check current Open slot
     [SerializeField] private int _currentSlotOpen = 0;
     //tracking value of the slots so that select can deny card with values that dont match
@@ -144,15 +146,13 @@ public class CardHand : MonoBehaviour
 
     public void DeselectCard()
     {
-        Card cardToDeselect = _cardsInHand[_currentCardIndex];
-        if (cardToDeselect.IsInSlot)
-        {
-            cardToDeselect.gameObject.transform.position = _cardPositions[_currentCardIndex].placement.position;
-        }
-        else
-        {
-            Debug.Log("Making sure");
-        }
+        Card cardToDeselect = _cardsInSlots[_currentSlotIndex];
+        cardToDeselect.gameObject.transform.position = _previousPosition[_currentSlotIndex].position;
+        DeselectSlotReset();
+        _previousPosition.RemoveAt(_currentSlotIndex);
+        _cardsInSlots.RemoveAt(_currentSlotIndex);
+        _currentSlotIndex = 0;
+        cardToDeselect.IsInSlot = false;
     }
 
     public CardData SnatchSelectedCard()
@@ -160,13 +160,44 @@ public class CardHand : MonoBehaviour
         CardData selectedData = _cardsInHand[_currentCardIndex].CardData;
         Card cardtoSlot = _cardsInHand[_currentCardIndex];
         _cardsInSlots.Add(cardtoSlot);
+        _previousPosition.Add(_cardPositions[_currentCardIndex].placement);
         cardtoSlot.IsInSlot = true;
         return selectedData;
     }
 
     public void DeselectSlotReset()
     {
-        
+        if (_cardsInSlots[_currentSlotIndex].CardData.cost == 1)
+        {
+            slotsBlocked[_currentSlotIndex] = false;
+            ChangeSlotSprite(1, true);
+            _currentSlotOpen -= 1;
+        }
+        else if(_cardsInSlots[_currentSlotIndex].CardData.cost == 2)
+        {
+            slotsBlocked[_currentSlotIndex] = false;
+            slotsBlocked[_currentSlotIndex + 1] = false;
+            ChangeSlotSprite(2, true);
+            _currentSlotOpen -= 2;
+        }
+        else if (_cardsInSlots[_currentSlotIndex].CardData.cost == 3)
+        {
+            slotsBlocked[_currentSlotIndex] = false;
+            slotsBlocked[_currentSlotIndex + 1] = false;
+            slotsBlocked[_currentSlotIndex + 2] = false;
+            ChangeSlotSprite(3, true);
+            _currentSlotOpen -= 3;
+        }
+        else if (_cardsInSlots[_currentSlotIndex].CardData.cost == 4)
+        {
+            slotsBlocked[_currentSlotIndex] = false;
+            slotsBlocked[_currentSlotIndex + 1] = false;
+            slotsBlocked[_currentSlotIndex + 2] = false;
+            slotsBlocked[_currentSlotIndex + 3] = false;
+            ChangeSlotSprite(4, true);
+            _currentSlotOpen -= 4;
+        }
+            _currentSlotValueLeft += _cardsInHand[_currentCardIndex].CardData.cost;
     }
 
     public void CardToSlot()
@@ -267,33 +298,33 @@ public class CardHand : MonoBehaviour
             switch (valueTakeIn)
             {
                 case 1:
-                    slotIcons[_currentSlotOpen].gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    slotIcons[_currentSlotOpen].gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                    slotIcons[_currentSlotOpen].gameObject.transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                    slotIcons[_currentSlotOpen].gameObject.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                    slotIcons[_currentSlotOpen].gameObject.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                    slotIcons[_currentSlotOpen].gameObject.transform.GetChild(5).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                    slotIcons[_currentSlotIndex].gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    slotIcons[_currentSlotIndex].gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                    slotIcons[_currentSlotIndex].gameObject.transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                    slotIcons[_currentSlotIndex].gameObject.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                    slotIcons[_currentSlotIndex].gameObject.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                    slotIcons[_currentSlotIndex].gameObject.transform.GetChild(5).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                     break;
                 case 2:
                     for (int i = 0; i < 2; i++)
                     {
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(5).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(5).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                     }
                     break;
                 case 3:
                     for (int i = 0; i < 3; i++)
                     {
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                        slotIcons[_currentSlotOpen + i].gameObject.transform.GetChild(5).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(3).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                        slotIcons[_currentSlotIndex + i].gameObject.transform.GetChild(5).gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                     }
                     break;
                 case 4:
