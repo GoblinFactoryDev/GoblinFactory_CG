@@ -24,7 +24,7 @@ public class Card : MonoBehaviour
     public int Cost { get => _cardData.cost; }
     public int Damage { get => _cardData.damage; }
     public int Difficulty { get => _cardData.difficulty; }
-    public bool IsHovered { get; set; } = false;
+    public bool IsInSlot { get; set; } = false;
 
     GameObject cardObj;
 

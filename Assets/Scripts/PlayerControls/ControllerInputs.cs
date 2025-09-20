@@ -20,13 +20,17 @@ public class ControllerInputs : MonoBehaviour
     private const int MIN_HAND_SIZE = 0;
     //private tracking of cards index
     private int cardIndexTracking = 0;
+    private int slotIndexTracking = 0;
     public CardData savedSelectedCard;
+    private bool SlotsMode = false;
 
 
     private void Update()
     {
         ControllerNavHand();
+        SlotAndCardMovementSystemSwitch();
         SelectingInput();
+        DeselectingInput();
     }
 
 
@@ -34,10 +38,46 @@ public class ControllerInputs : MonoBehaviour
     {
         if(playerInputHandler.cardSelectAction.WasPressedThisFrame())
         {
-            Debug.Log("wyatt why are you like this");
             savedSelectedCard = cardsOwned.SnatchSelectedCard();
             cardsOwned.CardToSlot();
         }
+    }
+
+    private void DeselectingInput()
+    {
+        if (playerInputHandler.cardDeselectAction.WasPressedThisFrame())
+        {
+            Debug.Log("deselect");
+            cardsOwned.DeselectCard();
+        }
+    }
+
+    private int ShiftIndex(int currentIndex, bool forward)
+    {
+        int newIndex = currentIndex;
+        if (forward)
+        {
+            for (int i = currentIndex + 1; i < cardsOwned.CardsInHand.Count; i++)
+            {
+                if(!cardsOwned.CardsInHand[i].IsInSlot)
+                {
+                    newIndex = i;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for (int i = currentIndex - 1; i >= 0; i--)
+            {
+                if (!cardsOwned.CardsInHand[i].IsInSlot)
+                {
+                    newIndex = i;
+                    break;
+                }
+            }
+        }
+        return newIndex;
     }
 
 
@@ -47,31 +87,73 @@ public class ControllerInputs : MonoBehaviour
     /// <returns>The card we are on</returns>
     private void ControllerNavHand() // Controller support
     {
-        //check if the player is making left or right inputs on the gamepad 
-        if (playerInputHandler.cardMoveLeftAction.triggered && cardsOwned.CardIndexGet > MIN_HAND_SIZE)
+        if (!SlotsMode)
         {
-            //if so then change the color of the previous card
-            cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OffHoverCard();
-            //get the index of the card
-            cardIndexTracking = cardsOwned.CardIndexGet;
-            //change the index to the correct index now 
-            cardIndexTracking--;
-            //set the correct index 
-            cardsOwned.CardIndexSet(cardIndexTracking);
-            //make the new card be highlighted
-            cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OnHoverCard();
+            //check if the player is making left or right inputs on the gamepad 
+            if (playerInputHandler.cardMoveLeftAction.triggered && cardsOwned.CardIndexGet > MIN_HAND_SIZE)
+            {
+                //if so then change the color of the previous card
+                cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OffHoverCard();
+                //get the index of the card
+                cardIndexTracking = cardsOwned.CardIndexGet;
+                //check if that index card is in a slot
+                cardIndexTracking = ShiftIndex(cardIndexTracking, false);
+                //change the index to the correct index now 
+                //cardIndexTracking--;
+                //set the correct index 
+                cardsOwned.CardIndexSet(cardIndexTracking);
+                //make the new card be highlighted
+                cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OnHoverCard();
+            }
+            else if (playerInputHandler.cardMoveRightAction.triggered && cardsOwned.CardIndexGet < MAX_HAND_SIZE)
+            {
+                //if so then change the color of the previous card
+                cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OffHoverCard();
+                //get the index of the card
+                cardIndexTracking = cardsOwned.CardIndexGet;
+                cardIndexTracking = ShiftIndex(cardIndexTracking, true);
+                //change the index to the correct index now
+                //cardIndexTracking++;
+                //set the correct index 
+                cardsOwned.CardIndexSet(cardIndexTracking);
+                //make the new card be highlighted
+                cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OnHoverCard();
+            }
         }
-        else if (playerInputHandler.cardMoveRightAction.triggered && cardsOwned.CardIndexGet < MAX_HAND_SIZE)
+        else
         {
-            //if so then change the color of the previous card
+            if(playerInputHandler.cardMoveLeftAction.triggered && cardsOwned.SlotIndexGet > 0)
+            {
+                cardsOwned.SlotsInUse[cardsOwned.SlotIndexGet].CardActions.OffHoverCard();
+                slotIndexTracking = cardsOwned.SlotIndexGet;
+                slotIndexTracking--;
+                cardsOwned.SlotIndexSet(slotIndexTracking);
+                cardsOwned.SlotsInUse[cardsOwned.SlotIndexGet].CardActions.OnHoverCard();
+            }
+            else if(playerInputHandler.cardMoveRightAction.triggered && cardsOwned.SlotIndexGet < cardsOwned.SlotsInUse.Count - 1)
+            {
+                cardsOwned.SlotsInUse[cardsOwned.SlotIndexGet].CardActions.OffHoverCard();
+                slotIndexTracking = cardsOwned.SlotIndexGet;
+                slotIndexTracking++;
+                cardsOwned.SlotIndexSet(slotIndexTracking);
+                cardsOwned.SlotsInUse[cardsOwned.SlotIndexGet].CardActions.OnHoverCard();
+            }
+        }
+
+    }
+
+    private void SlotAndCardMovementSystemSwitch()
+    {
+        if (playerInputHandler.slotModeMoveDownAction.triggered && !SlotsMode)
+        {
+            SlotsMode = true;
             cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OffHoverCard();
-            //get the index of the card
-            cardIndexTracking = cardsOwned.CardIndexGet;
-            //change the index to the correct index now
-            cardIndexTracking++;
-            //set the correct index 
-            cardsOwned.CardIndexSet(cardIndexTracking);
-            //make the new card be highlighted
+            cardsOwned.SlotsInUse[cardsOwned.SlotIndexGet].CardActions.OnHoverCard();
+        }
+        else if (playerInputHandler.cardModeMoveUpAction.triggered && SlotsMode)
+        {
+            SlotsMode = false;
+            cardsOwned.SlotsInUse[cardsOwned.SlotIndexGet].CardActions.OffHoverCard();
             cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OnHoverCard();
         }
     }
