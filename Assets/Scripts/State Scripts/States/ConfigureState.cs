@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 //----------------------------------------------------------------
 //  Author: Wyatt
@@ -12,12 +13,19 @@ using UnityEngine;
 public class ConfigureState : FSMState
 {
     PlayerState playerState;
+    private List<Card> chosenCards = new List<Card>();
 
     //Constructor
     public ConfigureState(PlayerState ps)
     {
         playerState = ps;
         stateID = FSMStateID.Configure;
+    }
+
+    public override void EnterStateInit()
+    {
+        chosenCards.Clear();
+        chosenCards = playerState.player.playerCardHand.SlotsInUse;
     }
 
     //Reason
