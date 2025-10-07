@@ -64,3 +64,9 @@ public enum PlayerType
     AI,
     None
 }
+
+public enum  PlayerIs
+{
+    Ready = 1,
+    NotReady = 0
+}

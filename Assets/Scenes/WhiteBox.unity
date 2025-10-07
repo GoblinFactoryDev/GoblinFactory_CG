@@ -2742,6 +2742,7 @@ MonoBehaviour:
   playerHealth: {fileID: 1082421056}
   playerHealthTotal: 0
   playerCardHand: {fileID: 403175192}
+  playerControllerInputs: {fileID: 1082421061}
 --- !u!114 &1082421056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2852,6 +2853,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  cardConfirmSelectAction:
+    m_Name: Card Confirm Select
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9178eab1-d8c4-4489-9311-0e03cee001db
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   fingerMoveLeftAction:
     m_Name: Finger Move Left
     m_Type: 0
@@ -2937,7 +2947,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputHandler: {fileID: 1082421058}
   cardsOwned: {fileID: 403175192}
-  savedSelectedCard: {fileID: 0}
 --- !u!114 &1082421062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4981,8 +4990,8 @@ SceneRoots:
   - {fileID: 1654726752}
   - {fileID: 765925504}
   - {fileID: 1769375787}
-  - {fileID: 934724997}
   - {fileID: 1082421054}
+  - {fileID: 934724997}
   - {fileID: 1876650983}
   - {fileID: 226169486}
   - {fileID: 55620975}

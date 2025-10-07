@@ -69,6 +69,14 @@ public class RoundManagerLocal : MonoBehaviour
                 PlayerState = RoundStates.PlayerIsChoosingSpells;
                 ComputerState = RoundStates.PlayerIsChoosingSpells;
             }
+            else if (PlayerState == RoundStates.PlayerIsChoosingSpells)
+            {
+                playerReady = false;
+                computerReady = false;
+
+                PlayerState = RoundStates.ConfiguringSpells;
+                ComputerState = RoundStates.ConfiguringSpells;
+            }
         }
     }
 }

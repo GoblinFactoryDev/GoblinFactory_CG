@@ -22,7 +22,14 @@ public class ChooseSpellState : FSMState
     //Reason
     public override void Reason()
     {
-
+        if (playerState.player.playerControllerInputs.GetConfirmSelection)
+        {
+            //  Need to remove the spells from the hand once confirmed
+            ///////////////////////////////////////////////////////////////////
+            playerState.player.playerControllerInputs.SetConfirmSelection(false);
+            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+            playerState.PerformTransition(Transition.SpellsChosen);
+        }
     }
     //Act
     public override void Act()

@@ -32,6 +32,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     public CardHand playerCardHand;
 
+    /// <summary>
+    /// The controller variables and inputs for the player
+    /// </summary>
+    [SerializeField]
+    public ControllerInputs playerControllerInputs;
+
     public void Start()
     {   
         // Initialize each hand's fingers
