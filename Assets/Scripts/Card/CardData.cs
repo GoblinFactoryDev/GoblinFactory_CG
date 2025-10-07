@@ -6,6 +6,7 @@
 //  Instance:       No
 //-----------------------------------------------------------------
 
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CardData", menuName = "Scriptable Objects/Card")]
@@ -20,4 +21,5 @@ public class CardData : ScriptableObject
     public int cost;
     public int damage;
     public int difficulty;
+
 }

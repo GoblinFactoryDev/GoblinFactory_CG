@@ -28,6 +28,11 @@ public class Card : MonoBehaviour
 
     GameObject cardObj;
 
+    // private card data (slot position)
+    private int _currentSlotUsed;
+    public int GetCurrentSlotUsed { get { return _currentSlotUsed; } }
+    public void SetCurrentSlotUsed(int setValue) { _currentSlotUsed = setValue; }
+
     private void Awake()
     {
         cardObj = this.gameObject;

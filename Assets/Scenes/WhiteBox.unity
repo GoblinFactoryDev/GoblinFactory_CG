@@ -1062,6 +1062,8 @@ MonoBehaviour:
   - {fileID: 330149458}
   - {fileID: 1518637135}
   - {fileID: 1670276561}
+  _currentSlotIndex: 0
+  _cardsInSlots: []
   _currentSlotOpen: 0
   _currentSlotValueLeft: 4
   slotsBlocked: 00000000
@@ -2819,6 +2821,33 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: a67162d2-af0d-49c6-843e-2645741e0988
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  cardDeselectAction:
+    m_Name: Card Deselect
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7764166f-e03e-4224-b051-aedbe4ed2709
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  slotModeMoveDownAction:
+    m_Name: Slot Mode Move Down
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 94dbe28d-4e42-461b-a2f8-8b52287759f2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  cardModeMoveUpAction:
+    m_Name: Card Mode Move Up
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1671267d-33c6-4d2a-a94d-d2758602e363
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []

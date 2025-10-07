@@ -43,6 +43,8 @@ public class ControllerInputs : MonoBehaviour
         {
             savedSelectedCard = cardsOwned.SnatchSelectedCard();
             cardsOwned.CardToSlot();
+            SlotsMode = true;
+
         }
     }
 
@@ -52,6 +54,7 @@ public class ControllerInputs : MonoBehaviour
         {
             Debug.Log("deselect");
             cardsOwned.DeselectCard();
+            SlotsMode = false;
         }
     }
 
