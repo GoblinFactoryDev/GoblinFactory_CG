@@ -159,11 +159,23 @@ public class CardHand : MonoBehaviour
 
     public void SelectCard()
     {
+        bool skipSelection = false;
         CardData selectedData = _cardsInHand[_currentCardIndex].CardData;
         Card cardtoSlot = _cardsInHand[_currentCardIndex];
-        _cardsInSlots.Add(cardtoSlot);
-        _previousPosition.Add(_cardPositions[_currentCardIndex].placement);
-        cardtoSlot.IsInSlot = true;
+        foreach (Card card in _cardsInSlots)
+        {
+            if(cardtoSlot == card)
+            {
+                skipSelection = true;
+                break;
+            }
+        }
+        if (!skipSelection)
+        {
+            _cardsInSlots.Add(cardtoSlot);
+            _previousPosition.Add(_cardPositions[_currentCardIndex].placement);
+            cardtoSlot.IsInSlot = true;
+        }
     }
 
     public void DeselectSlotReset()

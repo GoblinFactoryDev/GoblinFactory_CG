@@ -54,6 +54,7 @@ public class PlayerInputHandler : MonoBehaviour
     public InputAction cardDeselectAction;
     public InputAction slotModeMoveDownAction;
     public InputAction cardModeMoveUpAction;
+    public InputAction cardConfirmSelectAction;
 
     [Header("Finger Selection")]
     public InputAction fingerMoveLeftAction;
@@ -76,6 +77,7 @@ public class PlayerInputHandler : MonoBehaviour
         cardDeselectAction = _playerInputActionAsset.FindActionMap("CardGame").FindAction("DeselectCard");
         slotModeMoveDownAction = _playerInputActionAsset.FindActionMap("CardGame").FindAction("MoveDown/CardSlots");
         cardModeMoveUpAction = _playerInputActionAsset.FindActionMap("CardGame").FindAction("MoveUp/CardHand");
+        cardConfirmSelectAction = _playerInputActionAsset.FindActionMap("CardGame").FindAction("ReadyUp");
 
         //Finger Selection Map
         fingerMoveLeftAction = _playerInputActionAsset.FindActionMap("FingerSelection").FindAction("MoveLeft");
@@ -96,6 +98,7 @@ public class PlayerInputHandler : MonoBehaviour
         cardDeselectAction.Enable();
         slotModeMoveDownAction.Enable();
         cardModeMoveUpAction.Enable();
+        cardConfirmSelectAction.Enable();
 
         //Finger Selection Map
         fingerSelectAction.Enable();
@@ -116,6 +119,7 @@ public class PlayerInputHandler : MonoBehaviour
         cardDeselectAction.Disable();
         slotModeMoveDownAction.Disable();
         cardModeMoveUpAction.Disable();
+        cardConfirmSelectAction.Disable();
 
         //Finger Selection Map
         fingerSelectAction.Disable();

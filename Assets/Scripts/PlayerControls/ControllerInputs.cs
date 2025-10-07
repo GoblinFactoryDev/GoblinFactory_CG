@@ -21,8 +21,10 @@ public class ControllerInputs : MonoBehaviour
     //private tracking of cards index
     private int cardIndexTracking = 0;
     private int slotIndexTracking = 0;
-    public CardData savedSelectedCard;
     private bool SlotsMode = false;
+    private bool _confirmSelection = false;
+    public bool GetConfirmSelection { get { return _confirmSelection; } }
+    public void SetConfirmSelection(bool setValue) { _confirmSelection = setValue; }
 
 
     private void Update()
@@ -34,17 +36,30 @@ public class ControllerInputs : MonoBehaviour
         {
             DeselectingInput();
         }
+        ReadyUpInput();
+    }
+
+    private void ReadyUpInput()
+    {
+        if (playerInputHandler.cardConfirmSelectAction.WasCompletedThisFrame())
+        {
+            if (cardsOwned.SlotsInUse.Count != 0)
+            {
+                _confirmSelection = true;
+            }
+        }
     }
 
 
     private void SelectingInput()
     {
+        //check for cards that are already in slots to not select them again
         if(playerInputHandler.cardSelectAction.WasPressedThisFrame())
         {
             cardsOwned.SelectCard();
             cardsOwned.CardToSlot();
             SlotsMode = true;
-
+            
         }
     }
 
