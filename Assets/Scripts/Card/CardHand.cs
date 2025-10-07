@@ -157,7 +157,7 @@ public class CardHand : MonoBehaviour
         cardToDeselect.IsInSlot = false;
     }
 
-    public void SelectCard()
+    public bool SelectCard()
     {
         bool skipSelection = false;
         CardData selectedData = _cardsInHand[_currentCardIndex].CardData;
@@ -166,6 +166,7 @@ public class CardHand : MonoBehaviour
         {
             if(cardtoSlot == card)
             {
+                Debug.Log("what???");
                 skipSelection = true;
                 break;
             }
@@ -176,6 +177,7 @@ public class CardHand : MonoBehaviour
             _previousPosition.Add(_cardPositions[_currentCardIndex].placement);
             cardtoSlot.IsInSlot = true;
         }
+        return skipSelection;
     }
 
     public void DeselectSlotReset()

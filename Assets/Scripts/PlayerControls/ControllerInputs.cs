@@ -56,10 +56,12 @@ public class ControllerInputs : MonoBehaviour
         //check for cards that are already in slots to not select them again
         if(playerInputHandler.cardSelectAction.WasPressedThisFrame())
         {
-            cardsOwned.SelectCard();
-            cardsOwned.CardToSlot();
-            SlotsMode = true;
-            
+            bool checkSelection = cardsOwned.SelectCard();
+            if (!checkSelection)
+            {
+                cardsOwned.CardToSlot();
+                SlotsMode = true;
+            }      
         }
     }
 
