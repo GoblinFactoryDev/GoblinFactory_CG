@@ -157,14 +157,13 @@ public class CardHand : MonoBehaviour
         cardToDeselect.IsInSlot = false;
     }
 
-    public CardData SnatchSelectedCard()
+    public void SelectCard()
     {
         CardData selectedData = _cardsInHand[_currentCardIndex].CardData;
         Card cardtoSlot = _cardsInHand[_currentCardIndex];
         _cardsInSlots.Add(cardtoSlot);
         _previousPosition.Add(_cardPositions[_currentCardIndex].placement);
         cardtoSlot.IsInSlot = true;
-        return selectedData;
     }
 
     public void DeselectSlotReset()

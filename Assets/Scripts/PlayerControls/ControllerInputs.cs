@@ -41,7 +41,7 @@ public class ControllerInputs : MonoBehaviour
     {
         if(playerInputHandler.cardSelectAction.WasPressedThisFrame())
         {
-            savedSelectedCard = cardsOwned.SnatchSelectedCard();
+            cardsOwned.SelectCard();
             cardsOwned.CardToSlot();
             SlotsMode = true;
 
