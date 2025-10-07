@@ -16,7 +16,7 @@ MonoBehaviour:
   cardType: 0
   description: Caster Chooses a finger, both fingers of that type on the opposing
     players hands take X DMG
-  icon: {fileID: 21300000, guid: 6597fccf1f304a64b8f1d822854db3dd, type: 3}
+  icon: {fileID: 21300000, guid: 78a8e926af6810f45b3383f24cedcd45, type: 3}
   cost: 1
   damage: 1
   difficulty: 5

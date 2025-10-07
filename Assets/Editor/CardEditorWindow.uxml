@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:uie="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <ui:ListView name="Card-List"/>
+    <ui:Box name="Card">
+        <ui:Image name="preview"/>
+        <ui:ScrollView name="Card-Info-Scroll">
+            <ui:Box name="Card-Info"/>
+        </ui:ScrollView>
+    </ui:Box>
+</ui:UXML>

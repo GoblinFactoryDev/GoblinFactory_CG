@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Summer's Last Inferno
   cardType: 0
   description: Destroys 1 chosen finger
-  icon: {fileID: 21300000, guid: 6597fccf1f304a64b8f1d822854db3dd, type: 3}
+  icon: {fileID: 21300000, guid: 3ce602b856ea9ba49be7303161bfb355, type: 3}
   cost: 2
   damage: 3
   difficulty: 10
