@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9200354741619002151
+--- !u!114 &-6466506405291160365
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Spell_Fireball_inner
-  m_Shader: {fileID: -6465566751694194690, guid: 6a396fe9a661cb2469296475521e991b, type: 3}
+  m_Name: ImpactMoving
+  m_Shader: {fileID: -6465566751694194690, guid: c3e5d7fe5a5f22b469aa3c87b35c733f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -30,18 +30,18 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
-  - DepthOnly
   - MOTIONVECTORS
+  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ef85d6e41a99e7b46a82f3bac69db3b7, type: 3}
+        m_Texture: {fileID: 2800000, guid: e62e929f5705dfe49aa8aeed2a6e761e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -60,10 +60,10 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Blend: 0
+    - _Blend: 2
     - _CastShadows: 1
     - _Cull: 0
-    - _DstBlend: 10
+    - _DstBlend: 1
     - _MainTex_Power: 1
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -73,8 +73,8 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 0.10009446, g: 0.10009446, b: 0.10009446, a: 0}
-    - _MainTiling: {r: 5, g: 5, b: 0, a: 0}
-    - _TexSpeed: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _Color: {r: 1.976675, g: 1.976675, b: 1.976675, a: 0}
+    - _MainTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _TexSpeed: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
