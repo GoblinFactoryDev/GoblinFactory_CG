@@ -740,6 +740,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 932536369774345146, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 932536369774345146, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 932536369774345146, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 932536369774345146, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 932536369774345146, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 932536369774345146, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 932536369774345146, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 932536369774345146, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2035401172546542134, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -783,6 +815,10 @@ PrefabInstance:
     - target: {fileID: 4707922736045897247, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
       propertyPath: m_Name
       value: vfx_IceBlast_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062902917775267509, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 4.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
