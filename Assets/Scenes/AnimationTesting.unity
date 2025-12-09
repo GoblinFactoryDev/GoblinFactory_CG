@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &203844587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -320,8 +320,8 @@ Camera:
   m_GameObject: {fileID: 961739749}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -371,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.08}
+  m_LocalPosition: {x: 0, y: 0.45, z: -5.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -388,6 +388,14 @@ PrefabInstance:
     - target: {fileID: 125273978172154369, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
       propertyPath: m_Name
       value: HandsObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011534413830356625, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011534413830356625, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.66
       objectReference: {fileID: 0}
     - target: {fileID: 6837500614153973301, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
       propertyPath: m_LocalPosition.x
@@ -429,8 +437,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8700504597592030203, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+      propertyPath: m_MotionVectors
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135388706923610938, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+      propertyPath: m_MotionVectors
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135388706923610938, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+      propertyPath: m_Parameters.textureScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135388706923610938, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+      propertyPath: m_Parameters.textureScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135388706923610938, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135388706923610938, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135388706923610938, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.4916668
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135388706923610938, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2169587080533954191, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
+    - {fileID: 2548868141220885369, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c04fd7bb5ffa64ebda0ad484cc4190, type: 3}
