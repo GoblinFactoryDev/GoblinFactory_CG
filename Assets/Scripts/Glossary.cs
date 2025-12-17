@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -69,4 +70,10 @@ public enum  PlayerIs
 {
     Ready = 1,
     NotReady = 0
+}
+
+public class chosenSelections
+{
+    public List<Card> selectedCards = new List<Card>();
+    public List<FingerType> finger = new List<FingerType>();
 }

@@ -28,6 +28,32 @@ public class RoundManagerLocal : MonoBehaviour
 
     public bool playerReady, computerReady;
 
+    public bool chooseSpellsMoveOn = false;
+
+    #region Qte Speed Management
+    private QTESpeeds CurrentQTESpeeds = new QTESpeeds();
+    float GetCurrentPlayerOneQTESpeed()
+    {
+        return CurrentQTESpeeds.playerOneSpeed;
+    }
+    float GetCurrentPlayerTwoQTESpeed()
+    {
+        return CurrentQTESpeeds.playerTwoSpeed;
+    }
+    float SetCurrentPlayerOneQTESpeed(float speed)
+    {
+        return CurrentQTESpeeds.playerOneSpeed = speed;
+    }
+    float SetCurrentPlayerTwoQTESpeed(float speed)
+    {
+        return CurrentQTESpeeds.playerTwoSpeed = speed;
+    }
+    PlayerType WhoWasFasterInQTE()
+    {
+        return CurrentQTESpeeds.WhoWasFaster();
+    }
+    #endregion
+
     private void Awake()
     {
         if (_instance == null)
@@ -79,9 +105,41 @@ public class RoundManagerLocal : MonoBehaviour
                 playerReady = false;
                 computerReady = false;
 
+                chooseSpellsMoveOn = true;
                 PlayerState = RoundStates.ConfiguringSpells;
                 ComputerState = RoundStates.ConfiguringSpells;
             }
+        }
+    }
+}
+
+/// <summary>
+/// A storage class for the current QTE speeds of both players
+/// </summary>
+public class QTESpeeds
+{
+    /// <summary>
+    /// The speed of player 1's last QTE
+    /// </summary>
+    public float playerOneSpeed;
+    /// <summary>
+    /// The speed of player 2's last QTE
+    /// </summary>
+    public float playerTwoSpeed;
+
+    public PlayerType WhoWasFaster()
+    {
+        if (playerOneSpeed < playerTwoSpeed)
+        {
+            return PlayerType.Player;
+        }
+        else if (playerTwoSpeed < playerOneSpeed)
+        {
+            return PlayerType.AI;
+        }
+        else
+        {
+            return PlayerType.None;
         }
     }
 }

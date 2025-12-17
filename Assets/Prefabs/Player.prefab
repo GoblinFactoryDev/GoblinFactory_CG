@@ -626,6 +626,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3185919682267064191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9103019957085565475}
+  m_Layer: 0
+  m_Name: DeckStackWP
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9103019957085565475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3185919682267064191}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 3.6470003, y: -0.414, z: 6.3809996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4686407407103592959}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3380617790051657431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e15f686e917fb68458c4320b8067e80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 211231814656042788}
   _cardsInHand: []
   _currentCardIndex: 0
   cardWaypoints: {fileID: 2238922701437094077}
@@ -1182,6 +1214,8 @@ MonoBehaviour:
   - {fileID: 8630376818831794231}
   - {fileID: 5914540923545188058}
   - {fileID: 2477889276761161097}
+  DeckWaypoint: {fileID: 9103019957085565475}
+  HaveMovedToDeck: 0
 --- !u!1 &4536449846523842176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,6 +2439,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 9103019957085565475}
   - {fileID: 1774500669068710673}
   - {fileID: 7359749806426929099}
   - {fileID: 6079695430807401972}

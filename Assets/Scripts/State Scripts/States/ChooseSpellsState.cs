@@ -23,6 +23,7 @@ public class ChooseSpellState : FSMState
     public override void EnterStateInit()
     {
         spellsChosen = false;
+        playerState.player.playerCardHand.HaveMovedToDeck = false;
     }
 
     //Reason
@@ -32,9 +33,43 @@ public class ChooseSpellState : FSMState
         {
             //  Need to remove the spells from the hand once confirmed
             ///////////////////////////////////////////////////////////////////
-            playerState.player.playerControllerInputs.SetConfirmSelection(false);
+            playerState.chosenRoundCards.selectedCards = playerState.player.playerCardHand.SlotsInUse;
+            // Add Finger choosing here
             RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
-            playerState.PerformTransition(Transition.SpellsChosen);
+
+            if (!playerState.player.playerCardHand.HaveMovedToDeck)
+            {
+                playerState.player.playerCardHand.HaveMovedToDeck = true;
+                foreach (Card card in playerState.player.playerCardHand.CardsInHand)
+                {
+                    if (!card.IsInSlot)
+                    {
+                        card.gameObject.transform.position = playerState.player.playerCardHand.DeckWaypoint.position;
+
+                        Vector3 tempCardRot;
+                        tempCardRot.x = -90;
+                        tempCardRot.y = card.transform.position.y;
+                        tempCardRot.z = card.transform.position.z;
+
+                        card.transform.Rotate(tempCardRot, Space.Self);
+                    }
+                }
+
+                if (RoundManagerLocal.Instance.chooseSpellsMoveOn)
+                {
+                    RoundManagerLocal.Instance.chooseSpellsMoveOn = false;
+                    playerState.player.playerControllerInputs.SetConfirmSelection(false);
+
+                    foreach (Card card in playerState.chosenRoundCards.selectedCards)
+                    {
+                        playerState.player.playerCardHand.RemoveCardInHand(card);
+                    }
+                    playerState.player.playerCardHand._currentSlotIndex = 0;
+                    playerState.player.playerCardHand.CardIndexSet(0);
+
+                    playerState.PerformTransition(Transition.SpellsChosen);
+                }
+            }
         }
     }
     //Act
@@ -45,7 +80,7 @@ public class ChooseSpellState : FSMState
         if (playerState.player.playerType == PlayerType.AI)
         {
             playerState.player.playerCardHand.computerChooseSpell(0);
-            spellsChosen = true;
+            //spellsChosen = true;
         }
     }
 }

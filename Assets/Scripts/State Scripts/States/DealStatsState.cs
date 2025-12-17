@@ -63,6 +63,7 @@ public class DealStatsState : FSMState
                     tempCardRot.z = 0;
 
                     cardObj.transform.position = cardPos.placement.position;
+                    card.handPosition = cardPos.posNumber;
 
                     card.transform.Rotate(tempCardRot, Space.World);
 

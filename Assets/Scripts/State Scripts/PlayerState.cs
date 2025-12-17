@@ -23,6 +23,8 @@ public class PlayerState : AdvancedFSM
     [SerializeField]
     private ControllerInputs playerController;
 
+    public chosenSelections chosenRoundCards = new chosenSelections();
+
     private string GetStateString()
     {
         string state = "NONE";

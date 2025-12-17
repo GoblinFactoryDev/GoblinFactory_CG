@@ -8,11 +8,13 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class CardPosition
 {
     public Transform placement;
     public bool isOccupied;
+    public int posNumber;
 }
 
 /// <summary>
@@ -21,6 +23,7 @@ public class CardPosition
 public class CardHand : MonoBehaviour
 {
     // private members
+    [SerializeField] private Player player;
     private const int MAX_HAND_SIZE = 5;
     private const int MIN_HAND_SIZE = 0;
     private const int STARTING_HAND_SIZE = 5; 
@@ -55,6 +58,10 @@ public class CardHand : MonoBehaviour
     //temporary store info about the currentCardSlot used when prompted to deselect
     private int tempSlotInfo;
     #endregion
+
+    [SerializeField]
+    public Transform DeckWaypoint;
+    public bool HaveMovedToDeck = false;
 
     //public properties
     public List<Card> CardsInHand { get { return _cardsInHand; } }
@@ -134,15 +141,19 @@ public class CardHand : MonoBehaviour
     private void Awake()
     {
         //_cardsInHand[_currentCardIndex].GetComponent<Renderer>().material.color = Color.red;
+        int waypointCount = 0;
 
         Transform[] waypoints = cardWaypoints.GetComponentsInChildren<Transform>();
         foreach (Transform waypoint in waypoints)
         {
             if (waypoint != cardWaypoints.transform) // Excludes the parent object
             {
+                waypointCount++;
+
                 CardPosition cardPos = new CardPosition();
                 cardPos.placement = waypoint;
                 cardPos.isOccupied = false;
+                cardPos.posNumber = waypointCount;
                 _cardPositions.Add(cardPos);
             }
         }
@@ -389,6 +400,41 @@ public class CardHand : MonoBehaviour
         if (!checkSelection)
         {
             cardsOwned.CardToSlot();
+        }
+    }
+
+    public void MoveCardsBackToHand()
+    {
+        foreach (Card card in _cardsInHand)
+        {
+            if (!card.IsInSlot)
+            {
+                foreach (CardPosition cardPos in _cardPositions)
+                {
+                    if (cardPos.posNumber == card.handPosition)
+                    {
+                        Vector3 tempCardRot;
+                        tempCardRot.x = cardPos.placement.position.x;
+
+                        if (player.playerType == PlayerType.AI || player.playerType == PlayerType.OnlinePlayer)
+                        {
+                            tempCardRot.y = 180;
+                        }
+                        else
+                        {
+                            tempCardRot.y = -cardPos.placement.position.y;
+                        }
+                        tempCardRot.z = 0;
+
+                        card.transform.position = cardPos.placement.position;
+
+                        card.transform.Rotate(tempCardRot, Space.World);
+
+                        cardPos.isOccupied = true;
+                        break;
+                    }
+                }
+            }
         }
     }
 

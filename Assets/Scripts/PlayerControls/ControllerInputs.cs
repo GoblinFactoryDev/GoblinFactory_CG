@@ -7,6 +7,7 @@
 //-----------------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class ControllerInputs : MonoBehaviour
 {
@@ -43,9 +44,18 @@ public class ControllerInputs : MonoBehaviour
     {
         if (playerInputHandler.cardConfirmSelectAction.WasCompletedThisFrame())
         {
-            if (cardsOwned.SlotsInUse.Count != 0)
+            if (!_confirmSelection)
             {
-                _confirmSelection = true;
+                if (cardsOwned.SlotsInUse.Count != 0)
+                {
+                    _confirmSelection = true;
+                }
+            }
+            else
+            {
+                _confirmSelection = false;
+                cardsOwned.HaveMovedToDeck = false;
+                cardsOwned.MoveCardsBackToHand();
             }
         }
     }

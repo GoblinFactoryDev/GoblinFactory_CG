@@ -26,6 +26,8 @@ public class Card : MonoBehaviour
     public int Difficulty { get => _cardData.difficulty; }
     public bool IsInSlot { get; set; } = false;
 
+    public int handPosition = 0;
+
     GameObject cardObj;
 
     // private card data (slot position)
