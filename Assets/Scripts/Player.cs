@@ -11,6 +11,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     /// <summary>
+    /// What type of player
+    /// </summary>
+    [SerializeField]
+    public PlayerType playerType;
+
+    /// <summary>
     /// The hands of the player
     /// </summary>
     [SerializeField]

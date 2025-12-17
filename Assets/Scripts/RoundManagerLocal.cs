@@ -36,6 +36,11 @@ public class RoundManagerLocal : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        GameManager.Instance.GatherPlayers();
+    }
+
     public void ReadyToMoveOn(PlayerType pType, bool isReady)
     {
         if (pType == PlayerType.Player)

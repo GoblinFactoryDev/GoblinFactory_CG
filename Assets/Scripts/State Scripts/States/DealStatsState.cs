@@ -1,4 +1,6 @@
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 //----------------------------------------------------------------
 //  Author: Wyatt
@@ -47,7 +49,23 @@ public class DealStatsState : FSMState
             {
                 if (!cardPos.isOccupied)
                 {
-                    card.transform.position = cardPos.placement.position;
+                    Vector3 tempCardRot;
+                    tempCardRot.x = cardPos.placement.position.x;
+
+                    if (playerState.player.playerType == PlayerType.AI || playerState.player.playerType == PlayerType.OnlinePlayer)
+                    {
+                        tempCardRot.y = -180;
+                    }
+                    else
+                    {
+                        tempCardRot.y = cardPos.placement.position.y;
+                    }
+                    tempCardRot.z = 0;
+
+                    cardObj.transform.position = cardPos.placement.position;
+
+                    card.transform.Rotate(tempCardRot, Space.World);
+
                     cardPos.isOccupied = true;
                     break;
                 }

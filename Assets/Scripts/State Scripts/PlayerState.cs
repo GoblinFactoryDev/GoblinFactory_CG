@@ -73,6 +73,7 @@ public class PlayerState : AdvancedFSM
         CurrentState.Reason();
         CurrentState.Act();
 
+        if (player.playerType == PlayerType.Player)
         test_text.text = "State: " + GetStateString();
     }
 
