@@ -56,7 +56,7 @@ public class RoundManagerLocal : MonoBehaviour
     private void Update()
     {
         // check if both players are ready (Will need to add the computer check)
-        if (playerReady)
+        if (playerReady && computerReady)
         {
             if (PlayerState == RoundStates.DealingStats)
             {

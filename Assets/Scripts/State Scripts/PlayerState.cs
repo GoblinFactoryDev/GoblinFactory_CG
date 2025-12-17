@@ -20,6 +20,9 @@ public class PlayerState : AdvancedFSM
     [SerializeField]
     public Player player;
 
+    [SerializeField]
+    private ControllerInputs playerController;
+
     private string GetStateString()
     {
         string state = "NONE";

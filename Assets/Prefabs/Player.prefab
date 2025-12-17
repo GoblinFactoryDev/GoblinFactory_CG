@@ -1166,6 +1166,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 675f223cd439a6d4084d077610a53765, type: 2}
   - {fileID: 11400000, guid: f0bf19bca2d1b074ead0e32b013556fa, type: 2}
   - {fileID: 11400000, guid: 7d6e5222da97bcb4ea315f5ba73a0661, type: 2}
+  cardsOwned: {fileID: 5696425969577844212}
   slotsWaypoints:
   - {fileID: 1477978485016647089}
   - {fileID: 8034793860396825070}
@@ -2423,6 +2424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   test_text: {fileID: 3174403710114599188}
   player: {fileID: 211231814656042788}
+  playerController: {fileID: 6223526802709940347}
 --- !u!114 &211231814656042788
 MonoBehaviour:
   m_ObjectHideFlags: 0

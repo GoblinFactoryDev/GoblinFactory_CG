@@ -76,7 +76,7 @@ public class DealStatsState : FSMState
         }
         else
         {
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+          RoundManagerLocal.Instance.ReadyToMoveOn(playerState.player.playerType, true);
         }
     }
 }

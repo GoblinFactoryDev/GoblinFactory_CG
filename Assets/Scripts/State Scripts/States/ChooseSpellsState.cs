@@ -11,6 +11,7 @@ using UnityEngine;
 public class ChooseSpellState : FSMState
 {
     PlayerState playerState;
+    bool spellsChosen = false;
 
     //Constructor
     public ChooseSpellState(PlayerState ps)
@@ -19,10 +20,15 @@ public class ChooseSpellState : FSMState
         stateID = FSMStateID.ChooseSpells;
     }
 
+    public override void EnterStateInit()
+    {
+        spellsChosen = false;
+    }
+
     //Reason
     public override void Reason()
     {
-        if (playerState.player.playerControllerInputs.GetConfirmSelection)
+        if (playerState.player.playerControllerInputs.GetConfirmSelection || spellsChosen)
         {
             //  Need to remove the spells from the hand once confirmed
             ///////////////////////////////////////////////////////////////////
@@ -34,6 +40,12 @@ public class ChooseSpellState : FSMState
     //Act
     public override void Act()
     {
-
+        //  AI Spell Choosing Logic Here
+        ///////////////////////////////////////////////////////////////////
+        if (playerState.player.playerType == PlayerType.AI)
+        {
+            playerState.player.playerCardHand.computerChooseSpell(0);
+            spellsChosen = true;
+        }
     }
 }

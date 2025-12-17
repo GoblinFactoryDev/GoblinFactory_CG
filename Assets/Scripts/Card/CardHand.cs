@@ -30,6 +30,8 @@ public class CardHand : MonoBehaviour
     [SerializeField] private GameObject cardWaypoints;
     [SerializeField] public List<CardPosition> _cardPositions = new List<CardPosition>();
     [SerializeField] public List<CardData> availableCards = new List<CardData>();
+    //refernce to the cards in hand
+    [SerializeField] private CardHand cardsOwned;
 
     #region Slot System Variables
     //match the slot card in the waypoint lists and the card lists to return it
@@ -157,11 +159,16 @@ public class CardHand : MonoBehaviour
         cardToDeselect.IsInSlot = false;
     }
 
-    public bool SelectCard()
+    public bool SelectCard(int cardIndex, bool isPlayer)
     {
+        if (isPlayer)
+        {
+            cardIndex = _currentCardIndex;
+        }
+
         bool skipSelection = false;
-        CardData selectedData = _cardsInHand[_currentCardIndex].CardData;
-        Card cardtoSlot = _cardsInHand[_currentCardIndex];
+        CardData selectedData = _cardsInHand[cardIndex].CardData;
+        Card cardtoSlot = _cardsInHand[cardIndex];
         foreach (Card card in _cardsInSlots)
         {
             if(cardtoSlot == card)
@@ -174,7 +181,7 @@ public class CardHand : MonoBehaviour
         if (!skipSelection)
         {
             _cardsInSlots.Add(cardtoSlot);
-            _previousPosition.Add(_cardPositions[_currentCardIndex].placement);
+            _previousPosition.Add(_cardPositions[cardIndex].placement);
             cardtoSlot.IsInSlot = true;
         }
         return skipSelection;
@@ -373,6 +380,15 @@ public class CardHand : MonoBehaviour
                     }
                     break;
             }
+        }
+    }
+
+    public void computerChooseSpell(int whatIndex)
+    {
+        bool checkSelection = cardsOwned.SelectCard(whatIndex, false);
+        if (!checkSelection)
+        {
+            cardsOwned.CardToSlot();
         }
     }
 

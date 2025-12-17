@@ -30,6 +30,6 @@ public class RoundEffectsState : FSMState
     //Act
     public override void Act()
     {
-        RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+        RoundManagerLocal.Instance.ReadyToMoveOn(playerState.player.playerType, true);
     }
 }
