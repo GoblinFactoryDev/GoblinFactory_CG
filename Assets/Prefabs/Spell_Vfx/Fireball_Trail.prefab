@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8034206593507155085}
   - component: {fileID: 8741521107955148437}
   - component: {fileID: 159286087018167589}
+  - component: {fileID: -6289280201644918309}
   m_Layer: 0
   m_Name: Fireball_Trail
   m_TagString: Untagged
@@ -41,7 +42,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1238592674092328440}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 0ba83605589651e45be92dbe964987f8, type: 3}
+  m_Asset: {fileID: 0}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -114,3 +115,16 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
+--- !u!114 &-6289280201644918309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238592674092328440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2dcc1601abf8f40985ddb4db9f2ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allNotes: []
