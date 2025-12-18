@@ -37,12 +37,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BoneTextureBrightness: 5.23
+    - _BoneTextureBrightness: 0.8
     - _BoneTextureON: 1
-    - _NormalStrenght: 6.7
+    - _NormalStrenght: 4
     - _OutlineAmountNoTexture: 0.86
     - _OutlineAmountWithTexture: 2.68
-    - _OutlineBrightness: 400
+    - _OutlineBrightness: 40
     m_Colors:
     - _OutlineColour: {r: 0.85882354, g: 0.09074992, b: 0.011764713, a: 0}
   m_BuildTextureStacks: []
