@@ -845,17 +845,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1043129379943949193, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788899383480542740, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882692705305709683, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
+      propertyPath: m_Radius
+      value: 0.49941704
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882692705305709683, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0005830079
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882692705305709683, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
+      propertyPath: m_Center.z
+      value: -2.045582e-18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882692705305709683, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6237798363978822159, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.26135
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6237798363978822159, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.26135
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6237798363978822159, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.26135
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6237798363978822159, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -897,9 +921,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7155516751597361824, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9167170995475584063, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
       propertyPath: m_Name
       value: FireBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167170995475584063, guid: 7474587ca1257244990f05f09f60abe2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
