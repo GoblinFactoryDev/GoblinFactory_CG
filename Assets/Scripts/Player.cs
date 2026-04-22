@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
 
         // Initialize player health with the current player instance
         playerHealth.InitPlayerHealth(this);
+        GetHealth();
     }
 
     /// <summary>
