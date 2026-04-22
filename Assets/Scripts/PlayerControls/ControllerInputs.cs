@@ -7,12 +7,15 @@
 //-----------------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
 public class ControllerInputs : MonoBehaviour
 {
     //reference to the input handler
     [SerializeField] private PlayerInputHandler playerInputHandler;
+    //player 1 reference
+    [SerializeField] private Player p1;
     //refernce to the cards in hand
     [SerializeField] private CardHand cardsOwned;
     //private variable for checking maximum cards in hand
@@ -38,6 +41,7 @@ public class ControllerInputs : MonoBehaviour
             DeselectingInput();
         }
         ReadyUpInput();
+        FingeringATest();
     }
 
     private void ReadyUpInput()
@@ -189,6 +193,21 @@ public class ControllerInputs : MonoBehaviour
             cardsOwned.SlotsInUse[cardsOwned.SlotIndexGet].CardActions.OffHoverCard();
             cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OnHoverCard();
         }
+    }
+
+    private Vector3 newVector = new Vector4(1, 1, 1, 1);
+
+    private void FingeringATest()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
+            Debug.Log("Hit here");
+            Color newColor = new Color(newVector.x, newVector.y, newVector.z);
+            p1.hands[0].BoneFingers[0].boneSegments[0].GetComponent<Renderer>().material.SetVector("_OutlineColour", newVector);
+            //player.playerInput.SwitchCurrentActionMap("QTEWait");
+        }
+
     }
 
 }

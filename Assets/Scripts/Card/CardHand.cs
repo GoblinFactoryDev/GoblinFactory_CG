@@ -184,7 +184,6 @@ public class CardHand : MonoBehaviour
         {
             if(cardtoSlot == card)
             {
-                Debug.Log("what???");
                 skipSelection = true;
                 break;
             }
