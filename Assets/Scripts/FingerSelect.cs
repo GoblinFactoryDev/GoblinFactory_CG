@@ -9,7 +9,7 @@ public class FingerSelect : MonoBehaviour
         for (int i = 0; i < segmentTotal; i++)
         {
             playerRef.hands[(int)hand].BoneFingers[(int)finger].boneSegments[i].GetComponent<Renderer>().material.SetVector("_OutlineColour", selectColor);
-            if(finger == FingerType.Pinky && i == 1)
+            if(finger == FingerType.Thumb && i == 1)
             {
                 break;
             }

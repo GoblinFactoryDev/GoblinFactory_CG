@@ -18,10 +18,12 @@ public class ControllerInputs : MonoBehaviour
     [SerializeField] private PlayerInputHandler playerInputHandler;
     //player 1 reference
     [SerializeField] private Player p1;
+    //player 2 reference
+    [SerializeField] private Player p2;
     //refernce to the fingerSelect Script
     private FingerSelect fingerReach = new FingerSelect();
     //fingerIndex for movement
-    private int fingerIndex = 0;
+    private int fingerIndex = 4;
     //current finger hand Index
     private int fingerHandIndex = 0;
     //private variable for checking maximum fingers in the hand
@@ -56,7 +58,13 @@ public class ControllerInputs : MonoBehaviour
         FingeringATest();
         if(fingerOn)
         {
-            MoveFingers();
+            fingerp2On = false;
+            MoveFingers(p1, newVector, newVector2);
+        }
+        if(fingerp2On)
+        {
+            fingerOn = false;
+            MoveFingers(p2, newVector, newVector1);
         }
     }
 
@@ -212,9 +220,10 @@ public class ControllerInputs : MonoBehaviour
     }
 
     private Vector4 newVector = new Vector4(1, 1, 1, 1);
-    private Vector4 newVector1 = new Vector4(255.0f, 89.0f, 0, 0);
+    private Vector4 newVector1;
     private Vector4 newVector2;
     private bool fingerOn = false;
+    private bool fingerp2On = false;
 
     private void FingeringATest()
     {
@@ -222,74 +231,65 @@ public class ControllerInputs : MonoBehaviour
         {
             p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
             newVector2 = p1.hands[0].BoneFingers[0].boneSegments[0].GetComponent<Renderer>().material.GetVector("_OutlineColour");
-            fingerReach.ChangeAllSegments(p1, newVector, HandType.Left, FingerType.Thumb);
+            fingerReach.ChangeAllSegments(p1, newVector, HandType.Left, FingerType.Pinky);
             Debug.Log("Hit here");
             fingerOn = true;
             //player.playerInput.SwitchCurrentActionMap("QTEWait");
         }
 
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            p2.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
+            newVector1 = p2.hands[0].BoneFingers[0].boneSegments[0].GetComponent<Renderer>().material.GetVector("_OutlineColour");
+            fingerReach.ChangeAllSegments(p2, newVector1, HandType.Left, FingerType.Pinky);
+            Debug.Log("Hit here");
+            fingerp2On = true;
+        }
+
     }
 
-    private void MoveFingers()
+    private void MoveFingers(Player pRef, Vector4 SelectColour, Vector4 DefaultColour)
     {
-        if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex > MIN_FINGER_SIZE)
+        if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex < MAX_FINGER_SIZE && fingerHandIndex == 0)
         {
-            fingerReach.ChangeAllSegments(p1, newVector2, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-            fingerIndex--;
-            fingerReach.ChangeAllSegments(p1, newVector, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-        }
-        else if (playerInputHandler.fingerMoveRightAction.triggered && fingerIndex < MAX_FINGER_SIZE)
-        {
-            fingerReach.ChangeAllSegments(p1, newVector2, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
             fingerIndex++;
-            fingerReach.ChangeAllSegments(p1, newVector, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+        }
+        else if (playerInputHandler.fingerMoveRightAction.triggered && fingerIndex > MIN_FINGER_SIZE && fingerHandIndex == 0)
+        {
+            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            fingerIndex--;
+            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
         }
         //transition else if statement to the next hand
-        else if(playerInputHandler.fingerMoveRightAction.triggered && fingerIndex == MAX_FINGER_SIZE && fingerHandIndex == 0)
+        else if(playerInputHandler.fingerMoveRightAction.triggered && fingerIndex == MIN_FINGER_SIZE && fingerHandIndex == 0)
         {
-            fingerReach.ChangeAllSegments(p1, newVector2, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
             fingerHandIndex++;
-            fingerReach.ChangeAllSegments(p1, newVector, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+        }
+        //transition else if statement to the next hand
+        else if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex == MIN_FINGER_SIZE && fingerHandIndex == 1)
+        {
+            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            fingerHandIndex--;
+            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+        }
+        else if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex > MIN_FINGER_SIZE && fingerHandIndex == 1)
+        {
+            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            fingerIndex--;
+            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+        }
+        else if(playerInputHandler.fingerMoveRightAction.triggered && fingerIndex < MAX_FINGER_SIZE && fingerHandIndex == 1)
+        {
+            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            fingerIndex++;
+            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
         }
     }
 
-    private int GetProperFinger()
-    {
-        int whatFinger = -1;
-        switch (fingerIndex)
-        {
-            case 0:
-                whatFinger = 0;
-                break;
-            case 1:
-                whatFinger = 1;
-                break;
-            case 2:
-                whatFinger = 2;
-                break;
-            case 3:
-                whatFinger = 3;
-                break;
-            case 4:
-                whatFinger = 4;
-                break;
-            case 5:
-                whatFinger = 9;
-                break;
-            case 6:
-                whatFinger = 8;
-                break;
-            case 7:
-                whatFinger = 7;
-                break;
-            case 8:
-                whatFinger = 6;
-                break;
-            case 9:
-                whatFinger = 5;
-                break;
-        }
-        return whatFinger;
-    }
+   
 
 }
