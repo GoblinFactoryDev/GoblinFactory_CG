@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class FingerSelect : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private int segmentTotal = 3;
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeAllSegments(Player playerRef, Vector4 selectColor, HandType hand, FingerType finger)
     {
-        
+        for (int i = 0; i < segmentTotal; i++)
+        {
+            playerRef.hands[(int)hand].BoneFingers[(int)finger].boneSegments[i].GetComponent<Renderer>().material.SetVector("_OutlineColour", selectColor);
+            if(finger == FingerType.Pinky && i == 1)
+            {
+                break;
+            }
+        }
     }
 }
