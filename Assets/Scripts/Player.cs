@@ -68,9 +68,7 @@ public class Player : MonoBehaviour
     /// <param name="dmgAmt">The amount of damage done</param>
     public void DamageFinger(HandType whatHand, FingerType whatFinger, int dmgAmt)
     {
-        int whichFinger = -1;
-        GetProperTarget(whatHand, whatFinger, ref whichFinger);
-        playerHealth[(int)whatHand, whichFinger] -= dmgAmt;
+        playerHealth[(int)whatHand, (int)whatFinger] -= dmgAmt;
     }
 
     /// <summary>
@@ -81,9 +79,7 @@ public class Player : MonoBehaviour
     /// <param name="healAmt">The amount of health healed</param>
     public void HealFinger(HandType whatHand, FingerType whatFinger, int healAmt)
     {
-        int whichFinger = -1;
-        GetProperTarget(whatHand, whatFinger, ref whichFinger);
-        playerHealth[(int)whatHand, whichFinger] += healAmt;
+        playerHealth[(int)whatHand, (int)whatFinger] += healAmt;
     }
 
     //can wyatt this see?
@@ -288,43 +284,5 @@ public class Player : MonoBehaviour
     public void GetHealth()
     {
         playerHealthTotal = playerHealth.totalHealth;
-    }
-
-    /// <summary>
-    /// Checks if the targeted hand is the left hand, if that is the case, due to the enmum structure of the finger type thumb is 0
-    /// so on the left hand if you were to target the thumb it would hit the pinky instead, this reverses that.
-    /// </summary>
-    /// <param name="whatHand">The hand being targeted</param>
-    /// <param name="whatFinger">The finger being targeted</param>
-    /// <param name="whichFinger">The correct placement of the targeted finger</param>
-    public void GetProperTarget(HandType whatHand, FingerType whatFinger, ref int whichFinger)
-    {
-        if (whatHand == HandType.Left)
-        {
-            switch (whatFinger)
-            {
-                case FingerType.Pinky:
-                    whichFinger = (int)FingerType.Thumb;
-                    break;
-                case FingerType.Ring:
-                    whichFinger = (int)FingerType.Index;
-                    break;
-                case FingerType.Middle:
-                    whichFinger = (int)FingerType.Middle;
-                    break;
-                case FingerType.Index:
-                    whichFinger = (int)FingerType.Ring;
-                    break;
-                case FingerType.Thumb:
-                    whichFinger = (int)FingerType.Pinky;
-                    break;
-                default:
-                    break;
-            }
-        }
-        else
-        {
-            whichFinger = (int)whatFinger;
-        }
     }
 }
