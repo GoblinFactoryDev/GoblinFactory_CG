@@ -253,4 +253,43 @@ public class ControllerInputs : MonoBehaviour
         }
     }
 
+    private int GetProperFinger()
+    {
+        int whatFinger = -1;
+        switch (fingerIndex)
+        {
+            case 0:
+                whatFinger = 0;
+                break;
+            case 1:
+                whatFinger = 1;
+                break;
+            case 2:
+                whatFinger = 2;
+                break;
+            case 3:
+                whatFinger = 3;
+                break;
+            case 4:
+                whatFinger = 4;
+                break;
+            case 5:
+                whatFinger = 9;
+                break;
+            case 6:
+                whatFinger = 8;
+                break;
+            case 7:
+                whatFinger = 7;
+                break;
+            case 8:
+                whatFinger = 6;
+                break;
+            case 9:
+                whatFinger = 5;
+                break;
+        }
+        return whatFinger;
+    }
+
 }

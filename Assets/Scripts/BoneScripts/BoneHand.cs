@@ -39,11 +39,11 @@ public class BoneHand : MonoBehaviour
         {
             _boneFingers = new List<BoneFinger>
             {
-                initialBoneFingers.Find(f => f.fingerType == FingerType.Pinky),
-                initialBoneFingers.Find(f => f.fingerType == FingerType.Ring),
-                initialBoneFingers.Find(f => f.fingerType == FingerType.Middle),
+                initialBoneFingers.Find(f => f.fingerType == FingerType.Thumb),
                 initialBoneFingers.Find(f => f.fingerType == FingerType.Index),
-                initialBoneFingers.Find(f => f.fingerType == FingerType.Thumb)
+                initialBoneFingers.Find(f => f.fingerType == FingerType.Middle),
+                initialBoneFingers.Find(f => f.fingerType == FingerType.Ring),
+                initialBoneFingers.Find(f => f.fingerType == FingerType.Pinky)
             };
         }
         else if (_handType == HandType.Right)
