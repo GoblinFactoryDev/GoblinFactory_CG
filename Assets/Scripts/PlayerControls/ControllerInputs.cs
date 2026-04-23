@@ -230,7 +230,7 @@ public class ControllerInputs : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
-            newVector2 = p1.hands[0].BoneFingers[0].boneSegments[0].GetComponent<Renderer>().material.GetVector("_OutlineColour");
+            newVector2 = ColourManager.Instance.dragonOutline;
             fingerReach.ChangeAllSegments(p1, newVector, HandType.Left, FingerType.Pinky);
             Debug.Log("Hit here");
             fingerOn = true;
@@ -240,7 +240,7 @@ public class ControllerInputs : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P))
         {
             p2.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
-            newVector1 = p2.hands[0].BoneFingers[0].boneSegments[0].GetComponent<Renderer>().material.GetVector("_OutlineColour");
+            newVector1 = ColourManager.Instance.dwarfOutline;
             fingerReach.ChangeAllSegments(p2, newVector1, HandType.Left, FingerType.Pinky);
             Debug.Log("Hit here");
             fingerp2On = true;

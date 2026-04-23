@@ -16,6 +16,7 @@ public class CardData : ScriptableObject
     public CardType cardType;
     public string description;
     public Sprite icon;
+    public bool targetSelf;
 
     // card data
     public int cost;

@@ -17,6 +17,12 @@ public class Player : MonoBehaviour
     public PlayerType playerType;
 
     /// <summary>
+    /// Which character the player has chosen to play as
+    /// </summary>
+    [SerializeField]
+    public CharacterType character;
+
+    /// <summary>
     /// The hands of the player
     /// </summary>
     [SerializeField]
@@ -43,7 +49,6 @@ public class Player : MonoBehaviour
     /// </summary>
     [SerializeField]
     public ControllerInputs playerControllerInputs;
-
     public void Start()
     {   
         // Initialize each hand's fingers

@@ -691,6 +691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 501789616}
   - component: {fileID: 501789615}
+  - component: {fileID: 501789617}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -727,6 +728,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &501789617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501789614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c49aa29973c9d4f9281898987a740e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DragonMat: {fileID: 2100000, guid: ba9000116a832e742802a5ad81dab728, type: 2}
+  DwarfMat: {fileID: 2100000, guid: eaf4f9e037a362940a265ccec2bc1c7e, type: 2}
 --- !u!1 &567247829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 460560749656411669, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}

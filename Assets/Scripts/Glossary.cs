@@ -72,6 +72,12 @@ public enum  PlayerIs
     NotReady = 0
 }
 
+public enum  CharacterType
+{
+    Dragon,
+    Dwarf
+}
+
 public class chosenSelections
 {
     public List<Card> selectedCards = new List<Card>();
