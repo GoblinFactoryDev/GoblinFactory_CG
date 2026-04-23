@@ -8,9 +8,7 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.Playables;
-using UnityEngine.XR;
 
 public class ControllerInputs : MonoBehaviour
 {
@@ -18,16 +16,6 @@ public class ControllerInputs : MonoBehaviour
     [SerializeField] private PlayerInputHandler playerInputHandler;
     //player 1 reference
     [SerializeField] private Player p1;
-    //refernce to the fingerSelect Script
-    private FingerSelect fingerReach = new FingerSelect();
-    //fingerIndex for movement
-    private int fingerIndex = 0;
-    //current finger hand Index
-    private int fingerHandIndex = 0;
-    //private variable for checking maximum fingers in the hand
-    private const int MAX_FINGER_SIZE = 4;
-    //private variable for checking minimum fingers in the hand
-    private const int MIN_FINGER_SIZE = 0;
     //refernce to the cards in hand
     [SerializeField] private CardHand cardsOwned;
     //private variable for checking maximum cards in hand
@@ -54,10 +42,6 @@ public class ControllerInputs : MonoBehaviour
         }
         ReadyUpInput();
         FingeringATest();
-        if(fingerOn)
-        {
-            MoveFingers();
-        }
     }
 
     private void ReadyUpInput()
@@ -211,46 +195,19 @@ public class ControllerInputs : MonoBehaviour
         }
     }
 
-    private Vector4 newVector = new Vector4(1, 1, 1, 1);
-    private Vector4 newVector1 = new Vector4(255.0f, 89.0f, 0, 0);
-    private Vector4 newVector2;
-    private bool fingerOn = false;
+    private Vector3 newVector = new Vector4(1, 1, 1, 1);
 
     private void FingeringATest()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
-            newVector2 = p1.hands[0].BoneFingers[0].boneSegments[0].GetComponent<Renderer>().material.GetVector("_OutlineColour");
-            fingerReach.ChangeAllSegments(p1, newVector, HandType.Left, FingerType.Thumb);
             Debug.Log("Hit here");
-            fingerOn = true;
+            Color newColor = new Color(newVector.x, newVector.y, newVector.z);
+            p1.hands[0].BoneFingers[0].boneSegments[0].GetComponent<Renderer>().material.SetVector("_OutlineColour", newVector);
             //player.playerInput.SwitchCurrentActionMap("QTEWait");
         }
 
-    }
-
-    private void MoveFingers()
-    {
-        if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex > MIN_FINGER_SIZE)
-        {
-            fingerReach.ChangeAllSegments(p1, newVector2, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-            fingerIndex--;
-            fingerReach.ChangeAllSegments(p1, newVector, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-        }
-        else if (playerInputHandler.fingerMoveRightAction.triggered && fingerIndex < MAX_FINGER_SIZE)
-        {
-            fingerReach.ChangeAllSegments(p1, newVector2, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-            fingerIndex++;
-            fingerReach.ChangeAllSegments(p1, newVector, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-        }
-        //transition else if statement to the next hand
-        else if(playerInputHandler.fingerMoveRightAction.triggered && fingerIndex == MAX_FINGER_SIZE && fingerHandIndex == 0)
-        {
-            fingerReach.ChangeAllSegments(p1, newVector2, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-            fingerHandIndex++;
-            fingerReach.ChangeAllSegments(p1, newVector, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-        }
     }
 
 }

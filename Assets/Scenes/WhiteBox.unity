@@ -496,14 +496,6 @@ PrefabInstance:
       propertyPath: p1
       value: 
       objectReference: {fileID: 1943930453}
-    - target: {fileID: 6223526802709940347, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6223526802709940347, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
-      propertyPath: fingerReach
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6453814822437447522, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1550,10 +1542,6 @@ PrefabInstance:
       propertyPath: p1
       value: 
       objectReference: {fileID: 1082421055}
-    - target: {fileID: 6223526802709940347, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
-      propertyPath: fingerReach
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7601322119329541314, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: m_Name
       value: Player1
