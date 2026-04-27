@@ -1,7 +1,5 @@
 //----------------------------------------------------------------
-//  Author:         Wyatt
-//  Co-Authors:      
-// 
+//  Author:         Wyatt   
 //  Date Created:   July 16, 2025
 //  Instance:       No
 //-----------------------------------------------------------------
@@ -43,6 +41,12 @@ public class Player : MonoBehaviour
     /// </summary>
     [SerializeField]
     public CardHand playerCardHand;
+
+    /// <summary>
+    /// The Players slots
+    /// </summary>
+    [SerializeField]
+    public SlotHandler playerSlotHandler;
 
     /// <summary>
     /// The controller variables and inputs for the player

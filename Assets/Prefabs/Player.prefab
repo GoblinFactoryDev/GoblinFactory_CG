@@ -1152,6 +1152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1774500669068710673}
   - component: {fileID: 5696425969577844212}
+  - component: {fileID: 5793575935949539154}
   m_Layer: 0
   m_Name: CardsInHand
   m_TagString: Untagged
@@ -1217,6 +1218,18 @@ MonoBehaviour:
   - {fileID: 2477889276761161097}
   DeckWaypoint: {fileID: 9103019957085565475}
   HaveMovedToDeck: 0
+--- !u!114 &5793575935949539154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4476581804004876545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa408ebf5d643e43845680ce0b00b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4536449846523842176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,12 +2487,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerType: 0
+  character: 0
   hands:
   - {fileID: 3057453658089534058}
   - {fileID: 3764317439445606133}
   playerHealth: {fileID: 8703596437689275967}
   playerHealthTotal: 0
   playerCardHand: {fileID: 5696425969577844212}
+  playerSlotHandler: {fileID: 5793575935949539154}
   playerControllerInputs: {fileID: 6223526802709940347}
 --- !u!114 &8703596437689275967
 MonoBehaviour:
@@ -2671,6 +2686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputHandler: {fileID: 156989379026825622}
   p1: {fileID: 211231814656042788}
+  p2: {fileID: 0}
   cardsOwned: {fileID: 5696425969577844212}
 --- !u!114 &201009632466848746
 MonoBehaviour:
