@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/WhiteBox.unity
     guid: 4120bda2c62dcad4192b9ee12e2c3322
   - enabled: 1
+    path: Assets/Scenes/SpellEffects.unity
+    guid: c981cd67034839d449c7d772c9609b35
+  - enabled: 1
+    path: Assets/Scenes/SebasScene.unity
+    guid: a2c9920db93971144a1db974f3ef7f47
+  - enabled: 1
     path: Assets/Scenes/PersistantScene.unity
     guid: b18638b269c58064682eaf031a9eb2ec
   m_configObjects:

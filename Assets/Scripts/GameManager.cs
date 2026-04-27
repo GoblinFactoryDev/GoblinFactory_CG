@@ -1,26 +1,69 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+/* //============================================================================
+ * Author: Cooper
+ * Title: GameManager
+ * Date: 04/26/2026
+ * Purpose: Handle the game and act as a global manager for the whole project
+*/ //============================================================================
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-
-    public static GameManager Instance
+    #region Scene Instance Management
+    //Runs the Below Function before the scene loads to ensure everything is initialized first
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    public static void LoadPersistentLevel()
     {
-        get
+        //Gives the persistant scene a name
+        const string sceneName = "PersistantScene";
+
+        //Checks all the scenes to find itself
+        for (int sceneIndex = 0; sceneIndex < SceneManager.sceneCount; sceneIndex++)
         {
-            if (_instance == null)
-            {
-                _instance = FindFirstObjectByType<GameManager>();
-            }
+            if (SceneManager.GetSceneAt(sceneIndex).name == sceneName)
+                return;
+        }
 
-            if (!_instance)
-            {
-                Debug.LogError("No Game Manager Present!!!!");
-            }
+        //Loads this scene on top of the currently loaded scene
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+    }
 
-            return _instance;
+    //Instance of this script for referencing
+    public static GameManager Instance { get; private set; } = null;
+
+    private void Awake()
+    {
+        //checks for duplicate game managers and kills any if they exist
+        if (Instance != null)
+        {
+            Debug.LogError($"Found duplicate GameInstance on {gameObject.name}");
+            Destroy(gameObject);
+            return;
+        }
+
+        //makes the ONLY instance this object
+        Instance = this;
+
+        //Makes sure this game object (Game Manager) Wont be destroyed when loading scenes
+        DontDestroyOnLoad(Instance);
+    }
+    #endregion
+
+    public void loadScene (string sceneName)
+    {
+        //Checks if the scene being loaded is already active (don't load the same scene twice)
+        if (sceneName == SceneManager.GetActiveScene().name)
+        {
+            Debug.LogError($"Scene {sceneName} atempting to load is already actuive");
+            return;
+        }
+        else //Loads the requested scene
+        {
+            SceneManager.LoadScene(sceneName);
+            Debug.Log($"Scene {sceneName} loaded");
         }
     }
 
@@ -33,29 +76,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public GameObject player2;
 
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// Gathers the players in the scene and assigns them to player1 and player2
     /// </summary>
+
     public void GatherPlayers()
     {
         if (!player1)
