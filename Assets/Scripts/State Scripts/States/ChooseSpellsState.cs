@@ -31,11 +31,13 @@ public class ChooseSpellState : FSMState
     {
         if (playerState.player.playerControllerInputs.GetConfirmSelection || spellsChosen)
         {
-            //  Need to remove the spells from the hand once confirmed
-            ///////////////////////////////////////////////////////////////////
+            
             playerState.chosenRoundCards.selectedCards = playerState.player.playerCardHand.SlotsInUse;
             // Add Finger choosing here
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+            if (playerState.player.playerType == PlayerType.Player)
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+            else if (playerState.player.playerType == PlayerType.AI)
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
 
             if (!playerState.player.playerCardHand.HaveMovedToDeck)
             {
@@ -51,24 +53,28 @@ public class ChooseSpellState : FSMState
                         tempCardRot.y = card.transform.position.y;
                         tempCardRot.z = card.transform.position.z;
 
-                        card.transform.Rotate(tempCardRot, Space.Self);
+                        card.transform.eulerAngles = tempCardRot;
                     }
                 }
+            }
 
-                if (RoundManagerLocal.Instance.chooseSpellsMoveOn)
+            if (RoundManagerLocal.Instance.chooseSpellsMoveOn)
+            {
+                if (playerState.player.playerType == PlayerType.Player)
                 {
                     RoundManagerLocal.Instance.chooseSpellsMoveOn = false;
-                    playerState.player.playerControllerInputs.SetConfirmSelection(false);
-
-                    foreach (Card card in playerState.chosenRoundCards.selectedCards)
-                    {
-                        playerState.player.playerCardHand.RemoveCardInHand(card);
-                    }
-                    playerState.player.playerCardHand._currentSlotIndex = 0;
-                    playerState.player.playerCardHand.CardIndexSet(0);
-
-                    playerState.PerformTransition(Transition.SpellsChosen);
                 }
+
+                playerState.player.playerControllerInputs.SetConfirmSelection(false);
+
+                foreach (Card card in playerState.chosenRoundCards.selectedCards)
+                {
+                    playerState.player.playerCardHand.RemoveCardInHand(card);
+                }
+                playerState.player.playerCardHand._currentSlotIndex = 0;
+                playerState.player.playerCardHand.CardIndexSet(0);
+
+                playerState.PerformTransition(Transition.SpellsChosen);
             }
         }
     }

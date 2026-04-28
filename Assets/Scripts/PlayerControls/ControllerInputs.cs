@@ -68,23 +68,40 @@ public class ControllerInputs : MonoBehaviour
         }
     }
 
-    private void ReadyUpInput()
+    public void ReadyUpInput()
     {
-        if (playerInputHandler.cardConfirmSelectAction.WasCompletedThisFrame())
-        {
-            if (!_confirmSelection)
+            if (playerInputHandler.cardConfirmSelectAction.WasCompletedThisFrame())
             {
-                if (cardsOwned.SlotsInUse.Count != 0)
+                if (!_confirmSelection)
                 {
-                    _confirmSelection = true;
+                    if (cardsOwned.SlotsInUse.Count != 0)
+                    {
+                        _confirmSelection = true;
+                    }
+                }
+                else
+                {
+                    _confirmSelection = false;
+                    cardsOwned.HaveMovedToDeck = false;
+                    cardsOwned.MoveCardsBackToHand();
                 }
             }
-            else
+    }
+
+    public void CompReadyUp()
+    {
+        if (!_confirmSelection)
+        {
+            if (cardsOwned.SlotsInUse.Count != 0)
             {
-                _confirmSelection = false;
-                cardsOwned.HaveMovedToDeck = false;
-                cardsOwned.MoveCardsBackToHand();
+                _confirmSelection = true;
             }
+        }
+        else
+        {
+            _confirmSelection = false;
+            cardsOwned.HaveMovedToDeck = false;
+            cardsOwned.MoveCardsBackToHand();
         }
     }
 

@@ -68,31 +68,56 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Player 1 of the game (Always the local player)
+    /// Player 1's Game Object of the game (Always the local player)
     /// </summary>
-    public GameObject player1;
+    public GameObject player1GO;
     /// <summary>
-    /// Player 2 of the game (The Computer/Online player)
+    /// Player 2's Game Object of the game (The Computer/Online player)
     /// </summary>
-    public GameObject player2;
+    public GameObject player2GO;
+
+    /// <summary>
+    /// Player 1's Player script reference (Always the local player)
+    /// </summary>
+    public Player player1;
+
+    /// <summary>
+    /// Player 2's Player script reference (The Computer/Online player)
+    /// </summary>
+    public Player player2;
+
+    /// <summary>
+    /// The amount of slots a player starts with at the beginning of the game
+    /// </summary>
+    [SerializeField, Tooltip("The amount of slots a player starts with at the beginning of the game")]
+    public int startingSlotAmt = 4;
 
     /// <summary>
     /// Gathers the players in the scene and assigns them to player1 and player2
     /// </summary>
-
     public void GatherPlayers()
     {
-        if (!player1)
+        if (!player1GO)
         {
             List<GameObject> players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
             foreach (GameObject p in players)
             {
-                if (p.GetComponent<Player>().playerType == PlayerType.Player)
-                    player1 = p;
-                else if (p.GetComponent<Player>().playerType == PlayerType.AI)
-                    player2 = p;
-                else if (p.GetComponent<Player>().playerType == PlayerType.OnlinePlayer)
-                    player2 = p;
+                Player aPlayer = p.GetComponent<Player>();
+                if (aPlayer.playerType == PlayerType.Player)
+                {
+                    player1GO = p;
+                    player1 = aPlayer;
+                }
+                else if (aPlayer.playerType == PlayerType.AI)
+                {
+                    player2GO = p;
+                    player2 = aPlayer;
+                }
+                else if (aPlayer.playerType == PlayerType.OnlinePlayer)
+                {
+                    player2GO = p;
+                    player2 = aPlayer;
+                }
             }
             
         }

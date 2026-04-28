@@ -252,6 +252,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 156989379026825622, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 201009632466848746, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: camera1
       value: 
@@ -432,6 +436,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4746149522470716992, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4811580727000195078, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.81
@@ -559,6 +567,10 @@ PrefabInstance:
     - target: {fileID: 7601322119329541314, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: m_Name
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601322119329541314, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7610869684930454847, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -698,7 +710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &501789615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,8 +723,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e3e55a6d8563f4493bfba9dffcbd11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1GO: {fileID: 0}
+  player2GO: {fileID: 0}
   player1: {fileID: 0}
   player2: {fileID: 0}
+  startingSlotAmt: 4
 --- !u!4 &501789616
 Transform:
   m_ObjectHideFlags: 0

@@ -393,12 +393,18 @@ public class CardHand : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Temp Function for the computer to select a card to put in the slot, this will be changed once we have the AI working,
+    /// but for now it will just select the first card in the hand and put it in the slot. Then ready up
+    /// </summary>
+    /// <param name="whatIndex"></param>
     public void computerChooseSpell(int whatIndex)
     {
         bool checkSelection = cardsOwned.SelectCard(whatIndex, false);
         if (!checkSelection)
         {
             cardsOwned.CardToSlot();
+            player.playerControllerInputs.CompReadyUp();
         }
     }
 
@@ -427,7 +433,7 @@ public class CardHand : MonoBehaviour
 
                         card.transform.position = cardPos.placement.position;
 
-                        card.transform.Rotate(tempCardRot, Space.World);
+                        card.transform.eulerAngles = tempCardRot;
 
                         cardPos.isOccupied = true;
                         break;
