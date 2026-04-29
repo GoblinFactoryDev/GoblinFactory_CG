@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1496007205}
   - component: {fileID: 1496007206}
+  - component: {fileID: 1496007207}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -163,8 +164,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e3e55a6d8563f4493bfba9dffcbd11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1GO: {fileID: 0}
+  player2GO: {fileID: 0}
   player1: {fileID: 0}
   player2: {fileID: 0}
+  startingSlotAmt: 4
+--- !u!114 &1496007207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496007204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c49aa29973c9d4f9281898987a740e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DragonMat: {fileID: 2100000, guid: ba9000116a832e742802a5ad81dab728, type: 2}
+  DwarfMat: {fileID: 2100000, guid: eaf4f9e037a362940a265ccec2bc1c7e, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
