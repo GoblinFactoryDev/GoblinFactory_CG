@@ -118,8 +118,7 @@ public class GameManager : MonoBehaviour
                     player2GO = p;
                     player2 = aPlayer;
                 }
-            }
-            
+            }      
         }
     }
 }

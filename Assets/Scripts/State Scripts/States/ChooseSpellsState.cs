@@ -58,8 +58,23 @@ public class ChooseSpellState : FSMState
                 }
             }
 
+            // We are ready to move on to the next state
             if (RoundManagerLocal.Instance.chooseSpellsMoveOn)
             {
+                // Add the chosen spells to the Round Manager's list of chosen spells for this round, and mark the slots as no longer in use
+                // We add the spells in reverse order to ensure the correct order of spell effects during the round
+                // This also removes all the hassel with slots that technicly dont have a card in them but are still marked as in use because
+                // they are part of a multi slot card, We just check if the slot has a card in it, if it does, we add it to the list of chosen spells,
+                // if not, we skip it
+                for (int i = playerState.player.playerSlotHandler.playableSlots.Count - 1; i >= 0; i--)
+                {
+                    if (playerState.player.playerSlotHandler.playableSlots[i].IsInUse && playerState.player.playerSlotHandler.playableSlots[i].whereCard.hasTheCard)
+                    {
+                        RoundManagerLocal.Instance.AddToChosenSpells(playerState.player.playerType, playerState.player.playerSlotHandler.playableSlots[i]);
+                    }
+                }
+
+
                 if (playerState.player.playerType == PlayerType.Player)
                 {
                     RoundManagerLocal.Instance.chooseSpellsMoveOn = false;
