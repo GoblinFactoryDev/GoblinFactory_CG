@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Runic_2
+  m_Name: Surround
   m_Shader: {fileID: -6465566751694194690, guid: 5206b88756666d44695a2b691a87af73, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -49,7 +49,7 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 2
     - _CastShadows: 1
-    - _Cull: 2
+    - _Cull: 0
     - _DstBlend: 1
     - _DstBlendAlpha: 1
     - _MainTex_Power: 0
@@ -62,7 +62,7 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 0.01884027, g: 0, b: 2.1185474, a: 1}
+    - _Color: {r: 3.9533494, g: 0.3155084, b: 0, a: 1}
     - _MainTiling: {r: 1, g: 1, b: 0, a: 0}
     - _TexSpeed: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
