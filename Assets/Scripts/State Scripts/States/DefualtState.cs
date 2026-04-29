@@ -25,6 +25,7 @@ public class DefualtState : FSMState
     {
         playerState.PerformTransition(Transition.StartGame);
     }
+
     //Act
     public override void Act()
     {

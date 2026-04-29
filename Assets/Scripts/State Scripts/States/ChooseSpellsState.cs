@@ -59,7 +59,7 @@ public class ChooseSpellState : FSMState
             }
 
             // We are ready to move on to the next state
-            if (RoundManagerLocal.Instance.chooseSpellsMoveOn)
+            if (RoundManagerLocal.Instance.readyToMoveOn)
             {
                 // Add the chosen spells to the Round Manager's list of chosen spells for this round, and mark the slots as no longer in use
                 // We add the spells in reverse order to ensure the correct order of spell effects during the round
@@ -77,7 +77,7 @@ public class ChooseSpellState : FSMState
 
                 if (playerState.player.playerType == PlayerType.Player)
                 {
-                    RoundManagerLocal.Instance.chooseSpellsMoveOn = false;
+                    RoundManagerLocal.Instance.readyToMoveOn = false;
                 }
 
                 playerState.player.playerControllerInputs.SetConfirmSelection(false);

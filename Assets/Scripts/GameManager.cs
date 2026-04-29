@@ -121,4 +121,20 @@ public class GameManager : MonoBehaviour
             }      
         }
     }
+
+    public Player GetOpponent(PlayerType whoAmI)
+    {
+        Player whoIsThey;
+
+        if (whoAmI == PlayerType.Player)
+        {
+            whoIsThey = player2;
+        }
+        else
+        {
+            whoIsThey = player1;
+        }
+
+        return whoIsThey;
+    }
 }

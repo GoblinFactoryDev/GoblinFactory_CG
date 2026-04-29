@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
     public PlayerType playerType;
 
     /// <summary>
+    /// The opponent of the player. This is used to determine who the player is targeting with their spells and actions.
+    /// </summary>
+    public Player opponent;
+
+    /// <summary>
     /// Which character the player has chosen to play as
     /// </summary>
     [SerializeField]
@@ -67,6 +72,8 @@ public class Player : MonoBehaviour
         // Initialize player health with the current player instance
         playerHealth.InitPlayerHealth(this);
         GetHealth();
+
+        opponent = GameManager.Instance.GetOpponent(playerType);
     }
 
     /// <summary>

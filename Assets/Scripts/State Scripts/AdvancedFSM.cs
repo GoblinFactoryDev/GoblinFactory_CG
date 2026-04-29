@@ -27,9 +27,10 @@ public enum Transition
     StatsDealt = 4,
     SpellsChosen = 5,
     CastingSpell = 6,
-    QteStart = 7,
-    QteEnd = 8,
-    Died = 9
+    FinishedCasting = 7,
+    QteStart = 8,
+    QteEnd = 9,
+    Died = 10
 }
 
 public enum FSMStateID

@@ -99,12 +99,13 @@ public class PlayerState : AdvancedFSM
         chooseSpells.AddTransition(Transition.Died, FSMStateID.Dead);
 
         ConfigureState configure = new ConfigureState(this);
+        configure.AddTransition(Transition.QteStart, FSMStateID.Qte);
         configure.AddTransition(Transition.CastingSpell, FSMStateID.CastSpell);
         configure.AddTransition(Transition.dealingStats, FSMStateID.DealStats);
         configure.AddTransition(Transition.Died, FSMStateID.Dead);
 
         CastSpellState castSpell = new CastSpellState(this);
-        castSpell.AddTransition(Transition.QteStart, FSMStateID.Qte);
+        castSpell.AddTransition(Transition.FinishedCasting, FSMStateID.Configure);
 
         QteState qte = new QteState(this);
         qte.AddTransition(Transition.QteEnd, FSMStateID.Configure);

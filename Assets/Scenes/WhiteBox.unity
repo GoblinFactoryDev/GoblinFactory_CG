@@ -1204,7 +1204,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerReady: 0
   computerReady: 0
-  chooseSpellsMoveOn: 0
+  readyToMoveOn: 0
+  player1HasDoneQTE: 0
+  compHasDoneQTE: 0
+  firstPlayer1QTEDone: 0
+  firstComputerQTEDone: 0
+  configStatesTime: 0
 --- !u!4 &1463024037
 Transform:
   m_ObjectHideFlags: 0
