@@ -100,7 +100,8 @@ public class ChooseSpellState : FSMState
         ///////////////////////////////////////////////////////////////////
         if (playerState.player.playerType == PlayerType.AI)
         {
-            playerState.player.playerCardHand.computerChooseSpell(0);
+            //sorry wyat but I broke this 100%
+            //playerState.player.playerCardHand.computerChooseSpell(0);
             //spellsChosen = true;
         }
     }

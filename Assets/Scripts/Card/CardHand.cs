@@ -51,8 +51,6 @@ public class CardHand : MonoBehaviour
     [SerializeField] private int _currentSlotOpen = 0;
     //tracking value of the slots so that select can deny card with values that dont match
     [SerializeField] private int _currentSlotValueLeft = 4;
-    //track of current blocked slots
-    [SerializeField] private List<bool> slotsBlocked = new List<bool>() { false, false, false, false };
     //this is temporary,just a way to show the slots working as intended
     [SerializeField] private List<GameObject> slotIcons;
     //temporary store info about the currentCardSlot used when prompted to deselect
@@ -70,7 +68,9 @@ public class CardHand : MonoBehaviour
     public void CardIndexSet(int setValue) { _currentCardIndex = setValue; }
     public int SlotIndexGet { get { return _currentSlotIndex; } }
     public void SlotIndexSet(int setValue) { _currentSlotIndex = setValue; }
+
     public List<Card> SlotsInUse { get { return _cardsInSlots; } }
+
 
     /// <summary>
     /// Initializes the player hand with a new card.
@@ -162,37 +162,45 @@ public class CardHand : MonoBehaviour
     public void DeselectCard()
     {
         Card cardToDeselect = _cardsInSlots[_currentSlotIndex];
+        //This moves the card back to its original hand position
         cardToDeselect.gameObject.transform.position = _previousPosition[_currentSlotIndex].position;
+        //this changes the sprite and visual inspector on the script to show available slots
         DeselectSlotReset();
-        _previousPosition.RemoveAt(_currentSlotIndex);
-        _cardsInSlots.RemoveAt(_currentSlotIndex);
+        _previousPosition.RemoveAt(_currentSlotIndex); //transform
+        _cardsInSlots.RemoveAt(_currentSlotIndex); // controller index
+        player.playerSlotHandler.RemoveCardFromSlot(cardToDeselect.GetCurrentSlotUsed); //info
         _currentSlotIndex = 0;
         cardToDeselect.IsInSlot = false;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="cardIndex"> this variable deosnt matter if its a player using the fucntion, but can be manipulated if its the AI</param>
+    /// <param name="isPlayer"> check if the player is using the fucntion or an AI</param>
+    /// <returns></returns>
     public bool SelectCard(int cardIndex, bool isPlayer)
     {
+        //check if a player is suing the function
         if (isPlayer)
         {
+            //if so then match the current card index to the variable
             cardIndex = _currentCardIndex;
         }
 
-        bool skipSelection = false;
+        bool skipSelection = true;
         CardData selectedData = _cardsInHand[cardIndex].CardData;
         Card cardtoSlot = _cardsInHand[cardIndex];
-        foreach (Card card in _cardsInSlots)
+        if (selectedData.cost <= _currentSlotValueLeft)
         {
-            if(cardtoSlot == card)
-            {
-                skipSelection = true;
-                break;
-            }
-        }
-        if (!skipSelection)
-        {
+            // this is the actual variable on slot handler
             _cardsInSlots.Add(cardtoSlot);
+            player.playerSlotHandler.SetNewCardInSlot(cardtoSlot);
+            player.playerSlotHandler.AssignCardToSlot(cardtoSlot);
             _previousPosition.Add(_cardPositions[cardIndex].placement);
             cardtoSlot.IsInSlot = true;
+            skipSelection = false;
+            return skipSelection;
         }
         return skipSelection;
     }
@@ -203,31 +211,31 @@ public class CardHand : MonoBehaviour
         _currentSlotValueLeft += _cardsInSlots[_currentSlotIndex].CardData.cost;
         if (_cardsInSlots[_currentSlotIndex].CardData.cost == 1)
         {
-            slotsBlocked[tempSlotInfo] = false;
+            player.playerSlotHandler.slotsBlocked[tempSlotInfo] = false;
             ChangeSlotSprite(1, true);
             FindSlotOpen();
         }
-        else if(_cardsInSlots[_currentSlotIndex].CardData.cost == 2)
+        else if (_cardsInSlots[_currentSlotIndex].CardData.cost == 2)
         {
-            slotsBlocked[tempSlotInfo] = false;
-            slotsBlocked[tempSlotInfo + 1] = false;
+            player.playerSlotHandler.slotsBlocked[tempSlotInfo] = false;
+            player.playerSlotHandler.slotsBlocked[tempSlotInfo + 1] = false;
             ChangeSlotSprite(2, true);
             FindSlotOpen();
         }
         else if (_cardsInSlots[_currentSlotIndex].CardData.cost == 3)
         {
-            slotsBlocked[tempSlotInfo] = false;
-            slotsBlocked[tempSlotInfo + 1] = false;
-            slotsBlocked[tempSlotInfo + 2] = false;
+            player.playerSlotHandler.slotsBlocked[tempSlotInfo] = false;
+            player.playerSlotHandler.slotsBlocked[tempSlotInfo + 1] = false;
+            player.playerSlotHandler.slotsBlocked[tempSlotInfo + 2] = false;
             ChangeSlotSprite(3, true);
             FindSlotOpen();
         }
         else if (_cardsInSlots[_currentSlotIndex].CardData.cost == 4)
         {
-            slotsBlocked[tempSlotInfo] = false;
-            slotsBlocked[tempSlotInfo + 1] = false;
-            slotsBlocked[tempSlotInfo + 2] = false;
-            slotsBlocked[tempSlotInfo + 3] = false;
+            player.playerSlotHandler.slotsBlocked[tempSlotInfo] = false;
+            player.playerSlotHandler.slotsBlocked[tempSlotInfo + 1] = false;
+            player.playerSlotHandler.slotsBlocked[tempSlotInfo + 2] = false;
+            player.playerSlotHandler.slotsBlocked[tempSlotInfo + 3] = false;
             ChangeSlotSprite(4, true);
             FindSlotOpen();
         }
@@ -236,9 +244,9 @@ public class CardHand : MonoBehaviour
     private void FindSlotOpen()
     {
         int tracker = 0;
-        foreach (bool slot in slotsBlocked)
+        foreach (bool slot in player.playerSlotHandler.slotsBlocked)
         {
-            if(slot == false)
+            if (slot == false)
             {
                 _currentSlotOpen = tracker;
                 break;
@@ -254,7 +262,7 @@ public class CardHand : MonoBehaviour
         {
             if (_cardsInHand[_currentCardIndex].CardData.cost == 1)
             {
-                slotsBlocked[_currentSlotOpen] = true;
+                player.playerSlotHandler.slotsBlocked[_currentSlotOpen] = true;
                 //call function to change sprite
                 ChangeSlotSprite(1, false);
                 _cardsInHand[_currentCardIndex].gameObject.transform.position = slotsWaypoints[_currentSlotOpen].position;
@@ -263,8 +271,8 @@ public class CardHand : MonoBehaviour
             }
             else if (_cardsInHand[_currentCardIndex].CardData.cost == 2)
             {
-                slotsBlocked[_currentSlotOpen] = true;
-                slotsBlocked[_currentSlotOpen + 1] = true;
+                player.playerSlotHandler.slotsBlocked[_currentSlotOpen] = true;
+                player.playerSlotHandler.slotsBlocked[_currentSlotOpen + 1] = true;
                 ChangeSlotSprite(2, false);
                 _cardsInHand[_currentCardIndex].gameObject.transform.position = slotsWaypoints[_currentSlotOpen].position;
                 _cardsInHand[_currentCardIndex].SetCurrentSlotUsed(_currentSlotOpen);
@@ -272,9 +280,9 @@ public class CardHand : MonoBehaviour
             }
             else if (_cardsInHand[_currentCardIndex].CardData.cost == 3)
             {
-                slotsBlocked[_currentSlotOpen] = true;
-                slotsBlocked[_currentSlotOpen + 1] = true;
-                slotsBlocked[_currentSlotOpen + 2] = true;
+                player.playerSlotHandler.slotsBlocked[_currentSlotOpen] = true;
+                player.playerSlotHandler.slotsBlocked[_currentSlotOpen + 1] = true;
+                player.playerSlotHandler.slotsBlocked[_currentSlotOpen + 2] = true;
                 ChangeSlotSprite(3, false);
                 _cardsInHand[_currentCardIndex].gameObject.transform.position = slotsWaypoints[_currentSlotOpen].position;
                 _cardsInHand[_currentCardIndex].SetCurrentSlotUsed(_currentSlotOpen);
@@ -282,10 +290,10 @@ public class CardHand : MonoBehaviour
             }
             else if (_cardsInHand[_currentCardIndex].CardData.cost == 4)
             {
-                slotsBlocked[_currentSlotOpen] = true;
-                slotsBlocked[_currentSlotOpen + 1] = true;
-                slotsBlocked[_currentSlotOpen + 2] = true;
-                slotsBlocked[_currentSlotOpen + 3] = true;
+                player.playerSlotHandler.slotsBlocked[_currentSlotOpen] = true;
+                player.playerSlotHandler.slotsBlocked[_currentSlotOpen + 1] = true;
+                player.playerSlotHandler.slotsBlocked[_currentSlotOpen + 2] = true;
+                player.playerSlotHandler.slotsBlocked[_currentSlotOpen + 3] = true;
                 ChangeSlotSprite(4, false);
                 _cardsInHand[_currentCardIndex].gameObject.transform.position = slotsWaypoints[_currentSlotOpen].position;
                 _cardsInHand[_currentCardIndex].SetCurrentSlotUsed(_currentSlotOpen);
@@ -400,6 +408,7 @@ public class CardHand : MonoBehaviour
     /// <param name="whatIndex"></param>
     public void computerChooseSpell(int whatIndex)
     {
+        //sorry wyatt I broke this and idk how it works so am not gonna touch it
         bool checkSelection = cardsOwned.SelectCard(whatIndex, false);
         if (!checkSelection)
         {
@@ -442,6 +451,11 @@ public class CardHand : MonoBehaviour
             }
         }
     }
+
+    //make a function to sned all slot cards back into the pool and reset all visual changes
+    //call wyatt's slot handler clear all function to remove all info in slots
+    //ask if we want/need a card by card clear while casting or if an all clear at the end of round is enough/good
+    //this could be a function on the scriptable object card itself if need be
 
     // Update is called once per frame
     void Update()

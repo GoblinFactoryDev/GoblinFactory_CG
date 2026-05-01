@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 //----------------------------------------------------------------
-//  Author: Wyatt
+//  Author: Wyatt, Seb
 //  Title: SlotHandler
 //  Date Created: 04/26/2026
 //  Purpose: Handles the slots that the player can assign cards to, including assigning and removing cards from slots, and managing the state of each slot.
@@ -17,6 +17,19 @@ public class SlotHandler : MonoBehaviour
     /// The list of slots that the player can use to assign cards to.
     /// </summary>
     public List<Slot> playableSlots = new List<Slot>();
+
+
+    #region Slot to card hand variables (controller functions and others)
+    [SerializeField] private CardHand cardsInYourHand;
+    //list of cards currently in slots
+    [SerializeField] private List<Card> _cardsInSlots = new List<Card>();
+    //track of current blocked slots
+    [SerializeField] public List<bool> slotsBlocked = new List<bool>() { false, false, false, false };
+    public void SetNewCardInSlot(Card newCard) {_cardsInSlots.Add(newCard);}
+
+    public List<Card> SlotsInUse { get { return _cardsInSlots; } }
+
+    #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,7 +60,7 @@ public class SlotHandler : MonoBehaviour
     /// Assigns the specified card to the specified slot, marking the slot as in use and associating the card with the slot. If the card takes up multiple slots, 
     /// it will also mark the additional slots as in use and associate them with the main slot.
     /// </summary>
-    public void AssignCardToSlot(int whichSlot, Card whatCard)
+    public void AssignCardToSlot(Card whatCard)
     {
         // checking to make sure the slot is available and that the card can fit in the available slots, if not, this should not be called, but we will check just in case
         if (SlotsAvailable() > 0 && whatCard.Cost <= SlotsAvailable())
@@ -59,15 +72,16 @@ public class SlotHandler : MonoBehaviour
                     playableSlots[i].IsInUse = true;
                     playableSlots[i].whereCard.hasTheCard = true;
                     playableSlots[i].CardInSlot = whatCard;
+                    playableSlots[i].CardInSlot.SetCurrentSlotUsed(i);
 
                     // If the card takes up multiple slots, mark the additional slots as in use and associate them with the main slot
                     if (whatCard.Cost > 1 && whatCard.Cost <= SlotsAvailable())
                     {
                         for (int j = 1; j < whatCard.Cost; j++)
                         {
-                            playableSlots[whichSlot + j].IsInUse = true;
-                            playableSlots[whichSlot + j].whereCard.hasTheCard = false;
-                            playableSlots[whichSlot + j].whereCard.whereIsTheCardsSlot = i;
+                            playableSlots[i + j].IsInUse = true;
+                            playableSlots[i + j].whereCard.hasTheCard = false;
+                            playableSlots[i + j].whereCard.whereIsTheCardsSlot = i;
                         }
                     }
 
@@ -109,7 +123,7 @@ public class SlotHandler : MonoBehaviour
                             playableSlots[i].IsInUse = false;
                             playableSlots[i].whereCard.hasTheCard = false;
                             playableSlots[i].whereCard.whereIsTheCardsSlot = -10;
-                            playableSlots[i].CardInSlot = null;
+                            playableSlots[i].CardInSlot = new Card();
                             playableSlots[i].fingerTargetInfo.whichHand = HandType.None;
                             playableSlots[i].fingerTargetInfo.whichFinger = FingerType.None;
                         }
@@ -120,7 +134,7 @@ public class SlotHandler : MonoBehaviour
             // Now remove the card from the main slot
             playableSlots[whichSlot].IsInUse = false;
             playableSlots[whichSlot].whereCard.hasTheCard = false;
-            playableSlots[whichSlot].CardInSlot = null;
+            playableSlots[whichSlot].CardInSlot = new Card();
             playableSlots[whichSlot].fingerTargetInfo.whichHand = HandType.None;
             playableSlots[whichSlot].fingerTargetInfo.whichFinger = FingerType.None;
         }
@@ -136,11 +150,13 @@ public class SlotHandler : MonoBehaviour
             slot.IsInUse = false;
             slot.whereCard.hasTheCard = false;
             slot.whereCard.whereIsTheCardsSlot = -10;
-            slot.CardInSlot = null;
+            slot.CardInSlot = new Card();
             slot.fingerTargetInfo.whichHand = HandType.None;
             slot.fingerTargetInfo.whichFinger = FingerType.None;
         }
     }
+
+    
 }
 
 /// <summary>
@@ -174,8 +190,9 @@ public class Slot
     public Slot()
     {
         IsInUse = false;
-        CardInSlot = null;
+        CardInSlot = new Card();
         fingerTargetInfo = new FingerTargetInfo();
+        whereCard = new WhereIsTheCard();
     }
 
     /// <summary>

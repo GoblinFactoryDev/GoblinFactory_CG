@@ -39,7 +39,7 @@ public class ControllerInputs : MonoBehaviour
     //private tracking of cards index
     private int cardIndexTracking = 0;
     private int slotIndexTracking = 0;
-    private bool SlotsMode = false;
+    [SerializeField] private bool SlotsMode = false;
     private bool _confirmSelection = false;
     public bool GetConfirmSelection { get { return _confirmSelection; } }
     public void SetConfirmSelection(bool setValue) { _confirmSelection = setValue; }
@@ -49,12 +49,15 @@ public class ControllerInputs : MonoBehaviour
     {
         ControllerNavHand();
         SlotAndCardMovementSystemSwitch();
-        SelectingInput();
-        if (SlotsMode)
+        if (!SlotsMode)
+        {
+            SelectingInput();
+        }
+        else
         {
             DeselectingInput();
         }
-        ReadyUpInput();
+        //ReadyUpInput();
         FingeringATest();
         if(fingerOn)
         {
@@ -111,12 +114,12 @@ public class ControllerInputs : MonoBehaviour
         //check for cards that are already in slots to not select them again
         if(playerInputHandler.cardSelectAction.WasPressedThisFrame())
         {
-            bool checkSelection = cardsOwned.SelectCard(100, true);
-            if (!checkSelection)
+            bool SkipSelection = cardsOwned.SelectCard(0, true);
+            if (!SkipSelection)
             {
                 cardsOwned.CardToSlot();
                 SlotsMode = true;
-            }      
+            }
         }
     }
 
@@ -133,10 +136,13 @@ public class ControllerInputs : MonoBehaviour
     private int ShiftIndex(int currentIndex, bool forward)
     {
         int newIndex = currentIndex;
+        //this if check is to verify if the index is going forward or backwards
         if (forward)
         {
+            //we check each index besides the one we where just in to verify the next card we can reach that is not in a slot
             for (int i = currentIndex + 1; i < cardsOwned.CardsInHand.Count; i++)
             {
+                //if the current card index is not in a slot then we can break the loop and send the proper index
                 if(!cardsOwned.CardsInHand[i].IsInSlot)
                 {
                     newIndex = i;
@@ -146,8 +152,10 @@ public class ControllerInputs : MonoBehaviour
         }
         else
         {
+            //same check here but going with the index backwards so we have to check in vice versa
             for (int i = currentIndex - 1; i >= 0; i--)
             {
+                //if the current card index is not in a slot then we can break the loop and send the proper index
                 if (!cardsOwned.CardsInHand[i].IsInSlot)
                 {
                     newIndex = i;
@@ -176,8 +184,6 @@ public class ControllerInputs : MonoBehaviour
                 cardIndexTracking = cardsOwned.CardIndexGet;
                 //check if that index card is in a slot
                 cardIndexTracking = ShiftIndex(cardIndexTracking, false);
-                //change the index to the correct index now 
-                //cardIndexTracking--;
                 //set the correct index 
                 cardsOwned.CardIndexSet(cardIndexTracking);
                 //make the new card be highlighted
