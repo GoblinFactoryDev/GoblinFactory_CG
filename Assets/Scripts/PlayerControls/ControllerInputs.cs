@@ -57,7 +57,7 @@ public class ControllerInputs : MonoBehaviour
         {
             DeselectingInput();
         }
-        //ReadyUpInput();
+        ReadyUpInput();
         FingeringATest();
         if(fingerOn)
         {
@@ -253,7 +253,7 @@ public class ControllerInputs : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
-            newVector2 = ColourManager.Instance.dragonOutline;
+            newVector2 = CharacterManager.Instance.dragonOutline;
             fingerReach.ChangeAllSegments(p1, newVector, HandType.Left, FingerType.Pinky);
             Debug.Log("Hit here");
             fingerOn = true;
@@ -263,7 +263,7 @@ public class ControllerInputs : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P))
         {
             p2.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
-            newVector1 = ColourManager.Instance.dwarfOutline;
+            newVector1 = CharacterManager.Instance.dwarfOutline;
             fingerReach.ChangeAllSegments(p2, newVector1, HandType.Left, FingerType.Pinky);
             Debug.Log("Hit here");
             fingerp2On = true;

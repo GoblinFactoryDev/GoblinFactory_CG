@@ -58,8 +58,18 @@ public class Player : MonoBehaviour
     /// </summary>
     [SerializeField]
     public ControllerInputs playerControllerInputs;
+
+    public AnimationHandler playerAnimHandler;
+
     public void Start()
-    {   
+    {
+        InitPlayer();
+    }
+
+    public void InitPlayer()
+    {
+
+
         // Initialize each hand's fingers
         foreach (BoneHand hand in hands)
         {
@@ -72,6 +82,8 @@ public class Player : MonoBehaviour
         // Initialize player health with the current player instance
         playerHealth.InitPlayerHealth(this);
         GetHealth();
+
+        SetUpArtSideOfPlayer();
 
         opponent = GameManager.Instance.GetOpponent(playerType);
     }
@@ -301,4 +313,47 @@ public class Player : MonoBehaviour
     {
         playerHealthTotal = playerHealth.totalHealth;
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Players model and Colour info and setup
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    #region Players model and Colour info and setup
+    [SerializeField]
+    private Material PlayerMat;
+    private GameObject PlayerModel;
+    private Vector3 SelectionColour;
+    [SerializeField]
+    private Transform modelTransform;
+
+    public Material _playerMat { get => PlayerMat;}
+    public GameObject _playerModel { get => PlayerModel; }
+    public Vector3 _selectionColour { get => SelectionColour; }
+
+    /// <summary>
+    /// Sets up the player's model and outline colour based on the character they have chosen. 
+    /// It uses the CharacterManager to get the appropriate model and outline colour for the character type.
+    /// </summary>
+    public void SetUpArtSideOfPlayer()
+    {
+        Vector4 outlineColour = new Vector3(0, 0, 0);
+
+        switch (character)
+        {
+            case CharacterType.Dragon:
+                outlineColour = CharacterManager.Instance.dragonOutline;
+                
+                PlayerModel = Instantiate(CharacterManager.Instance.dragonModel, this.gameObject.transform);
+                break;
+            case CharacterType.Dwarf:
+                outlineColour = CharacterManager.Instance.dwarfOutline;
+                PlayerModel = Instantiate(CharacterManager.Instance.dwarfModel, this.gameObject.transform);
+                break;
+            default:
+                Debug.LogError("Invalid Character Type");
+                break;
+        }
+        PlayerModel.transform.position = modelTransform.position;
+        PlayerMat.SetVector("_OutlineColour", outlineColour);
+    }
+    #endregion
 }

@@ -98,11 +98,10 @@ public class ChooseSpellState : FSMState
     {
         //  AI Spell Choosing Logic Here
         ///////////////////////////////////////////////////////////////////
-        if (playerState.player.playerType == PlayerType.AI)
+        if (playerState.player.playerType == PlayerType.AI && !spellsChosen)
         {
-            //sorry wyat but I broke this 100%
-            //playerState.player.playerCardHand.computerChooseSpell(0);
-            //spellsChosen = true;
+            playerState.player.playerCardHand.computerChooseSpell(0);
+            spellsChosen = true;
         }
     }
 }
