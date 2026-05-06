@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _DragonModel: {fileID: 252789329068923658, guid: cb40a12ed9e68cf4fbf0e6be025deb8b, type: 3}
   DragonMat: {fileID: 2100000, guid: 128b426839344034f9db0a3ae802eab9, type: 2}
-  _DwarfModel: {fileID: 9030801819837183720, guid: 37ec4f3d50f06dd42a0cfc185a531448, type: 3}
+  _DwarfModel: {fileID: 7823998490931162446, guid: 06768e607f9006e4193ae639e18f77fd, type: 3}
   DwarfMat: {fileID: 2100000, guid: 8e57883c0ca9a2142b57ecda33bf7c22, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
