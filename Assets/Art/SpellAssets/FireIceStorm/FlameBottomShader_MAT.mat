@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7936762392313936568
+--- !u!114 &-1905797790767319146
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,13 +20,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShaderGraphs_FireSpin_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: c793b395db8faef47be615fcfe83dcec, type: 3}
+  m_Name: FlameBottomShader_MAT
+  m_Shader: {fileID: -6465566751694194690, guid: 8b0729990363de241a81c50c36b3dc88, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -37,6 +37,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: b31b5eceb9274084585d58f457796db4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -51,13 +55,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 27.8
+    - _Brightness: 40
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Time_amount: 0.1
+    - _Speed: 2.4
     m_Colors:
-    - _AddedColour: {r: 0.764151, g: 0.3767527, b: 0.111739054, a: 0}
-    - _FireColour: {r: 0.7058824, g: 0.3108532, b: 0, a: 0}
-    - _OtherColour: {r: 0.7264151, g: 0.16367845, b: 0, a: 0}
+    - _CircleSize: {r: 1, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 0.20127597, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
