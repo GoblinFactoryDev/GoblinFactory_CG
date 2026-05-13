@@ -178,8 +178,12 @@ public class CardHand : MonoBehaviour
     /// </summary>
     /// <param name="cardIndex"> this variable deosnt matter if its a player using the fucntion, but can be manipulated if its the AI</param>
     /// <param name="isPlayer"> check if the player is using the fucntion or an AI</param>
+    /// <param name="targetSelf"> this is a ref variable that will be used to determine if the card being selected needs to target an enemy, 
+    /// this will determind if you are selecting your hands or the enemy's</param>
+    ///  <param name="fingerCardInfo"> this is a ref variable that will be used to store the card info of the card being selected,
+    ///  this is used to pass the slot position in the finger select mode</param>
     /// <returns></returns>
-    public bool SelectCard(int cardIndex, bool isPlayer)
+    public bool SelectCard(int cardIndex, bool isPlayer,ref bool targetSelf, ref Card fingerCardInfo)
     {
         //check if a player is suing the function
         if (isPlayer)
@@ -200,6 +204,11 @@ public class CardHand : MonoBehaviour
             _previousPosition.Add(_cardPositions[cardIndex].placement);
             cardtoSlot.IsInSlot = true;
             skipSelection = false;
+
+            //Info needed for finger select mode
+            targetSelf = selectedData.targetSelf;
+            fingerCardInfo = cardtoSlot;
+
             return skipSelection;
         }
         return skipSelection;
@@ -409,7 +418,9 @@ public class CardHand : MonoBehaviour
     public void computerChooseSpell(int whatIndex)
     {
         //sorry wyatt I broke this and idk how it works so am not gonna touch it
-        bool checkSelection = cardsOwned.SelectCard(whatIndex, false);
+        bool targetSelf = false;
+        Card fingerCardInfo = new Card();
+        bool checkSelection = cardsOwned.SelectCard(whatIndex, false, ref targetSelf, ref fingerCardInfo);
         if (!checkSelection)
         {
             cardsOwned.CardToSlot();

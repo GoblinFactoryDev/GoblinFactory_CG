@@ -353,6 +353,9 @@ public class Player : MonoBehaviour
                 break;
         }
         PlayerModel.transform.position = modelTransform.position;
+        PlayerModel.transform.rotation = modelTransform.localRotation;
+        //Debug.Log("Model WP Y= " + modelTransform.localRotation.y);
+        //Debug.Log("Model Y= " + PlayerModel.transform.rotation.y);
         PlayerMat.SetVector("_OutlineColour", outlineColour);
     }
     #endregion

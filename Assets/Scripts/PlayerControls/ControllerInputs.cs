@@ -44,30 +44,29 @@ public class ControllerInputs : MonoBehaviour
     public bool GetConfirmSelection { get { return _confirmSelection; } }
     public void SetConfirmSelection(bool setValue) { _confirmSelection = setValue; }
 
+    /// <summary>
+    /// This is used to transfer the cards slot position over to the finger select mode
+    /// </summary>
+    public Card fingerCardInfo;
+
 
     private void Update()
     {
         ControllerNavHand();
         SlotAndCardMovementSystemSwitch();
-        if (!SlotsMode)
-        {
-            SelectingInput();
-        }
-        else
-        {
-            DeselectingInput();
-        }
+        SelectingInput();
+        DeselectingInput();
         ReadyUpInput();
         FingeringATest();
         if(fingerOn)
         {
             fingerp2On = false;
-            MoveFingers(p1, newVector, newVector2);
+            MoveFingers(p1, selectColour, player2Colour);
         }
         if(fingerp2On)
         {
             fingerOn = false;
-            MoveFingers(p2, newVector, newVector1);
+            MoveFingers(p2, selectColour, player1Colour);
         }
     }
 
@@ -111,14 +110,55 @@ public class ControllerInputs : MonoBehaviour
 
     private void SelectingInput()
     {
-        //check for cards that are already in slots to not select them again
-        if(playerInputHandler.cardSelectAction.WasPressedThisFrame())
+        if (!SlotsMode && !fingerOn && !fingerp2On)
         {
-            bool SkipSelection = cardsOwned.SelectCard(0, true);
-            if (!SkipSelection)
+            //check for cards that are already in slots to not select them again
+            if (playerInputHandler.cardSelectAction.WasPressedThisFrame())
             {
-                cardsOwned.CardToSlot();
-                SlotsMode = true;
+                bool targetSelf = false;
+                bool SkipSelection = cardsOwned.SelectCard(0, true, ref targetSelf, ref fingerCardInfo);
+
+                if (!SkipSelection)
+                {
+                    cardsOwned.CardToSlot();
+                    SlotsMode = true;
+                }
+
+                // Moving to the finger select mode
+                if (targetSelf == true) // the card is targeting your fingers
+                {
+                    p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
+                    player2Colour = CharacterManager.Instance.dragonOutline;
+                    fingerReach.ChangeAllSegments(p1, selectColour, HandType.Left, FingerType.Pinky);
+                    Debug.Log("Hit here");
+                    fingerOn = true;
+                }
+                else if (targetSelf == false) // the card is targeting the enemy's fingers
+                {
+                    p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
+                    player1Colour = CharacterManager.Instance.dwarfOutline;
+                    fingerReach.ChangeAllSegments(p2, player1Colour, HandType.Left, FingerType.Pinky);
+                    Debug.Log("Hit here");
+                    fingerp2On = true;
+                }
+            }
+        }
+        else if (fingerOn || fingerp2On)
+        {
+            if (playerInputHandler.fingerSelectAction.WasPressedThisFrame())
+            {
+                if (fingerOn)
+                {
+                    fingerOn = false;
+                    fingerReach.ChangeAllSegments(p1, player1Colour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                }
+                else if (fingerp2On)
+                {
+                    fingerp2On = false;
+                    fingerReach.ChangeAllSegments(p2, player2Colour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                }
+                p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("CardGame");
+                p1.playerSlotHandler.AssignFingerTargetInfoToSlot(fingerCardInfo.GetCurrentSlotUsed, (HandType)fingerHandIndex, (FingerType)fingerIndex);
             }
         }
     }
@@ -242,9 +282,9 @@ public class ControllerInputs : MonoBehaviour
         }
     }
 
-    private Vector4 newVector = new Vector4(1, 1, 1, 1);
-    private Vector4 newVector1;
-    private Vector4 newVector2;
+    private Vector4 selectColour = new Vector4(1, 1, 1, 1);
+    private Vector4 player1Colour;
+    private Vector4 player2Colour;
     private bool fingerOn = false;
     private bool fingerp2On = false;
 
@@ -253,8 +293,8 @@ public class ControllerInputs : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
-            newVector2 = CharacterManager.Instance.dragonOutline;
-            fingerReach.ChangeAllSegments(p1, newVector, HandType.Left, FingerType.Pinky);
+            player2Colour = CharacterManager.Instance.dragonOutline;
+            fingerReach.ChangeAllSegments(p1, selectColour, HandType.Left, FingerType.Pinky);
             Debug.Log("Hit here");
             fingerOn = true;
             //player.playerInput.SwitchCurrentActionMap("QTEWait");
@@ -263,8 +303,8 @@ public class ControllerInputs : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P))
         {
             p2.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
-            newVector1 = CharacterManager.Instance.dwarfOutline;
-            fingerReach.ChangeAllSegments(p2, newVector1, HandType.Left, FingerType.Pinky);
+            player1Colour = CharacterManager.Instance.dwarfOutline;
+            fingerReach.ChangeAllSegments(p2, player1Colour, HandType.Left, FingerType.Pinky);
             Debug.Log("Hit here");
             fingerp2On = true;
         }
