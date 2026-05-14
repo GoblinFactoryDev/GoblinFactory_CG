@@ -56,7 +56,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClipping: 0.5
-    - _Brightness: 59.76
+    - _Brightness: 30
     - _QueueControl: 0
     - _QueueOffset: -1
     - _Speed: 2.4
