@@ -11,6 +11,10 @@ using UnityEngine.VFX;
 
 public class SpellEffectGroup : MonoBehaviour
 {
+    private void Awake()
+    {
+        gameObject.gameObject.tag = "VFX GROUP";
+    }
 
     [Header("Particle List")]
     [SerializeField]
@@ -41,6 +45,24 @@ public class SpellEffectGroup : MonoBehaviour
         for (int i = 0; i < AnimGroup.Count; i++)
         {
             AnimGroup[i].Play();
+        }
+    }
+
+    public void StopEffect()
+    {
+        for (int i = 0; i < PtclGroup.Count; i++)
+        {
+            PtclGroup[i].Stop();
+        }
+
+        for (int i = 0; i < VFXGroup.Count; i++)
+        {
+            VFXGroup[i].Stop();
+        }
+
+        for (int i = 0; i < AnimGroup.Count; i++)
+        {
+            AnimGroup[i].Stop();
         }
     }
 }

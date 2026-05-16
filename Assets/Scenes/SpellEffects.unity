@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellEffectList: []
-  spellToPlay: 0
 --- !u!4 &693387819
 Transform:
   m_ObjectHideFlags: 0
@@ -884,6 +883,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9215984049187289560, guid: bb5972a35bd34b5438e6b572adee6d6f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -963,6 +966,10 @@ PrefabInstance:
     - target: {fileID: 858927480515526709, guid: b09261231c38c1841af779f8ef0ff90a, type: 3}
       propertyPath: m_Name
       value: vfx_Firebolt_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 858927480515526709, guid: b09261231c38c1841af779f8ef0ff90a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3017752429934698049, guid: b09261231c38c1841af779f8ef0ff90a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1067,6 +1074,10 @@ PrefabInstance:
     - target: {fileID: 852239562789150885, guid: d3ea7cf13eec1f24b860f5f80c350fd6, type: 3}
       propertyPath: m_Name
       value: vfx_Summoning_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 852239562789150885, guid: d3ea7cf13eec1f24b860f5f80c350fd6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1100453013834659574, guid: d3ea7cf13eec1f24b860f5f80c350fd6, type: 3}
       propertyPath: UVModule.fps
@@ -1268,6 +1279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: vfx_IceBlast_01
       objectReference: {fileID: 0}
+    - target: {fileID: 4707922736045897247, guid: 360cdc6441107204e963a9935fe6b315, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1381,6 +1396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: vfx_Summoning_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5513996258823497626, guid: 7cbcfd8b32fe38345bff883a192f5628, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7725959003820297640, guid: 7cbcfd8b32fe38345bff883a192f5628, type: 3}
       propertyPath: startDelay.scalar
       value: 4.4
@@ -1474,6 +1493,10 @@ PrefabInstance:
     - target: {fileID: 3467432010364196573, guid: 0ba4f1eecea60ba40b1fcc09e17871f8, type: 3}
       propertyPath: m_Name
       value: vfx_Summoning_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467432010364196573, guid: 0ba4f1eecea60ba40b1fcc09e17871f8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
