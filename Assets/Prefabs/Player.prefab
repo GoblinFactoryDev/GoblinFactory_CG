@@ -1231,6 +1231,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 675f223cd439a6d4084d077610a53765, type: 2}
   - {fileID: 11400000, guid: f0bf19bca2d1b074ead0e32b013556fa, type: 2}
   - {fileID: 11400000, guid: 7d6e5222da97bcb4ea315f5ba73a0661, type: 2}
+  - {fileID: 11400000, guid: 878685fba833bdc4c99658665d9f6b2a, type: 2}
   cardsOwned: {fileID: 5696425969577844212}
   slotsWaypoints:
   - {fileID: 1477978485016647089}
@@ -2492,6 +2493,7 @@ Transform:
   - {fileID: 7359749806426929099}
   - {fileID: 6079695430807401972}
   - {fileID: 5378232925650375522}
+  - {fileID: 2888336847826159057}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &487655057988784471
@@ -2535,6 +2537,7 @@ MonoBehaviour:
   playerAnimHandler: {fileID: 3630155459419506273}
   PlayerMat: {fileID: 2100000, guid: ba9000116a832e742802a5ad81dab728, type: 2}
   modelTransform: {fileID: 5378232925650375522}
+  mapModelTransform: {fileID: 8908858343211919446}
 --- !u!114 &8703596437689275967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2728,6 +2731,7 @@ MonoBehaviour:
   p2: {fileID: 0}
   cardsOwned: {fileID: 5696425969577844212}
   SlotsMode: 0
+  fingerCardInfo: {fileID: 0}
 --- !u!114 &201009632466848746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3199,6 +3203,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7447348206019015635}
   m_LocalEulerAnglesHint: {x: 13.266, y: 0, z: 0}
+--- !u!1 &8908858343211919446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2888336847826159057}
+  m_Layer: 0
+  m_Name: CharMap_WP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2888336847826159057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908858343211919446}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.751, z: 0.294}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4686407407103592959}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9030341035643896257
 GameObject:
   m_ObjectHideFlags: 0

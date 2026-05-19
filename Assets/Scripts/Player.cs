@@ -321,13 +321,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Material PlayerMat;
     private GameObject PlayerModel;
+    private GameObject PlayerMapModel;
     private Vector3 SelectionColour;
     [SerializeField]
     private Transform modelTransform;
-
-    public Material _playerMat { get => PlayerMat;}
-    public GameObject _playerModel { get => PlayerModel; }
-    public Vector3 _selectionColour { get => SelectionColour; }
+    [SerializeField]
+    private Transform mapModelTransform;
 
     /// <summary>
     /// Sets up the player's model and outline colour based on the character they have chosen. 
@@ -341,21 +340,25 @@ public class Player : MonoBehaviour
         {
             case CharacterType.Dragon:
                 outlineColour = CharacterManager.Instance.dragonOutline;
-                
                 PlayerModel = Instantiate(CharacterManager.Instance.dragonModel, this.gameObject.transform);
+                PlayerMapModel = Instantiate(CharacterManager.Instance.dragonMap, mapModelTransform.transform);
                 break;
             case CharacterType.Dwarf:
                 outlineColour = CharacterManager.Instance.dwarfOutline;
                 PlayerModel = Instantiate(CharacterManager.Instance.dwarfModel, this.gameObject.transform);
+                PlayerMapModel = Instantiate(CharacterManager.Instance.dwarfMap, mapModelTransform.transform);
                 break;
             default:
                 Debug.LogError("Invalid Character Type");
                 break;
         }
+        // Set the position and rotation of the player's model to match the specified transform
         PlayerModel.transform.position = modelTransform.position;
         PlayerModel.transform.rotation = modelTransform.localRotation;
-        //Debug.Log("Model WP Y= " + modelTransform.localRotation.y);
-        //Debug.Log("Model Y= " + PlayerModel.transform.rotation.y);
+        // Set the position and rotation of the player's map model to match the specified transform
+        PlayerMapModel.transform.position = mapModelTransform.transform.position;
+        PlayerMapModel.transform.rotation = mapModelTransform.localRotation;
+
         PlayerMat.SetVector("_OutlineColour", outlineColour);
     }
     #endregion

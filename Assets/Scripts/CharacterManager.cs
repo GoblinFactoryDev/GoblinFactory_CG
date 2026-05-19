@@ -30,10 +30,14 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private Material DragonMat;
     private Vector4 _DragonOutline;
+    [SerializeField]
+    private GameObject _DragonMap;
 
     //Getters for the Dragon
     public GameObject dragonModel { get => _DragonModel; }
     public Vector4 dragonOutline { get => DragonMat.GetVector("_OutlineColour"); }
+
+    public GameObject dragonMap { get => _DragonMap; }
 
     [Header("-----DWARF-----")]
     // Variables for the Dwarf
@@ -42,10 +46,14 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private Material DwarfMat;
     private Vector4 _DwarfOutline;
+    [SerializeField]
+    private GameObject _DwarfMap;
 
     //Getters for the Dwarf
     public GameObject dwarfModel { get => _DwarfModel; }
     public Vector4 dwarfOutline { get => DwarfMat.GetVector("_OutlineColour"); }
+
+    public GameObject dwarfMap { get => _DwarfMap; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
