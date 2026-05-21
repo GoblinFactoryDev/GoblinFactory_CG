@@ -49,7 +49,7 @@ public class ControllerInputs : MonoBehaviour
     /// </summary>
     public Card fingerCardInfo;
 
-
+    bool targetSelf = false;
     private void Update()
     {
         ControllerNavHand();
@@ -115,7 +115,7 @@ public class ControllerInputs : MonoBehaviour
             //check for cards that are already in slots to not select them again
             if (playerInputHandler.cardSelectAction.WasPressedThisFrame())
             {
-                bool targetSelf = false;
+                targetSelf = false;
                 bool SkipSelection = cardsOwned.SelectCard(0, true, ref targetSelf, ref fingerCardInfo);
 
                 if (!SkipSelection)
@@ -130,7 +130,6 @@ public class ControllerInputs : MonoBehaviour
                     p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
                     player2Colour = CharacterManager.Instance.dragonOutline;
                     fingerReach.ChangeAllSegments(p1, selectColour, HandType.Left, FingerType.Pinky);
-                    Debug.Log("Hit here");
                     fingerOn = true;
                 }
                 else if (targetSelf == false) // the card is targeting the enemy's fingers
@@ -138,7 +137,10 @@ public class ControllerInputs : MonoBehaviour
                     p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
                     player1Colour = CharacterManager.Instance.dwarfOutline;
                     fingerReach.ChangeAllSegments(p2, player1Colour, HandType.Left, FingerType.Pinky);
-                    Debug.Log("Hit here");
+
+                    // Calling the animation to select the fingers of the enemy
+                    p2.playerAnimHandler.PlayHandAnimation(p1.playerAnimHandler.hand_Inspect_AnimName);
+
                     fingerp2On = true;
                 }
             }
@@ -158,7 +160,17 @@ public class ControllerInputs : MonoBehaviour
                     fingerReach.ChangeAllSegments(p2, player2Colour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
                 }
                 p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("CardGame");
-                p1.playerSlotHandler.AssignFingerTargetInfoToSlot(fingerCardInfo.GetCurrentSlotUsed, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+
+                if (targetSelf)
+                {
+                    p1.playerAnimHandler.PlayHandAnimation(p1.playerAnimHandler.hand_Idle_AnimName);
+                }
+                else
+                {
+                    p2.playerAnimHandler.PlayHandAnimation(p2.playerAnimHandler.hand_Idle_AnimName);
+                }
+
+                    p1.playerSlotHandler.AssignFingerTargetInfoToSlot(fingerCardInfo.GetCurrentSlotUsed, (HandType)fingerHandIndex, (FingerType)fingerIndex);
             }
         }
     }
