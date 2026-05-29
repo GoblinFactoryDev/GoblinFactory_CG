@@ -44,7 +44,7 @@ Material:
     - _OutlineAmountWithTexture: 2.68
     - _OutlineBrightness: 80
     m_Colors:
-    - _OutlineColour: {r: 0, g: 0.8362045, b: 1, a: 0}
+    - _OutlineColour: {r: 1, g: 0.34794357, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &486636974698944481

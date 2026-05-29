@@ -1579,7 +1579,7 @@ PrefabInstance:
       objectReference: {fileID: 1769375786}
     - target: {fileID: 211231814656042788, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: character
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 211231814656042788, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: mapModelTransform

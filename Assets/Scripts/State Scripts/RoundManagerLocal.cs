@@ -120,7 +120,7 @@ public class RoundManagerLocal : MonoBehaviour
     /// Removes the most Recently added spell slot from the players or the computers collection of chosen spells
     /// </summary>
     /// <param name="pType">The type of player to which the spell slot will be added. Must be a valid <see cref="PlayerType"/> value.</param>
-    public void RemoveFirstChosenSpell(PlayerType pType)
+    public void RemoveTopChosenSpell(PlayerType pType)
     {
         if (pType == PlayerType.Player)
         {
@@ -172,8 +172,23 @@ public class RoundManagerLocal : MonoBehaviour
 
     private void Update()
     {
-        // check if both players are ready (Will need to add the computer check)
-        if (playerReady && computerReady && configStatesTime == false)
+        // Checks if either player has died, if one player has died both players move to the dead state to show the winner and loser of the match
+        if (GameManager.Instance.player1.playerHealthTotal <= 0)
+        {
+            PlayerState = RoundStates.Died;
+            ComputerState = RoundStates.Died;
+        }
+        // Both players have finished casting all there spells and are ready to move on to the next round
+        else if (player1ChosenSpells.Count <= 0 && compChosenSpells.Count <= 0 && playerReady && computerReady)
+        {
+            playerReady = false;
+            computerReady = false;
+
+            PlayerState = RoundStates.DealingStats;
+            ComputerState = RoundStates.DealingStats;
+        }
+        // This is the casting, qte and spell effect loop , this loop will continue until both players have casted all there spells and the stacks of chosen spells are empty
+        else if (playerReady && computerReady && configStatesTime == false)
         {
             // Players are being delt there spells and other stats if needed
             if (PlayerState == RoundStates.DealingStats)
