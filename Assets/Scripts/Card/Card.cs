@@ -19,7 +19,9 @@ public class Card : MonoBehaviour
     // TODO: add more properties as needed
     public CardActions CardActions { get => _cardActions; }
     public string Title { get => _cardData.cardName; }
+    public CardID ID { get => _cardData.cardID; }
     public Sprite Icon { get => _cardData.icon; }
+    public CardType Type { get => _cardData.cardType; }
     public string Description { get => _cardData.description; }
     public int Cost { get => _cardData.cost; }
     public bool TargetSelf { get => _cardData.targetSelf; }

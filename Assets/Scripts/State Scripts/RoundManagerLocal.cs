@@ -60,6 +60,9 @@ public class RoundManagerLocal : MonoBehaviour
     public bool configStatesTime = false;
 
     #region Qte Speed Management
+    public CastRating player1QTERating;
+    public CastRating compQTERating;
+
     private QTESpeeds CurrentQTESpeeds = new QTESpeeds();
     public float GetCurrentPlayerOneQTESpeed()
     {
@@ -134,18 +137,19 @@ public class RoundManagerLocal : MonoBehaviour
         }
     }
 
-    public void GetNextSpell(PlayerType pType)
+    public Slot GetNextSpell(PlayerType pType)
     {
         if (pType == PlayerType.Player)
         {
             if (player1ChosenSpells.Count > 0)
-                player1ChosenSpells.Peek();
+                return player1ChosenSpells.Peek();
         }
         else if (pType == PlayerType.AI)
         {
             if (compChosenSpells.Count > 0)
-                compChosenSpells.Peek();
+                return compChosenSpells.Peek();
         }
+        return null;
     }
 
     /// <summary>

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /* //============================================================================
- * Author: Cooper
+ * Author: Cooper, Wyatt
  * Title: GameManager
  * Date: 04/26/2026
  * Purpose: Handle the game and act as a global manager for the whole project

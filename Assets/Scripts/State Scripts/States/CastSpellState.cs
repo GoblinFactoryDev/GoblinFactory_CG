@@ -46,7 +46,25 @@ public class CastSpellState : FSMState
         // This is where the local Player does there stuff
         if (playerState.player.playerType == PlayerType.Player)
         {
-            
+            Card currentCard = RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).CardInSlot;
+
+            // Call the effect from the proper card type scripts
+            if (currentCard.Type == CardType.Attack)
+            {
+                CastingAttacks.Instance.CastSpell(playerState.player.opponent, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo , currentCard.ID, RoundManagerLocal.Instance.player1QTERating);
+            }
+            else if (currentCard.Type == CardType.Restoration)
+            {
+
+            }
+            else if (currentCard.Type == CardType.Ring)
+            {
+
+            }
+            else if (currentCard.Type == CardType.Sigil)
+            {
+
+            }
 
             RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
             RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);

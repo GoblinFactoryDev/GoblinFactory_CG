@@ -13,6 +13,7 @@ using UnityEngine;
 public class CardData : ScriptableObject
 {
     public string cardName;
+    public CardID cardID;
     public CardType cardType;
     public string description;
     public Sprite icon;

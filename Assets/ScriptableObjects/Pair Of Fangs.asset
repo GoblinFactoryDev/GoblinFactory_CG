@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Pair Of Fangs
   m_EditorClassIdentifier: 
   cardName: Pair Of Fangs
+  cardID: 3
   cardType: 0
   description: Caster Chooses a finger, both fingers of that type on the opposing
     players hands take X DMG
   icon: {fileID: 21300000, guid: 78a8e926af6810f45b3383f24cedcd45, type: 3}
+  targetSelf: 0
   cost: 1
   damage: 1
   difficulty: 5

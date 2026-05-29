@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Sebastian's Code
+/// </summary>
+
 public class CardObjectPool : MonoBehaviour
 {
     private static CardObjectPool _instance;

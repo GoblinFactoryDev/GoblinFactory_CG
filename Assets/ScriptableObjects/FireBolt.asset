@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: FireBolt
   m_EditorClassIdentifier: 
   cardName: Fire Bolt
+  cardID: 1
   cardType: 0
   description: Hits for 1 DMG on 1 finger
   icon: {fileID: 21300000, guid: 6597fccf1f304a64b8f1d822854db3dd, type: 3}
+  targetSelf: 0
   cost: 1
   damage: 1
   difficulty: 1

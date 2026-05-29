@@ -78,6 +78,25 @@ public enum  CharacterType
     Dwarf
 }
 
+public enum  CastRating
+{
+    Fail = 0,
+    Half,
+    Full
+}
+
+public enum CardID
+{
+    none,
+    FireBolt,
+    IceBolt,
+    PairOfFangs,
+    PermaFrostsEmbrace,
+    SummersLastInferno,
+    WintersLastZephyr,
+    ThumbsUp
+}
+
 public class chosenSelections
 {
     public List<Card> selectedCards = new List<Card>();
