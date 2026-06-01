@@ -13,4 +13,5 @@ public class Casting : MonoBehaviour
 {
     public virtual void CastSpell(Player PlayerTarget, FingerTargetInfo FingerTarget, CardID whatCard, CastRating castLevel) { }
 
+    public virtual void CastSpell(Player PlayerTarget, CardID whatCard, CastRating castLevel) { }
 }

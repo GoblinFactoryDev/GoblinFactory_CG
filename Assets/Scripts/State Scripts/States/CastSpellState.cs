@@ -51,7 +51,7 @@ public class CastSpellState : FSMState
             // Call the effect from the proper card type scripts
             if (currentCard.Type == CardType.Attack)
             {
-                CastingAttacks.Instance.CastSpell(playerState.player.opponent, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo , currentCard.ID, RoundManagerLocal.Instance.player1QTERating);
+                CastingAttacks.Instance.CastSpell(playerState.player.opponent, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo, currentCard.ID, RoundManagerLocal.Instance.player1QTERating);
             }
             else if (currentCard.Type == CardType.Restoration)
             {

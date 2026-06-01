@@ -181,12 +181,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c49aa29973c9d4f9281898987a740e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _BasicCards:
+  - {fileID: 11400000, guid: 4bd2b9643620eae41aab8f2f49237896, type: 2}
+  - {fileID: 11400000, guid: 878685fba833bdc4c99658665d9f6b2a, type: 2}
+  - {fileID: 11400000, guid: f4acc396cab907043801d3d6cb9ffb37, type: 2}
   _DragonModel: {fileID: 252789329068923658, guid: cb40a12ed9e68cf4fbf0e6be025deb8b, type: 3}
-  DragonMat: {fileID: 2100000, guid: 128b426839344034f9db0a3ae802eab9, type: 2}
+  _DragonMat: {fileID: 2100000, guid: 128b426839344034f9db0a3ae802eab9, type: 2}
   _DragonMap: {fileID: 2096391833262522856, guid: 164d91f772b8acf4b8f57c28443b1579, type: 3}
+  _DragonCards:
+  - {fileID: 11400000, guid: c383880beb04d23429a41c8d3a9ba5fc, type: 2}
+  - {fileID: 11400000, guid: 94f25091e24edde4e9239ba2b42a8a1d, type: 2}
+  - {fileID: 11400000, guid: 79cfff14c72535b4592cd9a59f045d78, type: 2}
+  - {fileID: 11400000, guid: f0bf19bca2d1b074ead0e32b013556fa, type: 2}
   _DwarfModel: {fileID: 7823998490931162446, guid: 06768e607f9006e4193ae639e18f77fd, type: 3}
-  DwarfMat: {fileID: 2100000, guid: 8e57883c0ca9a2142b57ecda33bf7c22, type: 2}
+  _DwarfMat: {fileID: 2100000, guid: 8e57883c0ca9a2142b57ecda33bf7c22, type: 2}
   _DwarfMap: {fileID: 2096391833262522856, guid: 164d91f772b8acf4b8f57c28443b1579, type: 3}
+  _DwarfCards:
+  - {fileID: 11400000, guid: bada761f7c00e3d4e8c3754497d2b33f, type: 2}
+  - {fileID: 11400000, guid: 508a7c3addd132e459351d6da35d3b4f, type: 2}
+  - {fileID: 11400000, guid: c4bfc392a09a525499beca61ff2852fc, type: 2}
+  - {fileID: 11400000, guid: 7d6e5222da97bcb4ea315f5ba73a0661, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

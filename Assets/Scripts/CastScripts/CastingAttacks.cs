@@ -10,6 +10,9 @@ using static Slot;
 //  Instance: yes
 //-----------------------------------------------------------------
 
+/// <summary>
+/// The functionality for casting attack spells, this will apply the proper effects to the target player
+/// </summary>
 public class CastingAttacks : Casting
 {
 
@@ -50,13 +53,21 @@ public class CastingAttacks : Casting
             case CardID.SummersLastInferno:
                 SummersLastInferno(PlayerTarget, FingerTarget, castLevel);
                 break;
-            case CardID.PermaFrostsEmbrace:
-                PermaFrostsEmbrace(PlayerTarget, FingerTarget, castLevel);
-                break;
             default:
                 Debug.Log("Unknown attack card");
                 break;
         }
+    }
+
+    /// <summary>
+    /// The Casting of an attack spell that does not have a origin finger, this calls the proper attack function
+    /// </summary>
+    /// <param name="PlayerTarget">The Player being targeted</param>
+    /// <param name="WhatCard">The card being casted</param>
+    /// <param name="castLevel">How well did they do on there QTE</param>
+    public override void CastSpell(Player PlayerTarget, CardID WhatCard, CastRating castLevel)
+    {
+        CastSpell(PlayerTarget, null, WhatCard, castLevel);
     }
 
     /// <summary>
@@ -114,14 +125,4 @@ public class CastingAttacks : Casting
         // Implement SummersLastInferno logic here
     }
 
-    /// <summary>
-    /// The Casting of PermaFrosts Embrace, this will apply the effects of the spell to the target player based on the cast level and the finger used
-    /// </summary>
-    /// <param name="PlayerTarget">The Player being targeted</param>
-    /// <param name="FingerTarget">The Finger being targeted</param>
-    /// <param name="castLevel">How well did they do on there QTE</param>
-    private void PermaFrostsEmbrace(Player PlayerTarget, FingerTargetInfo FingerTarget, CastRating castLevel)
-    {
-        // Implement PermaFrosts Embrace logic here
-    }
 }

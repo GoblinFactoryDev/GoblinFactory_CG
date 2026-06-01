@@ -74,6 +74,7 @@ public enum  PlayerIs
 
 public enum  CharacterType
 {
+    All,
     Dragon,
     Dwarf
 }
@@ -91,10 +92,14 @@ public enum CardID
     FireBolt,
     IceBolt,
     PairOfFangs,
-    PermaFrostsEmbrace,
+    AvalanchesCall,
     SummersLastInferno,
     WintersLastZephyr,
-    ThumbsUp
+    ThumbsUp,
+    FingerOfHealing,
+    SearingChains,
+    TooMuchPowa,
+    IcePick
 }
 
 public class chosenSelections

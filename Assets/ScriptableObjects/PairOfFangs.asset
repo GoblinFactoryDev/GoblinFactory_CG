@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 270c97ac9af9dd84fa961a911a901da4, type: 3}
-  m_Name: IceBolt
+  m_Name: PairOfFangs
   m_EditorClassIdentifier: 
-  cardName: Ice Bolt
-  cardID: 2
+  cardName: Pair Of Fangs
+  cardID: 3
   cardType: 0
-  description: Hits for 1 DMG on 1 finger
-  icon: {fileID: -940447905, guid: b621bc05bc9564e45a46839ee76aea74, type: 3}
+  description: Caster Chooses a finger, both fingers of that type on the opposing
+    players hands take X DMG
+  icon: {fileID: -870406152, guid: b621bc05bc9564e45a46839ee76aea74, type: 3}
   targetSelf: 0
   cost: 1
   damage: 1
-  difficulty: 1
+  difficulty: 5

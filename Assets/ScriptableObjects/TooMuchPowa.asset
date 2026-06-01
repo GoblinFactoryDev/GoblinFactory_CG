@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 270c97ac9af9dd84fa961a911a901da4, type: 3}
-  m_Name: IceBolt
+  m_Name: TooMuchPowa
   m_EditorClassIdentifier: 
-  cardName: Ice Bolt
-  cardID: 2
-  cardType: 0
-  description: Hits for 1 DMG on 1 finger
-  icon: {fileID: -940447905, guid: b621bc05bc9564e45a46839ee76aea74, type: 3}
+  cardName: Too Much Powa
+  cardID: 10
+  cardType: 3
+  description: add +1 spell slot next round
+  icon: {fileID: -1825081311, guid: 6b64ebd2adbf01c41a5f34908df3a1fb, type: 3}
   targetSelf: 0
   cost: 1
-  damage: 1
-  difficulty: 1
+  damage: 0
+  difficulty: 10

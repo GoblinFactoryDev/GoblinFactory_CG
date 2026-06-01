@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 270c97ac9af9dd84fa961a911a901da4, type: 3}
-  m_Name: Pair Of Fangs
+  m_Name: AvalanchesCall
   m_EditorClassIdentifier: 
-  cardName: Pair Of Fangs
-  cardID: 3
-  cardType: 0
-  description: Caster Chooses a finger, both fingers of that type on the opposing
-    players hands take X DMG
-  icon: {fileID: 21300000, guid: 78a8e926af6810f45b3383f24cedcd45, type: 3}
+  cardName: Avalanches Call
+  cardID: 4
+  cardType: 2
+  description: Place a ring on the chosen finger of the caster. For as long ast the
+    ring persists 1 DMG is delt to a random finger of the opposing player at the
+    end of the round. Ring lasts for X amount of turns
+  icon: {fileID: 21300000, guid: 1bf77e78772ef2546ba9a43606a3c265, type: 3}
   targetSelf: 0
   cost: 1
-  damage: 1
-  difficulty: 5
+  damage: 0
+  difficulty: 10

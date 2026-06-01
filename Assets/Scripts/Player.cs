@@ -84,6 +84,7 @@ public class Player : MonoBehaviour
         GetHealth();
 
         SetUpArtSideOfPlayer();
+        SetUpPlayersCards();
 
         opponent = GameManager.Instance.GetOpponent(playerType);
     }
@@ -315,7 +316,7 @@ public class Player : MonoBehaviour
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Players model and Colour info and setup
+    // Chosen Player Info and Setup
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     #region Players model and Colour info and setup
     [SerializeField]
@@ -360,6 +361,39 @@ public class Player : MonoBehaviour
         PlayerMapModel.transform.rotation = mapModelTransform.localRotation;
 
         PlayerMat.SetVector("_OutlineColour", outlineColour);
+    }
+
+    /// <summary>
+    /// Fills the available cards list in the player's card hand with the basic cards and the character-specific cards based on the character they have chosen.
+    /// </summary>
+    public void SetUpPlayersCards()
+    {
+        switch (character)
+        {
+            case CharacterType.Dragon:
+                foreach (CardData card in CharacterManager.Instance.basicCards)
+                {
+                    playerCardHand.availableCards.Add(card);
+                }
+                foreach (CardData card in CharacterManager.Instance.dragonCards)
+                {
+                    playerCardHand.availableCards.Add(card);
+                }
+                break;
+            case CharacterType.Dwarf:
+                foreach (CardData card in CharacterManager.Instance.basicCards)
+                {
+                    playerCardHand.availableCards.Add(card);
+                }
+                foreach (CardData card in CharacterManager.Instance.dwarfCards)
+                {
+                    playerCardHand.availableCards.Add(card);
+                }
+                break;
+            default:
+                Debug.LogError("Invalid Character Type");
+                break;
+        }
     }
     #endregion
 }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 270c97ac9af9dd84fa961a911a901da4, type: 3}
-  m_Name: Summers Last Inferno
+  m_Name: WintersLastZephyr
   m_EditorClassIdentifier: 
-  cardName: Summer's Last Inferno
-  cardID: 5
+  cardName: Winter's Last Zephyr
+  cardID: 6
   cardType: 0
   description: Destroys 1 chosen finger
-  icon: {fileID: 21300000, guid: 3ce602b856ea9ba49be7303161bfb355, type: 3}
+  icon: {fileID: -1244751465, guid: b621bc05bc9564e45a46839ee76aea74, type: 3}
   targetSelf: 0
   cost: 2
   damage: 3
