@@ -107,3 +107,10 @@ public class chosenSelections
     public List<Card> selectedCards = new List<Card>();
     public List<FingerType> finger = new List<FingerType>();
 }
+
+public enum QTEButtonState
+{
+    Default,
+    Success,
+    Failure
+}

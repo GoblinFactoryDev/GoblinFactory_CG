@@ -16,6 +16,8 @@ public class ControllerInputs : MonoBehaviour
 {
     //reference to the input handler
     [SerializeField] private PlayerInputHandler playerInputHandler;
+    //QTE Handler reference
+    [SerializeField] private QTEHandler playerQTEHandler;
     //player 1 reference
     [SerializeField] private Player p1;
     //player 2 reference
@@ -52,22 +54,26 @@ public class ControllerInputs : MonoBehaviour
     bool targetSelf = false;
     private void Update()
     {
-        ControllerNavHand();
-        SlotAndCardMovementSystemSwitch();
-        SelectingInput();
-        DeselectingInput();
-        ReadyUpInput();
-        FingeringATest();
-        if(fingerOn)
-        {
-            fingerp2On = false;
-            MoveFingers(p1, selectColour, player2Colour);
-        }
-        if(fingerp2On)
-        {
-            fingerOn = false;
-            MoveFingers(p2, selectColour, player1Colour);
-        }
+        //ControllerNavHand();
+        //SlotAndCardMovementSystemSwitch();
+        //SelectingInput();
+        //DeselectingInput();
+        //ReadyUpInput();
+        //FingeringATest();
+        //if(fingerOn)
+        //{
+        //    fingerp2On = false;
+        //    MoveFingers(p1, selectColour, player2Colour);
+        //}
+        //if(fingerp2On)
+        //{
+        //    fingerOn = false;
+        //    MoveFingers(p2, selectColour, player1Colour);
+        //}
+
+        playerQTEHandler.BtnCheckTest(playerInputHandler);
+       
+
     }
 
     public void ReadyUpInput()
@@ -297,7 +303,7 @@ public class ControllerInputs : MonoBehaviour
     private Vector4 selectColour = new Vector4(1, 1, 1, 1);
     private Vector4 player1Colour;
     private Vector4 player2Colour;
-    private bool fingerOn = false;
+    private bool fingerOn = true;
     private bool fingerp2On = false;
 
     private void FingeringATest()

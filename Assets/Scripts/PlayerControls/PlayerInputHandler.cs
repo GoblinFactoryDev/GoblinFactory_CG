@@ -61,6 +61,17 @@ public class PlayerInputHandler : MonoBehaviour
     public InputAction fingerMoveRightAction;
     public InputAction fingerSelectAction;
 
+    [Header("QTE Challenge Inputs")]
+    public InputAction challengeInputA;
+    public InputAction challengeInputB;
+    public InputAction challengeInputY;
+    public InputAction challengeInputX;
+    public InputAction challengeInputUp;
+    public InputAction challengeInputDown;
+    public InputAction challengeInputRight;
+    public InputAction challengeInputLeft;
+
+
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -83,6 +94,17 @@ public class PlayerInputHandler : MonoBehaviour
         fingerMoveLeftAction = _playerInputActionAsset.FindActionMap("FingerSelection").FindAction("MoveLeft");
         fingerMoveRightAction = _playerInputActionAsset.FindActionMap("FingerSelection").FindAction("MoveRight");
         fingerSelectAction = _playerInputActionAsset.FindActionMap("FingerSelection").FindAction("SelectFinger");
+
+        //QTE Input Map
+        challengeInputA = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_A");
+        challengeInputB = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_B");
+        challengeInputY = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_Y");
+        challengeInputX = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_X");
+        challengeInputUp = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_Up");
+        challengeInputDown = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_Down");
+        challengeInputRight = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_Right");
+        challengeInputLeft = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_Left");
+
     }
 
     private void OnEnable()
@@ -104,6 +126,16 @@ public class PlayerInputHandler : MonoBehaviour
         fingerSelectAction.Enable();
         fingerMoveLeftAction.Enable();
         fingerMoveRightAction.Enable();
+
+        //QTE Input Map
+        challengeInputA.Enable();
+        challengeInputB.Enable();
+        challengeInputY.Enable();
+        challengeInputX.Enable();
+        challengeInputUp.Enable();
+        challengeInputDown.Enable();
+        challengeInputRight.Enable();
+        challengeInputLeft.Enable();
     }
 
     private void OnDisable()
@@ -125,5 +157,15 @@ public class PlayerInputHandler : MonoBehaviour
         fingerSelectAction.Disable();
         fingerMoveLeftAction.Disable();
         fingerMoveRightAction.Disable();
+
+        //QTE Input Map
+        challengeInputA.Disable();
+        challengeInputB.Disable();
+        challengeInputY.Disable();
+        challengeInputX.Disable();
+        challengeInputUp.Disable();
+        challengeInputDown.Disable();
+        challengeInputRight.Disable();
+        challengeInputLeft.Disable();
     }
 }
