@@ -3,11 +3,7 @@ using UnityEngine.InputSystem;
 
 public class QTEButton : MonoBehaviour
 {
-    //list of sprites default
-    //list of sprites success
-    //list of sprites mistake
-
-    //for now I'll only store the value I know I have
+    //after its randomized I will assign its sprites to the script
     public Sprite baseSprite;
     public Sprite successSprite;
     public Sprite failureSprite;
