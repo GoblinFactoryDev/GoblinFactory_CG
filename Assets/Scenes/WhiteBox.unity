@@ -1957,7 +1957,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c3d6db67de4be3459f706ee63b8198c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnRef: {fileID: 1493693443}
+  currentBtn: {fileID: 0}
+  createSequence: 0
   defaultSprite:
   - {fileID: 21300000, guid: d1d8e35e1fd0e07448f96e8c8663587a, type: 3}
   - {fileID: 21300000, guid: 65f7a0e61a9110a4db21e09b108cfbf7, type: 3}
@@ -1986,18 +1987,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dd8a655b6c0e78646b672e1607eda358, type: 3}
   - {fileID: 21300000, guid: b87d598db28fd584aa95dfdebf71e217, type: 3}
   QTEButtons:
-  - {fileID: 1493693442}
-  - {fileID: 331542897}
-  - {fileID: 835773097}
-  - {fileID: 2093163814}
-  - {fileID: 924705930}
-  - {fileID: 1926892887}
-  - {fileID: 489295505}
-  - {fileID: 1657088525}
-  - {fileID: 183106915}
-  - {fileID: 1818263548}
-  - {fileID: 1699960956}
   - {fileID: 1150650929}
+  - {fileID: 1699960956}
+  - {fileID: 1818263548}
+  - {fileID: 183106915}
+  - {fileID: 1657088525}
+  - {fileID: 489295505}
+  - {fileID: 1926892887}
+  - {fileID: 924705930}
+  - {fileID: 2093163814}
+  - {fileID: 835773097}
+  - {fileID: 331542897}
+  - {fileID: 1493693442}
 --- !u!1 &1463024035
 GameObject:
   m_ObjectHideFlags: 0
