@@ -45,7 +45,6 @@ public class CardDisplay : MonoBehaviour
         iconImage.sprite = _card.Icon;
         costText.text = _card.Cost.ToString();
         difficultyText.text = _card.Difficulty.ToString();
-        damageText.text = _card.Damage.ToString();
         descText.text = _card.Description;
     }
 }

@@ -323,11 +323,13 @@ public class Player : MonoBehaviour
     private Material PlayerMat;
     private GameObject PlayerModel;
     private GameObject PlayerMapModel;
-    private Vector3 SelectionColour;
+    private Vector4 _OutlineColour;
     [SerializeField]
     private Transform modelTransform;
     [SerializeField]
     private Transform mapModelTransform;
+
+    public Vector4 outlineColour { get => _OutlineColour; }
 
     /// <summary>
     /// Sets up the player's model and outline colour based on the character they have chosen. 
@@ -335,17 +337,17 @@ public class Player : MonoBehaviour
     /// </summary>
     public void SetUpArtSideOfPlayer()
     {
-        Vector4 outlineColour = new Vector3(0, 0, 0);
+        _OutlineColour = new Vector3(0, 0, 0);
 
         switch (character)
         {
             case CharacterType.Dragon:
-                outlineColour = CharacterManager.Instance.dragonOutline;
+                _OutlineColour = CharacterManager.Instance.dragonOutline;
                 PlayerModel = Instantiate(CharacterManager.Instance.dragonModel, this.gameObject.transform);
                 PlayerMapModel = Instantiate(CharacterManager.Instance.dragonMap, mapModelTransform.transform);
                 break;
             case CharacterType.Dwarf:
-                outlineColour = CharacterManager.Instance.dwarfOutline;
+                _OutlineColour = CharacterManager.Instance.dwarfOutline;
                 PlayerModel = Instantiate(CharacterManager.Instance.dwarfModel, this.gameObject.transform);
                 PlayerMapModel = Instantiate(CharacterManager.Instance.dwarfMap, mapModelTransform.transform);
                 break;
@@ -360,7 +362,7 @@ public class Player : MonoBehaviour
         PlayerMapModel.transform.position = mapModelTransform.transform.position;
         PlayerMapModel.transform.rotation = mapModelTransform.localRotation;
 
-        PlayerMat.SetVector("_OutlineColour", outlineColour);
+        PlayerMat.SetVector("_OutlineColour", _OutlineColour);
     }
 
     /// <summary>

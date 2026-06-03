@@ -21,7 +21,6 @@ public class CardData : ScriptableObject
 
     // card data
     public int cost;
-    public int damage;
     public int difficulty;
 
 }

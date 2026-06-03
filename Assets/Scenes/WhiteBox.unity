@@ -3111,7 +3111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4746149522470716992, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: m_DefaultActionMap
-      value: QTE
+      value: dd9814fd-6b6e-4dad-a54d-87a49e7f5b3a
       objectReference: {fileID: 0}
     - target: {fileID: 5696425969577844212, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: availableCards.Array.size

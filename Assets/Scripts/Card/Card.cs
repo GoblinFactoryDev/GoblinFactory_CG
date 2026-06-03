@@ -25,7 +25,6 @@ public class Card : MonoBehaviour
     public string Description { get => _cardData.description; }
     public int Cost { get => _cardData.cost; }
     public bool TargetSelf { get => _cardData.targetSelf; }
-    public int Damage { get => _cardData.damage; }
     public int Difficulty { get => _cardData.difficulty; }
     public bool IsInSlot { get; set; } = false;
 

@@ -1,7 +1,6 @@
 //----------------------------------------------------------------
-//  Author:         Keller
-//  Co-Author:
-//
+//  Author:         Wyatt, Keller
+//  Purpose:        Handles actions of the card, such as selection, dragging, and dropping.
 //  Instance:       No
 //-----------------------------------------------------------------
 
@@ -12,16 +11,15 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// Handles actions of the card, such as selection, dragging, and dropping.
 /// </summary>
-public class CardActions : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class CardActions : MonoBehaviour
 {
-    public void OnDeselect(BaseEventData eventData)
-    {
-        
-    }
+    [SerializeField] 
+    private Renderer render;
+    private Color ogColour;
 
-    public void OnSelect(BaseEventData eventData)
+    private void Start()
     {
-        
+        ogColour = render.material.color;
     }
 
     /// <summary>
@@ -29,7 +27,7 @@ public class CardActions : MonoBehaviour, ISelectHandler, IDeselectHandler
     /// </summary>
     public void OnHoverCard()
     {
-        GetComponent<Renderer>().material.color = Color.red;
+        render.material.color = Color.red;
     }
 
     /// <summary>
@@ -37,6 +35,6 @@ public class CardActions : MonoBehaviour, ISelectHandler, IDeselectHandler
     /// </summary>
     public void OffHoverCard()
     {
-        GetComponent<Renderer>().material.color = Color.grey;
+        render.material.color = ogColour;
     }
 }
