@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fcad66db45745c949be674e169cf5c0b
+guid: b621bc05bc9564e45a46839ee76aea74
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpellIcons 1_0
+      name: SpellIcons_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4076bda254885fe489bb507c9cfcda1e
-      internalID: -835150552
+      spriteID: 466eaf34b9a748848bc3f5ab74145ed8
+      internalID: -870406152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_1
+      name: SpellIcons_1
       rect:
         serializedVersion: 2
         x: 256
@@ -134,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3778e986873fe3b4fbed296df9ab05df
-      internalID: -297401293
+      spriteID: 4378ddcea8b3aa94eb007740ee9ce11c
+      internalID: 1280138022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_2
+      name: SpellIcons_2
       rect:
         serializedVersion: 2
         x: 512
@@ -156,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41bcd55eb6380e54b898c12e4f47fc23
-      internalID: 2116379772
+      spriteID: c28d9386a2448ea4a8af2586b7b28987
+      internalID: -1755934977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_3
+      name: SpellIcons_3
       rect:
         serializedVersion: 2
         x: 768
@@ -178,17 +178,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bb61652009985445ba83af90c4cd043
-      internalID: 481104557
+      spriteID: 491115cc7bd372a47859cae1f0da34c6
+      internalID: -940447905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_4
+      name: SpellIcons_4
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1026
         y: 1792
         width: 256
         height: 256
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f17a19bc4d9de134a8f543a5e11b92c5
-      internalID: 549254723
+      spriteID: daab4e4b97160ce4dbb8986d3e79126f
+      internalID: -1200321526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_5
+      name: SpellIcons_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -222,14 +222,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbb583963d5c63545bc4f736ba158a39
-      internalID: 390977758
+      spriteID: 726852cb50471f84190d4f48c9d3df6f
+      internalID: -1244751465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_6
+      name: SpellIcons_6
       rect:
         serializedVersion: 2
         x: 1536
@@ -244,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44550745a95dd9345b51edbfd6cdc0da
-      internalID: -723429974
+      spriteID: a5ec963aaa0de21419c1211f0c2cee6c
+      internalID: -1054386443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_7
+      name: SpellIcons_7
       rect:
         serializedVersion: 2
         x: 1792
@@ -266,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0beec3b72cc5ecc418a4422e608490ae
-      internalID: 1523452425
+      spriteID: 00ba345b040eb0f4dbcfffda315c4488
+      internalID: 1923587914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_8
+      name: SpellIcons_8
       rect:
         serializedVersion: 2
         x: 0
@@ -288,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 905b80dc4bf60fe48a63d4c52ec42382
-      internalID: -1707922621
+      spriteID: 86a36e72ce0207a458623b07b26d23b8
+      internalID: 918359350
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_9
+      name: SpellIcons_9
       rect:
         serializedVersion: 2
         x: 256
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 016563686cd2f924d8ed4f6f5471af42
-      internalID: -73768526
+      spriteID: 1e565b65683c32e44a289aac14dc84bf
+      internalID: -445029362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_10
+      name: SpellIcons_10
       rect:
         serializedVersion: 2
         x: 512
@@ -332,14 +332,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76bf2580c4480a648b37e026b18d57dc
-      internalID: -693446772
+      spriteID: e00789e06da68f84489e29643b556d6f
+      internalID: -1906871129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_11
+      name: SpellIcons_11
       rect:
         serializedVersion: 2
         x: 768
@@ -354,14 +354,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc46a6f9bd11d794f9c6755da072f843
-      internalID: -577216770
+      spriteID: 8a0a903eee9cf3e45b32604751e289c0
+      internalID: -1425143222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_12
+      name: SpellIcons_12
       rect:
         serializedVersion: 2
         x: 1024
@@ -376,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0441a0eea4915b42810413b4937710f
-      internalID: -1434235086
+      spriteID: d2bb96ee3662208479febd53c14deb86
+      internalID: 1940962349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_13
+      name: SpellIcons_13
       rect:
         serializedVersion: 2
         x: 1280
@@ -398,14 +398,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2675cf8d1da426441969262e98b0dd69
-      internalID: 1140402095
+      spriteID: 95ce3114447787943a2bd23f78ba74d7
+      internalID: -1678177775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_14
+      name: SpellIcons_14
       rect:
         serializedVersion: 2
         x: 1536
@@ -420,14 +420,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5778b39b2e9a63f4ea4b62e219bb5468
-      internalID: 432631188
+      spriteID: 765a49462489c2344978351d5b6a4149
+      internalID: -190050872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_15
+      name: SpellIcons_15
       rect:
         serializedVersion: 2
         x: 1792
@@ -442,14 +442,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dac261741115cb4a89f4a37c6cf7471
-      internalID: 605327495
+      spriteID: 25f2a7078b80bbc4b80bc82f206d45b8
+      internalID: -1065085201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_16
+      name: SpellIcons_16
       rect:
         serializedVersion: 2
         x: 0
@@ -464,14 +464,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ca584e9333836548960e927f47c05dd
-      internalID: -1905385524
+      spriteID: cf8f160fea5af174bb74ca5341a40ffb
+      internalID: -186987559
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_17
+      name: SpellIcons_17
       rect:
         serializedVersion: 2
         x: 256
@@ -486,14 +486,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0eb3270a2683544458bcc36e16552eb0
-      internalID: -1321049614
+      spriteID: 597a03b3dda9f7c4491fe31f9924a2ef
+      internalID: -1912842831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_18
+      name: SpellIcons_18
       rect:
         serializedVersion: 2
         x: 512
@@ -508,14 +508,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 809bcf8dda74f934d82e22febe99a788
-      internalID: 1607082615
+      spriteID: 89e09d2536e8d224b890240ad8e95a46
+      internalID: 117853321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_19
+      name: SpellIcons_19
       rect:
         serializedVersion: 2
         x: 768
@@ -530,14 +530,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad274cbc1eed0045abe5c6342ddea6f
-      internalID: -405940800
+      spriteID: 6d993f776d92bf94082cc3cddfda2f05
+      internalID: -2003119307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_20
+      name: SpellIcons_20
       rect:
         serializedVersion: 2
         x: 1024
@@ -552,14 +552,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33a7c42edff822c4499d3f01df5de216
-      internalID: 1804406275
+      spriteID: 6a932aa8bfb1d6a4c97d2276ef31e7c6
+      internalID: 207132247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_21
+      name: SpellIcons_21
       rect:
         serializedVersion: 2
         x: 1280
@@ -574,14 +574,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e5f1b68037e38a41a06600069371725
-      internalID: -584174988
+      spriteID: be41d767334efb34bb06224b6f186a41
+      internalID: 1000893533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_22
+      name: SpellIcons_22
       rect:
         serializedVersion: 2
         x: 1536
@@ -596,14 +596,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 166f912b1efd8fe438c402d7808f9c34
-      internalID: 1350398619
+      spriteID: 65007a0dc2bed0343b6d896bcd85b79f
+      internalID: 623268729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_23
+      name: SpellIcons_23
       rect:
         serializedVersion: 2
         x: 1792
@@ -618,14 +618,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a4e3e5eb48f92342aae2fbc027eecdc
-      internalID: 480010675
+      spriteID: a0fe68c7940a95847a3d8b52253249f8
+      internalID: -1199206630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_24
+      name: SpellIcons_24
       rect:
         serializedVersion: 2
         x: 0
@@ -640,14 +640,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f55f5d378737e3140b939620dc5df3e1
-      internalID: -1755790882
+      spriteID: 7870358e95c634f41868127459b2d6e8
+      internalID: -1518609718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_25
+      name: SpellIcons_25
       rect:
         serializedVersion: 2
         x: 256
@@ -662,14 +662,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d28d9b8436c1b042b94b2052db30f32
-      internalID: -1138468439
+      spriteID: 5676d9d6d0597994f805160e340211d7
+      internalID: -1944038572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_26
+      name: SpellIcons_26
       rect:
         serializedVersion: 2
         x: 512
@@ -684,14 +684,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e98d2b3f701a4fb4e8bf8f178aaac61a
-      internalID: -878422001
+      spriteID: 8258fabde9b81c545a16f1dd77185466
+      internalID: 2133828872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_27
+      name: SpellIcons_27
       rect:
         serializedVersion: 2
         x: 768
@@ -706,14 +706,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fcff4ebba1d1ee43afffc4ab8498611
-      internalID: 412525466
+      spriteID: 94e4facd784a62a4580112f297809b65
+      internalID: 383763642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_28
+      name: SpellIcons_28
       rect:
         serializedVersion: 2
         x: 1024
@@ -728,14 +728,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f4792296b6dcce46aba689a86024dac
-      internalID: -452765920
+      spriteID: 8125d1df63605be4697a1623e8997204
+      internalID: -523689170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_29
+      name: SpellIcons_29
       rect:
         serializedVersion: 2
         x: 1280
@@ -750,14 +750,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a463c68ac7d3a894eabf5cb199bdd203
-      internalID: -482546703
+      spriteID: 62f401cd81012cc48a94fee15b190435
+      internalID: 1416732523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_30
+      name: SpellIcons_30
       rect:
         serializedVersion: 2
         x: 1536
@@ -772,14 +772,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2493ad74f372b8546b773ba9e1362aa8
-      internalID: -1080515147
+      spriteID: b6adb7482e3711e4c960c6424bc1e43f
+      internalID: 177000965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_31
+      name: SpellIcons_31
       rect:
         serializedVersion: 2
         x: 1792
@@ -794,14 +794,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b96db95cd259f2440a3771d21f420c40
-      internalID: -264104813
+      spriteID: d27b333384e779b45b229b570479aff8
+      internalID: 2142633496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_32
+      name: SpellIcons_32
       rect:
         serializedVersion: 2
         x: 0
@@ -816,14 +816,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05ee350e135412541853adbb7ba96969
-      internalID: -11230453
+      spriteID: 23181bdd36bdd8f418fcd604caa5d686
+      internalID: -2073987224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_33
+      name: SpellIcons_33
       rect:
         serializedVersion: 2
         x: 256
@@ -838,14 +838,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bd442c7e75259b4d8315ecaae8eb548
-      internalID: -1282643091
+      spriteID: 8c20ff6d67817b24e96b4e6ac9c5926f
+      internalID: -896854044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_34
+      name: SpellIcons_34
       rect:
         serializedVersion: 2
         x: 512
@@ -860,14 +860,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2581f687c363d143a7a347e49a33fdc
-      internalID: -60559858
+      spriteID: 03d75bd52188cd7498d214609a85dfa8
+      internalID: -926189058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_35
+      name: SpellIcons_35
       rect:
         serializedVersion: 2
         x: 768
@@ -882,14 +882,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 799b930d56bb2954b8f1bbf90748b2b2
-      internalID: 1528179881
+      spriteID: ac1514d3bb493464cb516ef1e3d46f6b
+      internalID: 1228664699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_36
+      name: SpellIcons_36
       rect:
         serializedVersion: 2
         x: 1024
@@ -904,14 +904,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42df68293c9b72446a62592b8927f489
-      internalID: -1576703823
+      spriteID: 60f4dadd3a30fb24bba22fe6c99caddc
+      internalID: -680506346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_37
+      name: SpellIcons_37
       rect:
         serializedVersion: 2
         x: 1280
@@ -926,14 +926,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d8f27ef9c4a62f439ca86aa7f2c56a9
-      internalID: 731717660
+      spriteID: f325745345cdf9d4aaba5629de9df8ce
+      internalID: 156191536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_38
+      name: SpellIcons_38
       rect:
         serializedVersion: 2
         x: 1536
@@ -948,14 +948,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fed8f3dc997c7b14d886033565b180db
-      internalID: 509695653
+      spriteID: 6263b461af1fecb40974a962ed0a2d1d
+      internalID: 1250114650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_39
+      name: SpellIcons_39
       rect:
         serializedVersion: 2
         x: 1792
@@ -970,14 +970,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0d6fd97539390f4aa8606dccebaf4b3
-      internalID: 1123851649
+      spriteID: 6f6f1fe455110c64694f601562f37745
+      internalID: 1267324739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_40
+      name: SpellIcons_40
       rect:
         serializedVersion: 2
         x: 0
@@ -992,14 +992,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf69d7962236e4144a61d3008566121e
-      internalID: -795106207
+      spriteID: 41a4a500a6a2cab49ad8665930bab6a7
+      internalID: 1211133616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_41
+      name: SpellIcons_41
       rect:
         serializedVersion: 2
         x: 256
@@ -1014,14 +1014,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98b1b6e563debd64ebdd774ec4a0e189
-      internalID: -1035095991
+      spriteID: 04aec9e518d0929428382f3195364325
+      internalID: -899337638
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_42
+      name: SpellIcons_42
       rect:
         serializedVersion: 2
         x: 512
@@ -1036,14 +1036,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17c9ff13312b1dd4fbe61a4ee4911358
-      internalID: 1440639515
+      spriteID: 4e90e9fdb16dc334a821005c4ba362f7
+      internalID: 1845546625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_43
+      name: SpellIcons_43
       rect:
         serializedVersion: 2
         x: 768
@@ -1058,14 +1058,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee804a351f4671c4e9800276033e3110
-      internalID: 2046716369
+      spriteID: a379c802eb73b624f9ba290900b0bab8
+      internalID: 1309108711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_44
+      name: SpellIcons_44
       rect:
         serializedVersion: 2
         x: 1024
@@ -1080,14 +1080,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43c2a8a23ea721c41b5428948cd4b72e
-      internalID: -1667935894
+      spriteID: 86312e975c3385b439cfdf68535cc8a5
+      internalID: -1810427961
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_45
+      name: SpellIcons_45
       rect:
         serializedVersion: 2
         x: 1280
@@ -1102,14 +1102,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8727a991f1f7fad48943a2f5b7813032
-      internalID: -1120773988
+      spriteID: ff9760123a91aed46805eda7d339d916
+      internalID: 188083747
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_46
+      name: SpellIcons_46
       rect:
         serializedVersion: 2
         x: 1536
@@ -1124,14 +1124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6db0ca3dc72b6424a8ecdf952b1db25b
-      internalID: 1937107010
+      spriteID: 01754e81ec2c32945a7885e55256ab1d
+      internalID: 2048681826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_47
+      name: SpellIcons_47
       rect:
         serializedVersion: 2
         x: 1792
@@ -1146,14 +1146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5324996bdd61bb4c8b6cbbef466fd23
-      internalID: -1973171369
+      spriteID: 149f4bc50734d4348baf51f2b628ee9a
+      internalID: -160501562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_48
+      name: SpellIcons_48
       rect:
         serializedVersion: 2
         x: 0
@@ -1168,14 +1168,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 918f1e8c2c31a154595f6d1a95da0665
-      internalID: 615402415
+      spriteID: 1f8f1e5b70fe511488fbf6397fbb1f5d
+      internalID: -791584955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_49
+      name: SpellIcons_49
       rect:
         serializedVersion: 2
         x: 256
@@ -1190,14 +1190,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04f6335a5a17b4844b41a568975a307a
-      internalID: 390839400
+      spriteID: 58b4de638e82d424abc2c40f68c20904
+      internalID: 1762181861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_50
+      name: SpellIcons_50
       rect:
         serializedVersion: 2
         x: 512
@@ -1212,14 +1212,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50687741278779f46b82f4ed3f319f05
-      internalID: 761602782
+      spriteID: 7a973f71caf0b794daaab2a527f29267
+      internalID: 1652944892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_51
+      name: SpellIcons_51
       rect:
         serializedVersion: 2
         x: 768
@@ -1234,14 +1234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab7ee5341e1958f488d29c128649b7ba
-      internalID: 392673435
+      spriteID: 81ab8bb52d11ad84f90db8c0a630320e
+      internalID: -724858189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_52
+      name: SpellIcons_52
       rect:
         serializedVersion: 2
         x: 1024
@@ -1256,14 +1256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f27b90ad557157498461a1c8beae73d
-      internalID: -2033682889
+      spriteID: 43763f30867336f4e91d8154a3035d3a
+      internalID: 989151712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_53
+      name: SpellIcons_53
       rect:
         serializedVersion: 2
         x: 1280
@@ -1278,14 +1278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6041a269a67a9814591b5b76f7253c65
-      internalID: -676266318
+      spriteID: 3f868308fd6f2bd4fa9e8b4fcc77688a
+      internalID: 1377307735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_54
+      name: SpellIcons_54
       rect:
         serializedVersion: 2
         x: 1536
@@ -1300,14 +1300,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1239aff42bbefd94a8833d7d101f4f36
-      internalID: 607917252
+      spriteID: 11bdf2c3623041b468972edd35ae8bc9
+      internalID: -1284610250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_55
+      name: SpellIcons_55
       rect:
         serializedVersion: 2
         x: 1792
@@ -1322,14 +1322,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad6857d486023404bbde299b9c7454c6
-      internalID: -708140100
+      spriteID: d27c51f50fa1025458a6d23678ce9f75
+      internalID: -1165502489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_56
+      name: SpellIcons_56
       rect:
         serializedVersion: 2
         x: 0
@@ -1344,14 +1344,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d08583a9140cfc843920538f61204f04
-      internalID: 1647723657
+      spriteID: 21ec698d678551e4bac843bc9a8bf468
+      internalID: -1714804558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_57
+      name: SpellIcons_57
       rect:
         serializedVersion: 2
         x: 256
@@ -1366,14 +1366,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb5d81f12e4785441b42d9fb1fe2b6eb
-      internalID: -237110416
+      spriteID: c9de17e1e7cc3ff459dfde7655990bb1
+      internalID: 944037158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_58
+      name: SpellIcons_58
       rect:
         serializedVersion: 2
         x: 512
@@ -1388,14 +1388,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c26bc83d6248a243bd16236df120a0a
-      internalID: 2018438578
+      spriteID: a6b2922d1b0188c4daa52358742d6a7c
+      internalID: -1432026987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_59
+      name: SpellIcons_59
       rect:
         serializedVersion: 2
         x: 768
@@ -1410,14 +1410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da53e6b9d391b6640ad25c9cd3ec814f
-      internalID: -1851013815
+      spriteID: baab04b585466f7419a7687559d08911
+      internalID: -581719865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_60
+      name: SpellIcons_60
       rect:
         serializedVersion: 2
         x: 1024
@@ -1432,14 +1432,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 899286b48604f444a8f257dd5264993b
-      internalID: 2051389303
+      spriteID: 7f998f29590b215409c2efea96304bd9
+      internalID: -2093032713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_61
+      name: SpellIcons_61
       rect:
         serializedVersion: 2
         x: 1280
@@ -1454,14 +1454,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17b7f5c7681a10e44a5dcb2723a54013
-      internalID: -432861139
+      spriteID: aa6f6325ef4fd474bb6c18fccbe8dc7d
+      internalID: -2033139177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_62
+      name: SpellIcons_62
       rect:
         serializedVersion: 2
         x: 1536
@@ -1476,14 +1476,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9576ea9fcef81664bb6dbd9c35a8735d
-      internalID: -639713211
+      spriteID: 1afda7d4aaed8884fae0bfccb737e86a
+      internalID: -1624893793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpellIcons 1_63
+      name: SpellIcons_63
       rect:
         serializedVersion: 2
         x: 1792
@@ -1498,8 +1498,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e62b2cadba4796442a1c51a7ec26b09a
-      internalID: -425636687
+      spriteID: 89fb30cbe7bff6045912f4a168e00001
+      internalID: -340889639
       vertices: []
       indices: 
       edges: []
@@ -1508,7 +1508,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: bd36aeb6f7c31fc42ad98e3e60a99d2f
+    spriteID: 23935c30328b8524a9b39cab9c69ec96
     internalID: 0
     vertices: []
     indices: 
@@ -1518,70 +1518,70 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SpellIcons 1_0: -835150552
-      SpellIcons 1_1: -297401293
-      SpellIcons 1_10: -693446772
-      SpellIcons 1_11: -577216770
-      SpellIcons 1_12: -1434235086
-      SpellIcons 1_13: 1140402095
-      SpellIcons 1_14: 432631188
-      SpellIcons 1_15: 605327495
-      SpellIcons 1_16: -1905385524
-      SpellIcons 1_17: -1321049614
-      SpellIcons 1_18: 1607082615
-      SpellIcons 1_19: -405940800
-      SpellIcons 1_2: 2116379772
-      SpellIcons 1_20: 1804406275
-      SpellIcons 1_21: -584174988
-      SpellIcons 1_22: 1350398619
-      SpellIcons 1_23: 480010675
-      SpellIcons 1_24: -1755790882
-      SpellIcons 1_25: -1138468439
-      SpellIcons 1_26: -878422001
-      SpellIcons 1_27: 412525466
-      SpellIcons 1_28: -452765920
-      SpellIcons 1_29: -482546703
-      SpellIcons 1_3: 481104557
-      SpellIcons 1_30: -1080515147
-      SpellIcons 1_31: -264104813
-      SpellIcons 1_32: -11230453
-      SpellIcons 1_33: -1282643091
-      SpellIcons 1_34: -60559858
-      SpellIcons 1_35: 1528179881
-      SpellIcons 1_36: -1576703823
-      SpellIcons 1_37: 731717660
-      SpellIcons 1_38: 509695653
-      SpellIcons 1_39: 1123851649
-      SpellIcons 1_4: 549254723
-      SpellIcons 1_40: -795106207
-      SpellIcons 1_41: -1035095991
-      SpellIcons 1_42: 1440639515
-      SpellIcons 1_43: 2046716369
-      SpellIcons 1_44: -1667935894
-      SpellIcons 1_45: -1120773988
-      SpellIcons 1_46: 1937107010
-      SpellIcons 1_47: -1973171369
-      SpellIcons 1_48: 615402415
-      SpellIcons 1_49: 390839400
-      SpellIcons 1_5: 390977758
-      SpellIcons 1_50: 761602782
-      SpellIcons 1_51: 392673435
-      SpellIcons 1_52: -2033682889
-      SpellIcons 1_53: -676266318
-      SpellIcons 1_54: 607917252
-      SpellIcons 1_55: -708140100
-      SpellIcons 1_56: 1647723657
-      SpellIcons 1_57: -237110416
-      SpellIcons 1_58: 2018438578
-      SpellIcons 1_59: -1851013815
-      SpellIcons 1_6: -723429974
-      SpellIcons 1_60: 2051389303
-      SpellIcons 1_61: -432861139
-      SpellIcons 1_62: -639713211
-      SpellIcons 1_63: -425636687
-      SpellIcons 1_7: 1523452425
-      SpellIcons 1_8: -1707922621
-      SpellIcons 1_9: -73768526
+      SpellIcons_0: -870406152
+      SpellIcons_1: 1280138022
+      SpellIcons_10: -1906871129
+      SpellIcons_11: -1425143222
+      SpellIcons_12: 1940962349
+      SpellIcons_13: -1678177775
+      SpellIcons_14: -190050872
+      SpellIcons_15: -1065085201
+      SpellIcons_16: -186987559
+      SpellIcons_17: -1912842831
+      SpellIcons_18: 117853321
+      SpellIcons_19: -2003119307
+      SpellIcons_2: -1755934977
+      SpellIcons_20: 207132247
+      SpellIcons_21: 1000893533
+      SpellIcons_22: 623268729
+      SpellIcons_23: -1199206630
+      SpellIcons_24: -1518609718
+      SpellIcons_25: -1944038572
+      SpellIcons_26: 2133828872
+      SpellIcons_27: 383763642
+      SpellIcons_28: -523689170
+      SpellIcons_29: 1416732523
+      SpellIcons_3: -940447905
+      SpellIcons_30: 177000965
+      SpellIcons_31: 2142633496
+      SpellIcons_32: -2073987224
+      SpellIcons_33: -896854044
+      SpellIcons_34: -926189058
+      SpellIcons_35: 1228664699
+      SpellIcons_36: -680506346
+      SpellIcons_37: 156191536
+      SpellIcons_38: 1250114650
+      SpellIcons_39: 1267324739
+      SpellIcons_4: -1200321526
+      SpellIcons_40: 1211133616
+      SpellIcons_41: -899337638
+      SpellIcons_42: 1845546625
+      SpellIcons_43: 1309108711
+      SpellIcons_44: -1810427961
+      SpellIcons_45: 188083747
+      SpellIcons_46: 2048681826
+      SpellIcons_47: -160501562
+      SpellIcons_48: -791584955
+      SpellIcons_49: 1762181861
+      SpellIcons_5: -1244751465
+      SpellIcons_50: 1652944892
+      SpellIcons_51: -724858189
+      SpellIcons_52: 989151712
+      SpellIcons_53: 1377307735
+      SpellIcons_54: -1284610250
+      SpellIcons_55: -1165502489
+      SpellIcons_56: -1714804558
+      SpellIcons_57: 944037158
+      SpellIcons_58: -1432026987
+      SpellIcons_59: -581719865
+      SpellIcons_6: -1054386443
+      SpellIcons_60: -2093032713
+      SpellIcons_61: -2033139177
+      SpellIcons_62: -1624893793
+      SpellIcons_63: -340889639
+      SpellIcons_7: 1923587914
+      SpellIcons_8: 918359350
+      SpellIcons_9: -445029362
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
