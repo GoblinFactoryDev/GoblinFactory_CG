@@ -16,8 +16,7 @@ MonoBehaviour:
   cardID: 2
   cardType: 0
   description: Hits for 1 DMG on 1 finger
-  icon: {fileID: -940447905, guid: b621bc05bc9564e45a46839ee76aea74, type: 3}
+  icon: {fileID: 481104557, guid: fcad66db45745c949be674e169cf5c0b, type: 3}
   targetSelf: 0
   cost: 1
-  damage: 1
   difficulty: 1

@@ -16,8 +16,7 @@ MonoBehaviour:
   cardID: 10
   cardType: 3
   description: add +1 spell slot next round
-  icon: {fileID: -1825081311, guid: 6b64ebd2adbf01c41a5f34908df3a1fb, type: 3}
+  icon: {fileID: -1434235086, guid: fcad66db45745c949be674e169cf5c0b, type: 3}
   targetSelf: 0
   cost: 1
-  damage: 0
   difficulty: 10

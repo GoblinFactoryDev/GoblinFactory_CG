@@ -19,8 +19,7 @@ MonoBehaviour:
     round the ring persists, 1 spell of the opposing players "Card Hand" is wrapped
     in Searing chains, if the spell is played the opponent takes 1 DMG. Ring lasts
     for X amount of turns
-  icon: {fileID: 623268729, guid: b621bc05bc9564e45a46839ee76aea74, type: 3}
+  icon: {fileID: -1434235086, guid: fcad66db45745c949be674e169cf5c0b, type: 3}
   targetSelf: 0
   cost: 2
-  damage: 0
   difficulty: 10

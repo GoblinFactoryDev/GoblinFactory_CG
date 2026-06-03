@@ -16,8 +16,7 @@ MonoBehaviour:
   cardID: 6
   cardType: 0
   description: Destroys 1 chosen finger
-  icon: {fileID: -1244751465, guid: b621bc05bc9564e45a46839ee76aea74, type: 3}
+  icon: {fileID: 390977758, guid: fcad66db45745c949be674e169cf5c0b, type: 3}
   targetSelf: 0
   cost: 2
-  damage: 3
   difficulty: 10
