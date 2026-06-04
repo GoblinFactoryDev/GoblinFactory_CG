@@ -17,6 +17,8 @@ public class QTEHandler : MonoBehaviour
     //number of elements(buttons) in the sequence
     private int numbOfSequence;
 
+    public bool QTEMode = false;
+
 
     //list of sprites default
     public List<Sprite> defaultSprite = new List<Sprite>();
@@ -72,5 +74,6 @@ public class QTEHandler : MonoBehaviour
             startingPos++;
         }
         currentBtn = orderOfSequence.Pop().GetComponent<QTEButton>();
+        QTEMode = true;
     }
 }

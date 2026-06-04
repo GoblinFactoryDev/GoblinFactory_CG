@@ -71,7 +71,10 @@ public class ControllerInputs : MonoBehaviour
             MoveFingers(p2, selectColour, p2.outlineColour);
         }
 
-        //playerQTEHandler.BtnCheckTest(playerInputHandler);
+        if(playerQTEHandler.QTEMode)
+        {
+            playerQTEHandler.BtnCheckTest(playerInputHandler);
+        }
       
     }
 
@@ -84,6 +87,10 @@ public class ControllerInputs : MonoBehaviour
                     if (cardsOwned.SlotsInUse.Count != 0)
                     {
                         _confirmSelection = true;
+                         //this will change into the state machine later
+                        p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("QTE");
+                        //this will change into the state machine later
+                        playerQTEHandler.createSequence = true;
                     }
                 }
                 else
