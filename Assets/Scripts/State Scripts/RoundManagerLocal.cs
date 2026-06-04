@@ -183,7 +183,8 @@ public class RoundManagerLocal : MonoBehaviour
             ComputerState = RoundStates.Died;
         }
         // Both players have finished casting all there spells and are ready to move on to the next round
-        else if (player1ChosenSpells.Count <= 0 && compChosenSpells.Count <= 0 && playerReady && computerReady)
+        else if (player1ChosenSpells.Count <= 0 && compChosenSpells.Count <= 0 && playerReady && computerReady &&
+            (PlayerState == RoundStates.ConfiguringSpells && ComputerState == RoundStates.ConfiguringSpells))
         {
             playerReady = false;
             computerReady = false;

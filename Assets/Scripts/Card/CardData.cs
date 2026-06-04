@@ -1,13 +1,12 @@
 //----------------------------------------------------------------
-//  Author:         Keller, Wyatt
-//  Co-Author:
-//
+//  Author:         Wyatt, Keller
 //  Date Created:   July 4, 2025
 //  Instance:       No
 //-----------------------------------------------------------------
 
 using System.Collections.Generic;
 using UnityEngine;
+using static Slot;
 
 [CreateAssetMenu(fileName = "CardData", menuName = "Scriptable Objects/Card")]
 public class CardData : ScriptableObject

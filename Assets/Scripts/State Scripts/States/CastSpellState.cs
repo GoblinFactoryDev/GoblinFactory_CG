@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 //----------------------------------------------------------------
 //  Author: Wyatt
@@ -49,21 +50,28 @@ public class CastSpellState : FSMState
             Card currentCard = RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).CardInSlot;
 
             // Call the effect from the proper card type scripts
-            if (currentCard.Type == CardType.Attack)
-            {
-                CastingAttacks.Instance.CastSpell(playerState.player.opponent, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo, currentCard.ID, RoundManagerLocal.Instance.player1QTERating);
-            }
-            else if (currentCard.Type == CardType.Restoration)
-            {
+            //if (currentCard.Type == CardType.Attack)
+            //{
+            //    //CastingAttacks.Instance.CastSpell(playerState.player.opponent, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo, currentCard.ID, RoundManagerLocal.Instance.player1QTERating);
+            //}
+            //else if (currentCard.Type == CardType.Restoration)
+            //{
+            //}
+            //else if (currentCard.Type == CardType.Ring)
+            //{
+            //}
+            //else if (currentCard.Type == CardType.Sigil)
+            //{
+            //}
 
-            }
-            else if (currentCard.Type == CardType.Ring)
+            // This is where the spell effect will be called, the spell will need to be casted on the proper target (self or Opponent) and the proper QTE rating will need to be passed in
+            if (currentCard.TargetSelf)
             {
-
+                currentCard.Cast(playerState.player, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo, RoundManagerLocal.Instance.player1QTERating);
             }
-            else if (currentCard.Type == CardType.Sigil)
+            else
             {
-
+                currentCard.Cast(playerState.player.opponent, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo, RoundManagerLocal.Instance.player1QTERating);
             }
 
             RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
