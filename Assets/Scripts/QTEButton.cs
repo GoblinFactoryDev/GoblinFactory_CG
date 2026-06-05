@@ -18,21 +18,19 @@ public class QTEButton : MonoBehaviour
 
     private void Update()
     {
-        deactivateScript();
+        deactivateButton();
     }
 
     //create a deactivate and finish function
-    private void deactivateScript()
+    private void deactivateButton()
     {
         if (currentState == QTEButtonState.Success)
         {
             this.GetComponent<SpriteRenderer>().sprite = successSprite;
-            this.enabled = false;
         }
         else if (currentState == QTEButtonState.Failure)
         {
             this.GetComponent<SpriteRenderer>().sprite = failureSprite;
-            this.enabled = false;
         }
     }
 }

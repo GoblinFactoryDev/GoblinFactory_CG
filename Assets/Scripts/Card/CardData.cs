@@ -17,6 +17,8 @@ public class CardData : ScriptableObject
     public string description;
     public Sprite icon;
     public bool targetSelf;
+    [Tooltip("If this is true then it means the card has 3 QTE outcomes, if its false then it only has 2")]
+    public bool ThreeOutcomes;
 
     // card data
     public int cost;

@@ -18,5 +18,6 @@ MonoBehaviour:
   description: Hits for 1 DMG on 1 finger
   icon: {fileID: 481104557, guid: fcad66db45745c949be674e169cf5c0b, type: 3}
   targetSelf: 0
+  ThreeOutcomes: 0
   cost: 1
-  difficulty: 1
+  difficulty: 4

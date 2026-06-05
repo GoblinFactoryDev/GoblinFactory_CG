@@ -18,5 +18,6 @@ MonoBehaviour:
   description: Destroys 1 chosen finger
   icon: {fileID: 549254723, guid: fcad66db45745c949be674e169cf5c0b, type: 3}
   targetSelf: 0
+  ThreeOutcomes: 1
   cost: 2
   difficulty: 10

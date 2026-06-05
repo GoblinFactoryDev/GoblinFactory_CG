@@ -21,5 +21,6 @@ MonoBehaviour:
     for X amount of turns
   icon: {fileID: -1434235086, guid: fcad66db45745c949be674e169cf5c0b, type: 3}
   targetSelf: 0
+  ThreeOutcomes: 1
   cost: 2
   difficulty: 10

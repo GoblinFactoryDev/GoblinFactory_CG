@@ -318,15 +318,26 @@ public class RoundManagerLocal : MonoBehaviour
         {
             if (playerOneSpeed < playerTwoSpeed)
             {
-                return PlayerType.Player;
+                return PlayerType.AI;
             }
             else if (playerTwoSpeed < playerOneSpeed)
             {
-                return PlayerType.AI;
+                return PlayerType.Player;
             }
-            else
+            else //tie
             {
-                return PlayerType.None;
+                System.Random rnd = new System.Random();
+
+                if (rnd.Next(0, 1) == 0)
+                {
+                    playerOneSpeed += 0.01f; // Add a small random value to break the tie
+                    return PlayerType.Player;
+                }
+                else
+                {
+                    playerTwoSpeed += 0.01f; // Add a small random value to break the tie
+                    return PlayerType.AI;
+                }
             }
         }
     }
