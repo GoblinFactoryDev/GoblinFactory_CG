@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3217251243920140988}
   - component: {fileID: 4959990404649666849}
   - component: {fileID: 7862289117733777310}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 4232609120599522119}
   - component: {fileID: 4344443957305229485}
   - component: {fileID: 3951814334493723693}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 3551756848209220086}
   - component: {fileID: 2019651744740940178}
   - component: {fileID: 5611606471985667057}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DifficultyNumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 179032355759949622}
   - component: {fileID: 3420408371408874523}
   - component: {fileID: 5647793956308297315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WorldSpaceDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1053,7 +1053,7 @@ GameObject:
   - component: {fileID: 3885909611118779975}
   - component: {fileID: 9185309565313893286}
   - component: {fileID: 1841279119323270154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CostNumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1276,7 +1276,7 @@ GameObject:
   - component: {fileID: 7210551489161776512}
   - component: {fileID: 1084683327744761711}
   - component: {fileID: 3516731358819082717}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DescText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
