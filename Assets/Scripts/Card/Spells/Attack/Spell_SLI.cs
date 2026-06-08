@@ -3,7 +3,7 @@
  * Title: Summers Last Inferno (SLI)
  * Date: 06/04/2026
  * Purpose: The Casting Of the spell summers last inferno
- * Effect: Destroys 1 chosen finger
+ * Effect: Destroys 1 chosen finger and can attack outward
 */ //============================================================================
 
 using UnityEngine;

@@ -1,5 +1,5 @@
 /* //============================================================================
- * Author: Wyatt
+ * Author: Wyatt, Cooper
  * Title: Icebolt
  * Date: 06/04/2026
  * Purpose: The Casting Of the spell Icebolt
@@ -23,6 +23,14 @@ public class Spell_Icebolt : CardEffects
     #endregion
 
     /// <summary>
+    /// The Damage intager the spell uses
+    /// </summary>
+
+    [Header("Damage Amount")]
+    [SerializeField, Tooltip("Damage amount for Ice")]
+    private int damageAMT = 1;
+
+    /// <summary>
     /// The Actual effect of the spell
     /// </summary>
     /// <param name="PlayerTarget">The Player being targeted</param>
@@ -30,6 +38,18 @@ public class Spell_Icebolt : CardEffects
     /// <param name="castLevel">How well did they do on there QTE</param>
     public override void UseEffect(Player PlayerTarget, FingerTargetInfo FingerTarget, CastRating castLevel)
     {
-        // Do Icebolt Logic here
+        // Do Icebolt logic here
+
+        // If the player does not complete the QTE
+        if (castLevel == CastRating.Fail)
+        {
+            // REMEMBER to play fail effect
+        }
+        // If the player completes the QTE
+        else if (castLevel == CastRating.Full)
+        {
+            // Tells the target player to take damage based on the target finger and the damage amount
+            PlayerTarget.DamageFinger(FingerTarget.whichHand, FingerTarget.whichFinger, damageAMT);
+        }
     }
 }

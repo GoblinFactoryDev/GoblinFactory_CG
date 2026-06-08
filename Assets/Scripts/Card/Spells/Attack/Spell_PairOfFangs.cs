@@ -31,5 +31,6 @@ public class Spell_PairOfFangs : CardEffects
     public override void UseEffect(Player PlayerTarget, FingerTargetInfo FingerTarget, CastRating castLevel)
     {
         // Do PairOfFangs Logic here
+        // Not sure how to get both hands
     }
 }

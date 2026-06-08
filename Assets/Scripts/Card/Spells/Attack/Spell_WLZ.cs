@@ -27,7 +27,7 @@ public class Spell_WLZ : CardEffects
     /// </summary>
     /// <param name="PlayerTarget">The Player being targeted</param>
     /// <param name="FingerTarget">The Finger being targeted</param>
-    /// <param name="castLevel">How well did they do on there QTE</param>
+    /// <param name="castLevel">How well did they do on their QTE</param>
     public override void UseEffect(Player PlayerTarget, FingerTargetInfo FingerTarget, CastRating castLevel)
     {
         // Do Winters Last Zephyr Iferno Logic here
@@ -38,6 +38,7 @@ public class Spell_WLZ : CardEffects
         // When did we stop believing in Santa Claus?
         // Why do we dream?
         // Why do we have nightmares?
+        // How long till a dream becomes a nightmare?
         // Why do we have hope?
         // Why do we have love?
         // Why do we have hate?
@@ -49,10 +50,9 @@ public class Spell_WLZ : CardEffects
         // and I have come to the conclusion that the only reason I am doing this is because I have hope that one day,
         // someone will read this and understand the pain and suffering that went into writing this structure, and maybe, just maybe, they will find some meaning in it all.
         // Cooper if you are reading this, I hope you understand that I am doing this for you, and that I am really glad your are back on the team
-        // Sebastian if you are reading this Then please delete the comment line above this and pretend it never existed
         // Seb you good bro
         // Whelp Im off to bed, goodnight everyone, and I hope you have a wonderful day tomorrow, and that you find some meaning in this comment, because I sure as hell didn't
-        // From A Certain FuckHead
+        // From A Certain Friend
         // P.S I just relized I have mmispelled Zephyr the entire time so now I have to go back and fix that, wwwwwwwwwhhhhhhhyyyyyyyy
     }
 }
