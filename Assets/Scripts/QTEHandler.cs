@@ -11,21 +11,29 @@ public class QTEHandler : MonoBehaviour
     //.push() will add elements, the more you add the more it ill be deeper in the stack so the first objecti you add is the one at the top
     //.pop() will remove and return the top element
 
-    private int numberOfSequence;
-
     //sequence check (when the sequence is ready to be created this will be called to trigger it
     public bool createSequence = false;
 
     //number of elements(buttons) in the sequence
     private int numbOfSequence;
 
+    //this checks for the controll side of the challenge mode making sure it triggers controll inputs until all data is set to start
     public bool QTEMode = false;
 
+    //this value keeps track of how many successfull inputs the player has in the sequence
     public int successCounter;
 
+    //this variable stores the time the player took to finish the challenge
     public float FinishedTime;
 
+    //this value holds the current sequence size
     private int sequenceSize;
+
+    //will start the QTE trigger timer
+    private bool startTimer = false;
+
+    //this is the actual timer variable that ticks down
+    [SerializeField] private float remainingTime;
 
 
 
@@ -54,23 +62,29 @@ public class QTEHandler : MonoBehaviour
         }
     }
 
-    public void BtnCheckTest(PlayerInputHandler inputReference)
+    public void ChallengeInputTracker(PlayerInputHandler inputReference)
     {
+        //check for controller inputs
         if(inputReference.challengeInputA.WasCompletedThisFrame() && currentBtn.buttonValue == KeyCode.A || inputReference.challengeInputB.WasCompletedThisFrame() && currentBtn.buttonValue == KeyCode.B ||
            inputReference.challengeInputY.WasCompletedThisFrame() && currentBtn.buttonValue == KeyCode.Y || inputReference.challengeInputX.WasCompletedThisFrame() && currentBtn.buttonValue == KeyCode.X ||
            inputReference.challengeInputUp.WasCompletedThisFrame() && currentBtn.buttonValue == KeyCode.UpArrow || inputReference.challengeInputDown.WasCompletedThisFrame() && currentBtn.buttonValue == KeyCode.DownArrow ||
            inputReference.challengeInputRight.WasCompletedThisFrame() && currentBtn.buttonValue == KeyCode.RightArrow || inputReference.challengeInputLeft.WasCompletedThisFrame() && currentBtn.buttonValue == KeyCode.LeftArrow)
         {
             Debug.Log("shit worked homie");
+            //set the current button state to success
             currentBtn.currentState = QTEButtonState.Success;
+            //up the successful inputs counter
             successCounter++;
             if(orderOfSequence.Count != 0)
             {
+                //remove the current button and set the next one 
                 currentBtn = orderOfSequence.Pop().GetComponent<QTEButton>();
             }
             else
             {
+                //save the time the challenge took
                 FinishedTime = remainingTime;
+                //reset values
                 ChallengeCompleted();
             }
         }
@@ -96,8 +110,10 @@ public class QTEHandler : MonoBehaviour
     //to calculate the success / failure and half success
     private void ResultsCalculation()
     {
+        //check if the number of successful inputs is the same as the sequence size
         if(successCounter == sequenceSize)
         {
+            //if so then set the results to a full success
             if (this.GetComponent<Player>().playerType == PlayerType.Player)
             {
                 RoundManagerLocal.Instance.player1QTERating = CastRating.Full;
@@ -107,6 +123,7 @@ public class QTEHandler : MonoBehaviour
                 RoundManagerLocal.Instance.compQTERating = CastRating.Full;
             }
         }
+        //if the successful inputs is less than half the sequence size and the card only has 1
         else if(successCounter < sequenceSize / 2)
         {
             if (this.GetComponent<Player>().playerType == PlayerType.Player)
@@ -118,6 +135,7 @@ public class QTEHandler : MonoBehaviour
                 RoundManagerLocal.Instance.compQTERating = CastRating.Fail;
             }
         }
+        //if the card has 3 options and they did not get a success or a failure then mark them as half success
         else
         {
             if (RoundManagerLocal.Instance.GetNextSpell(this.GetComponent<Player>().playerType).CardInSlot.CardData.ThreeOutcomes)
@@ -147,21 +165,26 @@ public class QTEHandler : MonoBehaviour
 
     private void SequenceGeneretor(int startingPos)
     {
+        //take in the qte value of the current card
         sequenceSize = RoundManagerLocal.Instance.GetNextSpell(this.GetComponent<Player>().playerType).CardInSlot.Difficulty;
 
+        //loop the number of times based on the sequence size
         for (int i = 0; i < sequenceSize; i++)
         {
+            //store buttons on a stack that will be the selected buttons for the challenge
             orderOfSequence.Push(QTEButtons[startingPos]);
+            //set that button to active as to start showing the sequence
             QTEButtons[startingPos].SetActive(true);
+            //up the list of buttons to store the next one
             startingPos++;
         }
+        //set the first button of the sequence with the stack
         currentBtn = orderOfSequence.Pop().GetComponent<QTEButton>();
+        //set the mode on to start tracking input
         QTEMode = true;
     }
 
-    private bool startTimer = false;
-    [SerializeField] private float remainingTime;
-    private bool ChallengeHasStarted = false;
+    
 
     private void ChallengeTimer()
     {
@@ -177,11 +200,16 @@ public class QTEHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This function resets any needed variables and finishes any info of the challenge QTE portion
+    /// </summary>
     private void ChallengeCompleted()
     {
+        //set the timer to 0 again
         remainingTime = 0;
+        //reset the timer start check
         startTimer = false;
-        ChallengeHasStarted = false;
+        //track each button and turn it off on the scene
         foreach (GameObject button in QTEButtons)
         {
             if (button.activeSelf == true)
@@ -190,7 +218,10 @@ public class QTEHandler : MonoBehaviour
             }
         }
 
+        //set and calculate the results of the challenge
         ResultsCalculation();
+
+        //set the speed values of the challenge for each player and set the round manager round properly
         if (this.GetComponent<Player>().playerType == PlayerType.Player)
         {
             RoundManagerLocal.Instance.SetCurrentPlayerOneQTESpeed(FinishedTime);

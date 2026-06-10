@@ -73,7 +73,7 @@ public class ControllerInputs : MonoBehaviour
 
         if(playerQTEHandler.QTEMode)
         {
-            playerQTEHandler.BtnCheckTest(playerInputHandler);
+            playerQTEHandler.ChallengeInputTracker(playerInputHandler);
         }
       
     }
