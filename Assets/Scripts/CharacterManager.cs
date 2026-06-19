@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
@@ -34,8 +35,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private GameObject _DragonModel;
     [SerializeField]
-    private Material _DragonMat;
-    private Vector4 _DragonOutline;
+    private Color _DragonColour;
     [SerializeField]
     private GameObject _DragonMap;
     [SerializeField, Tooltip("The Dragons characters cards")]
@@ -43,7 +43,7 @@ public class CharacterManager : MonoBehaviour
 
     //Getters for the Dragon
     public GameObject dragonModel { get => _DragonModel; }
-    public Vector4 dragonOutline { get => _DragonMat.GetVector("_OutlineColour"); }
+    public Vector4 dragonOutline { get => _DragonColour; }
     public GameObject dragonMap { get => _DragonMap; }
     public List<CardData> dragonCards { get => _DragonCards; }
 
@@ -52,8 +52,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private GameObject _DwarfModel;
     [SerializeField]
-    private Material _DwarfMat;
-    private Vector4 _DwarfOutline;
+    private Color _DwarfColour;
     [SerializeField]
     private GameObject _DwarfMap;
     [SerializeField, Tooltip("The Dwarf characters cards")]
@@ -61,16 +60,8 @@ public class CharacterManager : MonoBehaviour
 
     //Getters for the Dwarf
     public GameObject dwarfModel { get => _DwarfModel; }
-    public Vector4 dwarfOutline { get => _DwarfMat.GetVector("_OutlineColour"); }
+    public Vector4 dwarfOutline { get => _DwarfColour; }
     public GameObject dwarfMap { get => _DwarfMap; }
     public List<CardData> dwarfCards { get => _DwarfCards; }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-       _DragonOutline = _DragonMat.GetVector("_OutlineColour");
-       _DwarfOutline = _DwarfMat.GetVector("_OutlineColour");
-    }
-
     
 }

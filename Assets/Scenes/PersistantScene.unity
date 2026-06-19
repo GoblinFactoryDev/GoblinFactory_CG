@@ -186,7 +186,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 878685fba833bdc4c99658665d9f6b2a, type: 2}
   - {fileID: 11400000, guid: f4acc396cab907043801d3d6cb9ffb37, type: 2}
   _DragonModel: {fileID: 252789329068923658, guid: cb40a12ed9e68cf4fbf0e6be025deb8b, type: 3}
-  _DragonMat: {fileID: 2100000, guid: 128b426839344034f9db0a3ae802eab9, type: 2}
+  _DragonColour: {r: 1, g: 0.38975367, b: 0, a: 0}
   _DragonMap: {fileID: 2096391833262522856, guid: 164d91f772b8acf4b8f57c28443b1579, type: 3}
   _DragonCards:
   - {fileID: 11400000, guid: c383880beb04d23429a41c8d3a9ba5fc, type: 2}
@@ -194,7 +194,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 79cfff14c72535b4592cd9a59f045d78, type: 2}
   - {fileID: 11400000, guid: f0bf19bca2d1b074ead0e32b013556fa, type: 2}
   _DwarfModel: {fileID: 7823998490931162446, guid: 06768e607f9006e4193ae639e18f77fd, type: 3}
-  _DwarfMat: {fileID: 2100000, guid: 8e57883c0ca9a2142b57ecda33bf7c22, type: 2}
+  _DwarfColour: {r: 0, g: 0.98118925, b: 1, a: 0}
   _DwarfMap: {fileID: 2096391833262522856, guid: 164d91f772b8acf4b8f57c28443b1579, type: 3}
   _DwarfCards:
   - {fileID: 11400000, guid: bada761f7c00e3d4e8c3754497d2b33f, type: 2}
