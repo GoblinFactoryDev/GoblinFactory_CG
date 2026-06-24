@@ -60,7 +60,7 @@ Material:
     - _SaturateAmount: -4.42
     - _TextureAlpha: 0.3
     m_Colors:
-    - _OutlineColour: {r: 0, g: 0.98118925, b: 1, a: 0}
+    - _OutlineColour: {r: 1, g: 0.38975367, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &219282656539889177
