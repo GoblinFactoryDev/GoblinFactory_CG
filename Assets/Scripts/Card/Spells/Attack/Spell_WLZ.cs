@@ -23,6 +23,20 @@ public class Spell_WLZ : CardEffects
     #endregion
 
     /// <summary>
+    /// The Damage intager the spell uses
+    /// </summary>
+    [Header("Damage Amount")]
+    [SerializeField, Tooltip("Damage amount for Winter's Last Zephyr half")]
+    private int damageAMTHalf = 1;
+
+    /// <summary>
+    /// The Damage intager the spell uses
+    /// </summary>
+    [Header("Damage Amount")]
+    [SerializeField, Tooltip("Damage amount for Winter's Last Zephyr half")]
+    private int damageAMTFull = 2;
+
+    /// <summary>
     /// The Actual effect of the spell
     /// </summary>
     /// <param name="PlayerTarget">The Player being targeted</param>
@@ -30,7 +44,7 @@ public class Spell_WLZ : CardEffects
     /// <param name="castLevel">How well did they do on their QTE</param>
     public override void UseEffect(Player PlayerTarget, FingerTargetInfo FingerTarget, CastRating castLevel)
     {
-        // Do Winters Last Zephyr Iferno Logic here
+        #region Wyatt's late night rant (all wyatt, no one else)
         // Why do we live just to suffer?
         // Why do we exist?
         // What is the meaning of life?
@@ -54,5 +68,27 @@ public class Spell_WLZ : CardEffects
         // Whelp Im off to bed, goodnight everyone, and I hope you have a wonderful day tomorrow, and that you find some meaning in this comment, because I sure as hell didn't
         // From A Certain Friend
         // P.S I just relized I have mmispelled Zephyr the entire time so now I have to go back and fix that, wwwwwwwwwhhhhhhhyyyyyyyy
+        #endregion
+
+        // Do Winters Last Zephyr Iferno Logic here
+        switch (castLevel)
+        {
+            case CastRating.Fail:
+
+                PlayerTarget.DamageFinger(FingerTarget.whichHand, FingerTarget.whichFinger, PlayerTarget.playerHealth[(int)FingerTarget.whichHand, (int)FingerTarget.whichFinger]);
+                break;
+
+            case CastRating.Half:
+                PlayerTarget.DamageFinger(FingerTarget.whichHand, FingerTarget.whichFinger, PlayerTarget.playerHealth[(int)FingerTarget.whichHand, (int)FingerTarget.whichFinger]);
+
+                PlayerTarget.DamageMultipleFingers(FingerTarget.whichHand, FingerTarget.whichFinger, SpreadType.FromCenter, damageAMTHalf);
+                break;
+
+            case CastRating.Full:
+                PlayerTarget.DamageFinger(FingerTarget.whichHand, FingerTarget.whichFinger, PlayerTarget.playerHealth[(int)FingerTarget.whichHand, (int)FingerTarget.whichFinger]);
+
+                PlayerTarget.DamageMultipleFingers(FingerTarget.whichHand, FingerTarget.whichFinger, SpreadType.FromCenter, damageAMTFull);
+                break;
+        }
     }
 }

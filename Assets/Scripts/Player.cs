@@ -307,6 +307,202 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    //wyatt might be able to see this?
+    #region Heal Multiple Finger Function
+    /// <summary>
+    ///  Damages multiple fingers on a specified hand starting from a given finger type, 
+    ///  using a spread type to determine the damage spread from the origin finger.
+    /// </summary>
+    /// <param name="whatHand">The Targeted Hand</param>
+    /// <param name="whatStartingFinger">The origin finger</param>
+    /// <param name="whatSpreadType">How the damage will spread out from the origin finger</param>
+    /// <param name="healAmt1">The damage done to the origin finger</param>
+    /// <param name="healAmt2">The damage done to the second finger</param>
+    /// <param name="healAmt3">The damage done to the third finger</param>
+    /// <param name="healAmt4">The damage done to the fourth finger</param>
+    /// <param name="healAmt5">The damage done to the fifth finger</param>
+    public void HealMultipleFingers(HandType whatHand, FingerType whatStartingFinger,
+        SpreadType whatSpreadType, int healAmt1 = 0, int healAmt2 = 0, int healAmt3 = 0, int healAmt4 = 0, int healAmt5 = 0)
+    {
+        HealFinger(whatHand, whatStartingFinger, healAmt1);
+        if (whatSpreadType == SpreadType.GoRight)
+        {
+            #region Go Right Spread Code
+            if (whatHand == HandType.Left)
+            {
+                switch (whatStartingFinger)
+                {
+                    case FingerType.Index:
+                        HealFinger(whatHand, FingerType.Thumb, healAmt2);
+                        break;
+                    case FingerType.Middle:
+                        HealFinger(whatHand, FingerType.Index, healAmt2);
+                        HealFinger(whatHand, FingerType.Thumb, healAmt3);
+                        break;
+                    case FingerType.Ring:
+                        HealFinger(whatHand, FingerType.Middle, healAmt2);
+                        HealFinger(whatHand, FingerType.Index, healAmt3);
+                        HealFinger(whatHand, FingerType.Thumb, healAmt4);
+                        break;
+                    case FingerType.Pinky:
+                        HealFinger(whatHand, FingerType.Ring, healAmt2);
+                        HealFinger(whatHand, FingerType.Middle, healAmt3);
+                        HealFinger(whatHand, FingerType.Index, healAmt4);
+                        HealFinger(whatHand, FingerType.Thumb, healAmt5);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (whatHand == HandType.Right)
+            {
+                switch (whatStartingFinger)
+                {
+                    case FingerType.Thumb:
+                        HealFinger(whatHand, FingerType.Index, healAmt2);
+                        HealFinger(whatHand, FingerType.Middle, healAmt3);
+                        HealFinger(whatHand, FingerType.Ring, healAmt4);
+                        HealFinger(whatHand, FingerType.Pinky, healAmt5);
+                        break;
+                    case FingerType.Index:
+                        HealFinger(whatHand, FingerType.Middle, healAmt2);
+                        HealFinger(whatHand, FingerType.Ring, healAmt3);
+                        HealFinger(whatHand, FingerType.Pinky, healAmt4);
+                        break;
+                    case FingerType.Middle:
+                        HealFinger(whatHand, FingerType.Ring, healAmt2);
+                        HealFinger(whatHand, FingerType.Pinky, healAmt3);
+                        break;
+                    case FingerType.Ring:
+                        HealFinger(whatHand, FingerType.Pinky, healAmt2);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            #endregion
+        }
+        else if (whatSpreadType == SpreadType.GoLeft)
+        {
+            #region Go Left Spread Code
+            if (whatHand == HandType.Left)
+            {
+                switch (whatStartingFinger)
+                {
+                    case FingerType.Thumb:
+                        HealFinger(whatHand, FingerType.Index, healAmt2);
+                        HealFinger(whatHand, FingerType.Middle, healAmt3);
+                        HealFinger(whatHand, FingerType.Ring, healAmt4);
+                        HealFinger(whatHand, FingerType.Pinky, healAmt5);
+                        break;
+                    case FingerType.Index:
+                        HealFinger(whatHand, FingerType.Middle, healAmt2);
+                        HealFinger(whatHand, FingerType.Ring, healAmt3);
+                        HealFinger(whatHand, FingerType.Pinky, healAmt4);
+                        break;
+                    case FingerType.Middle:
+                        HealFinger(whatHand, FingerType.Ring, healAmt2);
+                        HealFinger(whatHand, FingerType.Pinky, healAmt3);
+                        break;
+                    case FingerType.Ring:
+                        HealFinger(whatHand, FingerType.Pinky, healAmt2);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (whatHand == HandType.Right)
+            {
+                switch (whatStartingFinger)
+                {
+                    case FingerType.Index:
+                        HealFinger(whatHand, FingerType.Thumb, healAmt2);
+                        break;
+                    case FingerType.Middle:
+                        HealFinger(whatHand, FingerType.Index, healAmt2);
+                        HealFinger(whatHand, FingerType.Thumb, healAmt3);
+                        break;
+                    case FingerType.Ring:
+                        HealFinger(whatHand, FingerType.Middle, healAmt2);
+                        HealFinger(whatHand, FingerType.Index, healAmt3);
+                        HealFinger(whatHand, FingerType.Pinky, healAmt4);
+                        break;
+                    case FingerType.Pinky:
+                        HealFinger(whatHand, FingerType.Ring, healAmt2);
+                        HealFinger(whatHand, FingerType.Middle, healAmt3);
+                        HealFinger(whatHand, FingerType.Index, healAmt4);
+                        HealFinger(whatHand, FingerType.Thumb, healAmt5);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            #endregion
+        }
+        else if (whatSpreadType == SpreadType.FromCenter)
+        {
+            #region Go From Center Spread Code
+            switch (whatStartingFinger)
+            {
+                case FingerType.Thumb:
+                    //2nd Damage done
+                    HealFinger(whatHand, FingerType.Index, healAmt2);
+                    //3rd Damage done
+                    HealFinger(whatHand, FingerType.Middle, healAmt3);
+                    //4th Damage done
+                    HealFinger(whatHand, FingerType.Ring, healAmt4);
+                    //5th Damage done
+                    HealFinger(whatHand, FingerType.Pinky, healAmt4);
+                    break;
+                case FingerType.Index:
+                    //2nd Damage done
+                    HealFinger(whatHand, FingerType.Thumb, healAmt2);
+                    HealFinger(whatHand, FingerType.Middle, healAmt2);
+                    //3rd Damage done
+                    HealFinger(whatHand, FingerType.Ring, healAmt3);
+                    //4th Damage done
+                    HealFinger(whatHand, FingerType.Pinky, healAmt4);
+                    break;
+                case FingerType.Middle:
+                    //2nd Damage done
+                    HealFinger(whatHand, FingerType.Index, healAmt2);
+                    HealFinger(whatHand, FingerType.Ring, healAmt2);
+                    //3nd Damage done
+                    HealFinger(whatHand, FingerType.Pinky, healAmt3);
+                    HealFinger(whatHand, FingerType.Thumb, healAmt3);
+                    break;
+                case FingerType.Ring:
+                    //2nd Damage done
+                    HealFinger(whatHand, FingerType.Middle, healAmt2);
+                    HealFinger(whatHand, FingerType.Pinky, healAmt2);
+                    //3nd Damage done
+                    HealFinger(whatHand, FingerType.Index, healAmt3);
+                    //4th Damage done
+                    HealFinger(whatHand, FingerType.Thumb, healAmt4);
+                    break;
+                case FingerType.Pinky:
+                    //2nd Damage done
+                    HealFinger(whatHand, FingerType.Ring, healAmt2);
+                    //3nd Damage done
+                    HealFinger(whatHand, FingerType.Middle, healAmt3);
+                    //4th Damage done
+                    HealFinger(whatHand, FingerType.Index, healAmt4);
+                    //5th Damage done
+                    HealFinger(whatHand, FingerType.Thumb, healAmt4);
+                    break;
+                default:
+                    break;
+            }
+            #endregion
+        }
+        else
+        {
+            Debug.LogError("Invalid Spread Type");
+            return;
+        }
+    }
+    #endregion
+
     /// <summary>
     /// Gets the total health of the player by summing up the health of all fingers across both hands.
     /// </summary>
