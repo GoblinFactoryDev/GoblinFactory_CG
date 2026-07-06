@@ -3230,6 +3230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a39b90f91eea08448422018dcfc8b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healingAMT: 1
 --- !u!114 &2136269691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3256,6 +3257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a6bf80eeaf5b44eac03f92a421ba6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAMTHalf: 1
+  damageAMTFull: 2
 --- !u!114 &2136269693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3268,6 +3271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e5c9115aa1b4b4b98c969d70f06c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAMTHalf: 1
+  damageAMTFull: 2
 --- !u!114 &2136269694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3280,6 +3285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8dd9fba95a2b9f40926508f687f4cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAMTHalf: 1
+  damageAMTFull: 2
 --- !u!114 &2136269695
 MonoBehaviour:
   m_ObjectHideFlags: 0
