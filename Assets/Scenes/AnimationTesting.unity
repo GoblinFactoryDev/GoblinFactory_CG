@@ -1375,6 +1375,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1525815534833469656, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3543259194692456526, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672631351179809956, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672631351179809956, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672631351179809956, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672631351179809956, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672631351179809956, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672631351179809956, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672631351179809956, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672631351179809956, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3854561498290134571, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
       propertyPath: m_Name
       value: PlayerHandsContainer
