@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
 
     public void Start()
     {
+        GameManager.Instance.GatherPlayers();
         InitPlayer();
     }
 

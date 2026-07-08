@@ -26,7 +26,7 @@ public class DealStatsState : FSMState
     //Reason
     public override void Reason()
     {
-        if (RoundManagerLocal.Instance.PlayerState == RoundStates.RoundEffects)
+        if (RoundManagerLocal.Instance.PlayerState == RoundStates.RoundEffects && RoundManagerLocal.Instance.ComputerState == RoundStates.RoundEffects)
         {
            playerState.PerformTransition(Transition.StatsDealt);
         }

@@ -23,7 +23,9 @@ public class QteState : FSMState
     public override void EnterStateInit()
     {
         compFiguredQTE = false;
-        playerState.player.GetComponent<QTEHandler>().createSequence = true;
+
+        if (playerState.player.playerType == PlayerType.Player)
+           playerState.player.GetComponent<QTEHandler>().createSequence = true;
     }
 
     //Reason
@@ -36,7 +38,7 @@ public class QteState : FSMState
                 playerState.PerformTransition(Transition.QteEnd);
             }
         }
-        else
+        else ///// LOOK HERE WYATT THIS IS WHERE ITS FUCVKING UP MAYBE IT MIGHT ALSO BE IN ROUND MANAGER LOCAL
         {
             if (RoundManagerLocal.Instance.ComputerState == RoundStates.ConfiguringSpells)
             {
