@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
@@ -510,6 +511,31 @@ public class Player : MonoBehaviour
     public void GetHealth()
     {
         playerHealthTotal = playerHealth.totalHealth;
+    }
+
+    /// <summary>
+    /// Gets the total number of base fingers (NOT BONE SEGMENTS)
+    /// </summary>
+    public int GetNumberOfFingers()
+    {
+        int numberOfFingers = 0;
+
+        foreach(BoneHand hand in hands)
+        {
+
+            numberOfFingers += hand.BoneFingers.Count;
+        }
+
+        if(numberOfFingers > 0)
+        {
+            return numberOfFingers;
+        }
+        else
+        {
+            Debug.LogWarning("Player not returning number of fingers, Check player hand list");
+            return 0;
+        }
+        
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
