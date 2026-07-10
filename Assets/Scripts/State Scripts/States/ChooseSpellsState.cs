@@ -24,6 +24,11 @@ public class ChooseSpellState : FSMState
     {
         spellsChosen = false;
         playerState.player.playerCardHand.HaveMovedToDeck = false;
+
+        if (playerState.player.playerType == PlayerType.Player)
+        {
+            RoundManagerLocal.Instance.readyToMoveOn = false;
+        }
     }
 
     //Reason
@@ -60,7 +65,7 @@ public class ChooseSpellState : FSMState
 
             // We are ready to move on to the next state
             if (RoundManagerLocal.Instance.readyToMoveOn)
-            {
+           {
                 // Add the chosen spells to the Round Manager's list of chosen spells for this round, and mark the slots as no longer in use
                 // We add the spells in reverse order to ensure the correct order of spell effects during the round
                 // This also removes all the hassel with slots that technicly dont have a card in them but are still marked as in use because
@@ -74,12 +79,6 @@ public class ChooseSpellState : FSMState
                     }
                 }
 
-
-                if (playerState.player.playerType == PlayerType.Player)
-                {
-                    RoundManagerLocal.Instance.readyToMoveOn = false;
-                }
-
                 playerState.player.playerControllerInputs.SetConfirmSelection(false);
 
                 foreach (Card card in playerState.chosenRoundCards.selectedCards)
@@ -91,7 +90,7 @@ public class ChooseSpellState : FSMState
 
                 playerState.PerformTransition(Transition.SpellsChosen);
             }
-        }
+       }
     }
     //Act
     public override void Act()
