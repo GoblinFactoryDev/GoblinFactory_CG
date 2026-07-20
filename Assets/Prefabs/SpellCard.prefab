@@ -916,6 +916,7 @@ GameObject:
   - component: {fileID: 1814645283739233832}
   - component: {fileID: 4764647242742808074}
   - component: {fileID: 7368189734667065832}
+  - component: {fileID: 5793907390353745031}
   m_Layer: 0
   m_Name: SpellCard
   m_TagString: Untagged
@@ -971,6 +972,7 @@ MonoBehaviour:
   nameText: {fileID: 7862289117733777310}
   descText: {fileID: 3516731358819082717}
   iconImage: {fileID: 3951814334493723693}
+  largeIconImage: {fileID: 4644076936823014110}
   costText: {fileID: 1841279119323270154}
   difficultyText: {fileID: 5611606471985667057}
   cost1: {fileID: 884088998530640807}
@@ -1003,8 +1005,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detailedMode: 1
+  dividerAnimator: {fileID: 5049586013710451944}
   detailsDisplayGO: {fileID: 1518874641428283382}
   LargeIconGO: {fileID: 8151703288807802778}
+--- !u!65 &5793907390353745031
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440476782725589420}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08135454, y: 0.12679885, z: 0.013869392}
+  m_Center: {x: 0.0012946203, y: -0.0023239758, z: -0.00013585482}
 --- !u!1 &8077770506760653828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,7 +1142,7 @@ RectTransform:
   m_GameObject: {fileID: 8151703288807802778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3046749, y: 1.8638366, z: 2.3046749}
+  m_LocalScale: {x: 2.9376469, y: 2.3757339, z: 2.9376469}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7592171188769779664}
@@ -1622,7 +1646,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: -6486255463087813598, guid: 325114825199ab84e995a5f49f6ba2b8, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1226629564589501110, guid: 325114825199ab84e995a5f49f6ba2b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5049586013710451944}
   m_SourcePrefab: {fileID: 100100000, guid: 325114825199ab84e995a5f49f6ba2b8, type: 3}
 --- !u!23 &2190419040332004558 stripped
 MeshRenderer:
@@ -1634,6 +1661,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 325114825199ab84e995a5f49f6ba2b8, type: 3}
   m_PrefabInstance: {fileID: 3195688401458811135}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4421550480750066249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1226629564589501110, guid: 325114825199ab84e995a5f49f6ba2b8, type: 3}
+  m_PrefabInstance: {fileID: 3195688401458811135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5049586013710451944
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421550480750066249}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 47aaf453f55cb84478bcff68a42e3fc9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7755431014325325019 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5186333407841442852, guid: 325114825199ab84e995a5f49f6ba2b8, type: 3}

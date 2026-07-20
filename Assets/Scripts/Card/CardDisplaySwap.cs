@@ -5,6 +5,7 @@
 //  Instance:       No
 //-----------------------------------------------------------------
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -17,6 +18,9 @@ public class CardDisplaySwap : MonoBehaviour
     //====================================
     [SerializeField]
     bool detailedMode; //To determine what should be shown to the player
+
+    [SerializeField]
+    Animator dividerAnimator;
 
     //The game object containing all the canvas components for the detailed version of the card
     [SerializeField]
@@ -32,6 +36,7 @@ public class CardDisplaySwap : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        dividerAnimator.SetBool("CardDetailMode", detailedMode);
         determineDisplayDetails(detailedMode);
     }
 
@@ -39,6 +44,15 @@ public class CardDisplaySwap : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnMouseDown()
+    {
+        detailedMode = !detailedMode;
+
+        dividerAnimator.SetBool("CardDetailMode", detailedMode);
+        determineDisplayDetails(detailedMode);
+
     }
 
     public void determineDisplayDetails(bool detailedMode)

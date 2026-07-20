@@ -24,6 +24,7 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text descText;
 
     public Image iconImage;
+    public Image largeIconImage;
 
     public TMP_Text costText;
     public TMP_Text difficultyText;
@@ -38,6 +39,7 @@ public class CardDisplay : MonoBehaviour
         _card = GetComponent<Card>();
         nameText.text = _card.Title;
         iconImage.sprite = _card.Icon;
+        largeIconImage.sprite = iconImage.sprite;
         difficultyText.text = _card.Difficulty.ToString();
         descText.text = _card.Description;
         SetUpCost(_card.Cost);
