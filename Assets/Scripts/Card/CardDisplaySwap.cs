@@ -36,26 +36,25 @@ public class CardDisplaySwap : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        dividerAnimator.SetBool("CardDetailMode", detailedMode);
-        determineDisplayDetails(detailedMode);
-    }
+        //So you don't see the transition jump at the start between the two animations
+        dividerAnimator.Play(detailedMode ? "CardDividerCenter" : "CardDividerDown", 0, 1.0f);
+        dividerAnimator.Update(0f);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        dividerAnimator.SetBool("CardDetailMode", detailedMode);
+        DetermineDisplayDetails(detailedMode);
     }
 
     private void OnMouseDown()
     {
+        //Update the look of the card based if its in detail mode or not when clicked
         detailedMode = !detailedMode;
 
         dividerAnimator.SetBool("CardDetailMode", detailedMode);
-        determineDisplayDetails(detailedMode);
+        DetermineDisplayDetails(detailedMode);
 
     }
 
-    public void determineDisplayDetails(bool detailedMode)
+    public void DetermineDisplayDetails(bool detailedMode)
     {
         switch (detailedMode)
         {
