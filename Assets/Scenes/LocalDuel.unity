@@ -3029,6 +3029,7 @@ GameObject:
   - component: {fileID: 1469524664}
   - component: {fileID: 1469524662}
   - component: {fileID: 1469524663}
+  - component: {fileID: 1469524665}
   m_Layer: 0
   m_Name: Stack_NoShader
   m_TagString: Untagged
@@ -3069,7 +3070,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 58.5
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -3146,6 +3147,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1654726752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1469524665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469524661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6bd853c4191868449c6e9cd8b11528e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1654726751}
+  overlayCamera: {fileID: 1469524662}
 --- !u!1 &1493175834 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 409407532562948492, guid: 1e4f22b0e89800c46ae9ffc0f96b103e, type: 3}
@@ -3443,7 +3458,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 1469524662}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
