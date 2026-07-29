@@ -46,11 +46,8 @@ public class CardDisplaySwap : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //Update the look of the card based if its in detail mode or not when clicked
-        detailedMode = !detailedMode;
 
-        dividerAnimator.SetBool("CardDetailMode", detailedMode);
-        DetermineDisplayDetails(detailedMode);
+        UpdateCardLook();
 
     }
 
@@ -70,6 +67,14 @@ public class CardDisplaySwap : MonoBehaviour
                 detailsDisplayGO.SetActive(false);
                 break;
         }
+    }
 
+    public void UpdateCardLook()
+    {
+        //Update the look of the card based if its in detail mode or not when clicked
+        detailedMode = !detailedMode;
+
+        dividerAnimator.SetBool("CardDetailMode", detailedMode);
+        DetermineDisplayDetails(detailedMode);
     }
 }
