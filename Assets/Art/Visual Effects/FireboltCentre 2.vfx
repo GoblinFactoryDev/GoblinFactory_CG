@@ -319,7 +319,7 @@ MonoBehaviour:
   - {fileID: 8926484042661617009}
   - {fileID: 8926484042661617113}
   dataType: 0
-  capacity: 50
+  capacity: 15
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
@@ -3614,7 +3614,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.5914241671562195,"value":0.6617335081100464,"inTangent":-0.7964483499526978,"outTangent":-0.7964483499526978,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false},{"time":1.1521133184432984,"value":0.21517354249954225,"inTangent":-0.7964483499526978,"outTangent":-0.7964483499526978,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.593758761882782,"value":0.43632686138153078,"inTangent":-0.3960804343223572,"outTangent":-0.3960804343223572,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false},{"time":1.1521133184432984,"value":0.21517354249954225,"inTangent":-0.3960804343223572,"outTangent":-0.3960804343223572,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: -1
   m_Property:
     name: Size
