@@ -99,7 +99,10 @@ public class ChooseSpellState : FSMState
         ///////////////////////////////////////////////////////////////////
         if (playerState.player.playerType == PlayerType.AI && !spellsChosen)
         {
+            //this is how we test stuff the ai will always choose the first spell in its hand and play it with the right pinky finger
             playerState.player.playerCardHand.computerChooseSpell(0);
+            playerState.player.playerSlotHandler.playableSlots[0].fingerTargetInfo.whichHand = HandType.Right;
+            playerState.player.playerSlotHandler.playableSlots[0].fingerTargetInfo.whichFinger = FingerType.Pinky;
             spellsChosen = true;
         }
     }

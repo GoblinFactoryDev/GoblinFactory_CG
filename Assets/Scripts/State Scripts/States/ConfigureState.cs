@@ -39,11 +39,6 @@ public class ConfigureState : FSMState
             {
                 playerState.PerformTransition(Transition.CastingSpell);
             }
-            else if (!RoundManagerLocal.Instance.firstPlayer1QTEDone)
-            {
-                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
-                playerState.PerformTransition(Transition.QteStart);
-            }
         }
         // This is where the computer and the online player does there stuff
         else
@@ -55,11 +50,6 @@ public class ConfigureState : FSMState
             else if (RoundManagerLocal.Instance.ComputerState == RoundStates.PlayerIsCasting)
             {
                 playerState.PerformTransition(Transition.CastingSpell);
-            }
-            else if (!RoundManagerLocal.Instance.firstComputerQTEDone)
-            {
-                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
-                playerState.PerformTransition(Transition.QteStart);
             }
         }
         

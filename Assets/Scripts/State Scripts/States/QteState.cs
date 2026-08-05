@@ -38,7 +38,7 @@ public class QteState : FSMState
                 playerState.PerformTransition(Transition.QteEnd);
             }
         }
-        else ///// LOOK HERE WYATT THIS IS WHERE ITS FUCVKING UP MAYBE IT MIGHT ALSO BE IN ROUND MANAGER LOCAL
+        else
         {
             if (RoundManagerLocal.Instance.ComputerState == RoundStates.ConfiguringSpells)
             {
@@ -58,7 +58,7 @@ public class QteState : FSMState
         //this is for testing
         if(playerState.player.playerType == PlayerType.AI && compFiguredQTE == false)
         {
-            RoundManagerLocal.Instance.SetCurrentPlayerTwoQTESpeed(2);
+            RoundManagerLocal.Instance.SetCurrentPlayerTwoQTESpeed(888);
             RoundManagerLocal.Instance.compQTERating = CastRating.Full;
             RoundManagerLocal.Instance.compHasDoneQTE = true;
             compFiguredQTE = true;

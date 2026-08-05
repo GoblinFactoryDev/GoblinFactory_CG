@@ -237,7 +237,7 @@ public class RoundManagerLocal : MonoBehaviour
                 ComputerState = RoundStates.DealingStats;
             }
         }
-        else if (playerReady && configStatesTime == true)
+        if (playerReady && configStatesTime == true)
         {
             // The local player is either getting sent to do there QTE or is being sent to cast there spell
             if (PlayerState == RoundStates.ConfiguringSpells)
@@ -268,7 +268,7 @@ public class RoundManagerLocal : MonoBehaviour
             }
         }
         // 
-        else if (computerReady && configStatesTime == true)
+        if (computerReady && configStatesTime == true)
         {
             // The computer or online player is either getting sent to do there QTE or is being sent to cast there spell
             if (ComputerState == RoundStates.ConfiguringSpells)
@@ -318,11 +318,11 @@ public class RoundManagerLocal : MonoBehaviour
         {
             if (playerOneSpeed < playerTwoSpeed)
             {
-                return PlayerType.AI;
+                return PlayerType.Player;
             }
             else if (playerTwoSpeed < playerOneSpeed)
             {
-                return PlayerType.Player;
+                return PlayerType.AI;
             }
             else //tie
             {
