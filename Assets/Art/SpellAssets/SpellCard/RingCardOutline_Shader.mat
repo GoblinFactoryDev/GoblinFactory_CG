@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RingCastingCircle_Shader
-  m_Shader: {fileID: -6465566751694194690, guid: e71e53f275b54114babbbcafda36df75, type: 3}
+  m_Name: RingCardOutline_Shader
+  m_Shader: {fileID: -6465566751694194690, guid: 5bcebbe16f0825a45bc728f620abd3fb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,22 +24,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _CircleTexture:
-        m_Texture: {fileID: 2800000, guid: 2f523e6b3e2213f4482c72d68ab27102, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_12f5235d01d54f7fb0be44a73c99be4d_Out_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 20de9a5d69896954790df385d2886f19, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_5b5a472d90424e2898e7f225f8050a54_Out_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 54d33c933b0bd554ebfc2e1bd6becef1, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_b3c2707c7bc34d1bbe0e1578617aef51_Out_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: ca78a01fc8ca8654e9002d4cce1fe0d2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -54,15 +38,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 3.36
+    - _Brightness: 60
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _CircleColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.27302456, g: 0, b: 1, a: 0}
+    - _Color: {r: 0.26713127, g: 0.053266283, b: 0.5377358, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &1639858841909777877
+--- !u!114 &7558057430423928539
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
