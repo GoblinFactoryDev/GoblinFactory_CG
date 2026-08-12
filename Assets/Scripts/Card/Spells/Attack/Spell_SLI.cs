@@ -55,13 +55,13 @@ public class Spell_SLI : CardEffects
             case CastRating.Half:
                 PlayerTarget.DamageFinger(FingerTarget.whichHand, FingerTarget.whichFinger, PlayerTarget.playerHealth[(int)FingerTarget.whichHand, (int)FingerTarget.whichFinger]);
 
-                PlayerTarget.DamageMultipleFingers(FingerTarget.whichHand, FingerTarget.whichFinger, SpreadType.FromCenter, damageAMTHalf);
+                PlayerTarget.DamageMultipleFingers(FingerTarget.whichHand, FingerTarget.whichFinger, SpreadType.FromCenter, PlayerTarget.playerHealth[(int)FingerTarget.whichHand, (int)FingerTarget.whichFinger], damageAMTHalf);
                 break;
 
             case CastRating.Full:
                 PlayerTarget.DamageFinger(FingerTarget.whichHand, FingerTarget.whichFinger, PlayerTarget.playerHealth[(int)FingerTarget.whichHand, (int)FingerTarget.whichFinger]);
 
-                PlayerTarget.DamageMultipleFingers(FingerTarget.whichHand, FingerTarget.whichFinger, SpreadType.FromCenter, damageAMTFull);
+                PlayerTarget.DamageMultipleFingers(FingerTarget.whichHand, FingerTarget.whichFinger, SpreadType.FromCenter, PlayerTarget.playerHealth[(int)FingerTarget.whichHand, (int)FingerTarget.whichFinger], damageAMTFull);
                 break;
         }
     }
