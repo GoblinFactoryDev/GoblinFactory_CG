@@ -50,7 +50,7 @@ public class QTEHandler : MonoBehaviour
     {
         if(createSequence)
         {
-            SequenceGeneretor(5);
+            SequenceGeneretor(0);
             createSequence = false;
             startTimer = true;
         }

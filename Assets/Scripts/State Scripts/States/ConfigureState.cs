@@ -39,6 +39,10 @@ public class ConfigureState : FSMState
             {
                 playerState.PerformTransition(Transition.CastingSpell);
             }
+            else if (RoundManagerLocal.Instance.PlayerState == RoundStates.DealingStats)
+            {
+                playerState.PerformTransition(Transition.dealingStats);
+            }
         }
         // This is where the computer and the online player does there stuff
         else
@@ -50,6 +54,10 @@ public class ConfigureState : FSMState
             else if (RoundManagerLocal.Instance.ComputerState == RoundStates.PlayerIsCasting)
             {
                 playerState.PerformTransition(Transition.CastingSpell);
+            }
+            else if (RoundManagerLocal.Instance.ComputerState == RoundStates.DealingStats)
+            {
+                playerState.PerformTransition(Transition.dealingStats);
             }
         }
         

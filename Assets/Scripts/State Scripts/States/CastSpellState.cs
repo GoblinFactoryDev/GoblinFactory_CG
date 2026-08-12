@@ -12,12 +12,18 @@ using UnityEngine.InputSystem.EnhancedTouch;
 public class CastSpellState : FSMState
 {
     PlayerState playerState;
+    bool castedSpell = false;
 
     //Constructor
     public CastSpellState(PlayerState ps)
     {
         playerState = ps;
         stateID = FSMStateID.CastSpell;
+    }
+
+    public override void EnterStateInit()
+    {
+        castedSpell = false;
     }
 
     //Reason
@@ -47,42 +53,52 @@ public class CastSpellState : FSMState
         // This is where the local Player does there stuff
         if (playerState.player.playerType == PlayerType.Player)
         {
-            Card currentCard = RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).CardInSlot;
-
-            // This is where the spell effect will be called, the spell will need to be casted on the proper target (self or Opponent) and the proper QTE rating will need to be passed in
-            if (currentCard.TargetSelf)
+            if (castedSpell == false)
             {
-                currentCard.Cast(playerState.player, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo, RoundManagerLocal.Instance.player1QTERating);
-            }
-            else
-            {
-                currentCard.Cast(playerState.player.opponent, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo, RoundManagerLocal.Instance.player1QTERating);
-            }
+                castedSpell = true;
+                Card currentCard = RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).CardInSlot;
 
-            // Remove card from playerchosen spells
+                // This is where the spell effect will be called, the spell will need to be casted on the proper target (self or Opponent) and the proper QTE rating will need to be passed in
+                if (currentCard.TargetSelf)
+                {
+                    currentCard.Cast(playerState.player, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo, RoundManagerLocal.Instance.player1QTERating);
+                }
+                else
+                {
+                    currentCard.Cast(playerState.player.opponent, RoundManagerLocal.Instance.GetNextSpell(PlayerType.Player).fingerTargetInfo, RoundManagerLocal.Instance.player1QTERating);
+                }
 
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
+                // Remove card from playerchosen spells
+                RoundManagerLocal.Instance.RemoveTopChosenSpell(PlayerType.Player);
+
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
+            }
         }
         // This is where the computer and the online player does there stuff
         else
         {
-            Card currentCard = RoundManagerLocal.Instance.GetNextSpell(PlayerType.AI).CardInSlot;
-
-            // This is where the spell effect will be called, the spell will need to be casted on the proper target (self or Opponent) and the proper QTE rating will need to be passed in
-            if (currentCard.TargetSelf)
+            if (castedSpell == false)
             {
-                currentCard.Cast(playerState.player, RoundManagerLocal.Instance.GetNextSpell(PlayerType.AI).fingerTargetInfo, RoundManagerLocal.Instance.compQTERating);
-            }
-            else
-            {
-                currentCard.Cast(playerState.player.opponent, RoundManagerLocal.Instance.GetNextSpell(PlayerType.AI).fingerTargetInfo, RoundManagerLocal.Instance.compQTERating);
-            }
+                castedSpell = true;
+                Card currentCard = RoundManagerLocal.Instance.GetNextSpell(PlayerType.AI).CardInSlot;
 
-            // Remove card from playerchosen spells
+                // This is where the spell effect will be called, the spell will need to be casted on the proper target (self or Opponent) and the proper QTE rating will need to be passed in
+                if (currentCard.TargetSelf)
+                {
+                    currentCard.Cast(playerState.player, RoundManagerLocal.Instance.GetNextSpell(PlayerType.AI).fingerTargetInfo, RoundManagerLocal.Instance.compQTERating);
+                }
+                else
+                {
+                    currentCard.Cast(playerState.player.opponent, RoundManagerLocal.Instance.GetNextSpell(PlayerType.AI).fingerTargetInfo, RoundManagerLocal.Instance.compQTERating);
+                }
 
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+                // Remove card from Ai chosen spells
+                RoundManagerLocal.Instance.RemoveTopChosenSpell(PlayerType.AI);
+
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+            }
         }
     }
 }

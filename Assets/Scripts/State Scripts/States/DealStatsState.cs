@@ -23,6 +23,13 @@ public class DealStatsState : FSMState
         cardHandRef = ps.player.playerCardHand;
     }
 
+    
+    public override void EnterStateInit()
+    {
+        // Remove the cards from the hand and move them back to the deck here seb ////////////////////////////////////////////////////////////////////////////////
+        playerState.player.playerCardHand.MoveCardsBackToHand();
+    }
+
     //Reason
     public override void Reason()
     {

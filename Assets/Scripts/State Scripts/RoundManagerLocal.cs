@@ -240,7 +240,7 @@ public class RoundManagerLocal : MonoBehaviour
         if (playerReady && configStatesTime == true)
         {
             // The local player is either getting sent to do there QTE or is being sent to cast there spell
-            if (PlayerState == RoundStates.ConfiguringSpells)
+            if (PlayerState == RoundStates.ConfiguringSpells && player1ChosenSpells.Count > 0)
             {
                 playerReady = false;
                 // Local Player is being sent to do there QTE
@@ -271,7 +271,7 @@ public class RoundManagerLocal : MonoBehaviour
         if (computerReady && configStatesTime == true)
         {
             // The computer or online player is either getting sent to do there QTE or is being sent to cast there spell
-            if (ComputerState == RoundStates.ConfiguringSpells)
+            if (ComputerState == RoundStates.ConfiguringSpells && compChosenSpells.Count > 0)
             {
                 computerReady = false;
                 // Computer or Online Player is being sent to do there QTE
