@@ -952,6 +952,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2963329273088542113, guid: 45a6bdff605e4a148885a5227699a092, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440476782725589420, guid: 45a6bdff605e4a148885a5227699a092, type: 3}
       propertyPath: m_Name
       value: SpellCard (2)
