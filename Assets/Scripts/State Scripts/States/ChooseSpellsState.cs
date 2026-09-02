@@ -25,20 +25,51 @@ public class ChooseSpellState : FSMState
         spellsChosen = false;
         playerState.player.playerCardHand.HaveMovedToDeck = false;
 
-        if (playerState.player.playerType == PlayerType.Player)
+        if (playerState.player.playerType == PlayerType.AI)
         {
-            RoundManagerLocal.Instance.readyToMoveOn = false;
+            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, false);
+            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, false);
         }
     }
 
     //Reason
     public override void Reason()
     {
+        if (RoundManagerLocal.Instance.PlayersAreReady)
+        {
+            // Add the chosen spells to the Round Manager's list of chosen spells for this round, and mark the slots as no longer in use
+            // We add the spells in reverse order to ensure the correct order of spell effects during the round
+            // This also removes all the hassel with slots that technicly dont have a card in them but are still marked as in use because
+            // they are part of a multi slot card, We just check if the slot has a card in it, if it does, we add it to the list of chosen spells,
+            // if not, we skip it
+            for (int i = playerState.player.playerSlotHandler.playableSlots.Count - 1; i >= 0; i--)
+            {
+                if (playerState.player.playerSlotHandler.playableSlots[i].IsInUse && playerState.player.playerSlotHandler.playableSlots[i].whereCard.hasTheCard)
+                {
+                    RoundManagerLocal.Instance.AddToChosenSpells(playerState.player.playerType, playerState.player.playerSlotHandler.playableSlots[i]);
+                }
+            }
+
+            playerState.player.playerControllerInputs.SetConfirmSelection(false);
+
+            foreach (Card card in playerState.chosenRoundCards.selectedCards)
+            {
+                playerState.player.playerCardHand.RemoveCardInHand(card);
+            }
+            playerState.player.playerCardHand._currentSlotIndex = 0;
+            playerState.player.playerCardHand.CardIndexSet(0);
+
+            RoundManagerLocal.Instance.NextState(playerState.player.playerType, false, false);
+            playerState.PerformTransition(Transition.SpellsChosen);
+        }
+    }
+    //Act
+    public override void Act()
+    {
+
         if (playerState.player.playerControllerInputs.GetConfirmSelection || spellsChosen)
         {
-            
             playerState.chosenRoundCards.selectedCards = playerState.player.playerCardHand.SlotsInUse;
-            // Add Finger choosing here
             if (playerState.player.playerType == PlayerType.Player)
                 RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
             else if (playerState.player.playerType == PlayerType.AI)
@@ -62,39 +93,8 @@ public class ChooseSpellState : FSMState
                     }
                 }
             }
+        }
 
-            // We are ready to move on to the next state
-            if (RoundManagerLocal.Instance.readyToMoveOn)
-           {
-                // Add the chosen spells to the Round Manager's list of chosen spells for this round, and mark the slots as no longer in use
-                // We add the spells in reverse order to ensure the correct order of spell effects during the round
-                // This also removes all the hassel with slots that technicly dont have a card in them but are still marked as in use because
-                // they are part of a multi slot card, We just check if the slot has a card in it, if it does, we add it to the list of chosen spells,
-                // if not, we skip it
-                for (int i = playerState.player.playerSlotHandler.playableSlots.Count - 1; i >= 0; i--)
-                {
-                    if (playerState.player.playerSlotHandler.playableSlots[i].IsInUse && playerState.player.playerSlotHandler.playableSlots[i].whereCard.hasTheCard)
-                    {
-                        RoundManagerLocal.Instance.AddToChosenSpells(playerState.player.playerType, playerState.player.playerSlotHandler.playableSlots[i]);
-                    }
-                }
-
-                playerState.player.playerControllerInputs.SetConfirmSelection(false);
-
-                foreach (Card card in playerState.chosenRoundCards.selectedCards)
-                {
-                    playerState.player.playerCardHand.RemoveCardInHand(card);
-                }
-                playerState.player.playerCardHand._currentSlotIndex = 0;
-                playerState.player.playerCardHand.CardIndexSet(0);
-
-                playerState.PerformTransition(Transition.SpellsChosen);
-            }
-       }
-    }
-    //Act
-    public override void Act()
-    {
         //  AI Spell Choosing Logic Here
         ///////////////////////////////////////////////////////////////////
         if (playerState.player.playerType == PlayerType.AI && !spellsChosen)

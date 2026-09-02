@@ -23,12 +23,19 @@ public class DefualtState : FSMState
     //Reason
     public override void Reason()
     {
-        playerState.PerformTransition(Transition.StartGame);
+        if (RoundManagerLocal.Instance.PlayerState == RoundStates.DealingStats || RoundManagerLocal.Instance.ComputerState == RoundStates.DealingStats)
+        {
+            playerState.PerformTransition(Transition.StartGame);
+        }
     }
 
     //Act
     public override void Act()
     {
-
+        if (RoundManagerLocal.Instance.PlayerState != RoundStates.DealingStats && RoundManagerLocal.Instance.ComputerState != RoundStates.DealingStats)
+        {
+            RoundManagerLocal.Instance.PlayerState = RoundStates.DealingStats;
+            RoundManagerLocal.Instance.ComputerState = RoundStates.DealingStats;
+        }
     }
 }

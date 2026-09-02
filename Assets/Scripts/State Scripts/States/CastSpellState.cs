@@ -71,8 +71,7 @@ public class CastSpellState : FSMState
                 // Remove card from playerchosen spells
                 RoundManagerLocal.Instance.RemoveTopChosenSpell(PlayerType.Player);
 
-                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
-                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
+                RoundManagerLocal.Instance.NextState(playerState.player.playerType, false, false);
             }
         }
         // This is where the computer and the online player does there stuff
@@ -96,8 +95,7 @@ public class CastSpellState : FSMState
                 // Remove card from Ai chosen spells
                 RoundManagerLocal.Instance.RemoveTopChosenSpell(PlayerType.AI);
 
-                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
-                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+                RoundManagerLocal.Instance.NextState(playerState.player.playerType, false, false);
             }
         }
     }

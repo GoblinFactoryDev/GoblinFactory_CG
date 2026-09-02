@@ -19,11 +19,21 @@ public class RoundEffectsState : FSMState
         stateID = FSMStateID.RoundEffects;
     }
 
+    public void enterStateInit()
+    {
+        if (playerState.player.playerType == PlayerType.AI)
+        {
+            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, false);
+            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, false);
+        }
+    }
+
     //Reason
     public override void Reason()
     {
-        if (RoundManagerLocal.Instance.PlayerState == RoundStates.PlayerIsChoosingSpells)
+        if (RoundManagerLocal.Instance.PlayersAreReady)
         {
+            RoundManagerLocal.Instance.NextState(playerState.player.playerType, false, false);
             playerState.PerformTransition(Transition.RoundEffectsDone);
         }
     }

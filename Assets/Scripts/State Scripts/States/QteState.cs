@@ -51,8 +51,7 @@ public class QteState : FSMState
     {
         if(RoundManagerLocal.Instance.player1HasDoneQTE && RoundManagerLocal.Instance.compHasDoneQTE)
         {
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
+            RoundManagerLocal.Instance.NextState(playerState.player.playerType, false, false);
         }
 
         //this is for testing

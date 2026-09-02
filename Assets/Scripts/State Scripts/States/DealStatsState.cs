@@ -28,14 +28,21 @@ public class DealStatsState : FSMState
     {
         // Remove the cards from the hand and move them back to the deck here seb ////////////////////////////////////////////////////////////////////////////////
         playerState.player.playerCardHand.MoveCardsBackToHand();
+
+        if (playerState.player.playerType == PlayerType.AI)
+        {
+            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, false);
+            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, false);
+        }
     }
 
     //Reason
     public override void Reason()
     {
-        if (RoundManagerLocal.Instance.PlayerState == RoundStates.RoundEffects && RoundManagerLocal.Instance.ComputerState == RoundStates.RoundEffects)
+        if (RoundManagerLocal.Instance.PlayersAreReady)
         {
-           playerState.PerformTransition(Transition.StatsDealt);
+            RoundManagerLocal.Instance.NextState(playerState.player.playerType, false, false);
+            playerState.PerformTransition(Transition.StatsDealt);
         }
     }
     //Act

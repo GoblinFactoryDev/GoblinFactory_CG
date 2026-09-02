@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 //----------------------------------------------------------------
 //  Author: Wyatt
@@ -65,30 +66,70 @@ public class ConfigureState : FSMState
     //Act
     public override void Act()
     {
+        //Both players have run out of spells to cast, this will move the game to dealing stats
         if (RoundManagerLocal.Instance.player1ChosenSpells.Count <= 0 && RoundManagerLocal.Instance.compChosenSpells.Count <= 0)
         {
-            RoundManagerLocal.Instance.configStatesTime = false;
-            if (playerState.player.playerType == PlayerType.Player)
-            {
-              RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
-            }
-            else
-            {
-              RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
-            }
+            RoundManagerLocal.Instance.NextState(playerState.player.playerType, false, false);
         }
-
-        if (RoundManagerLocal.Instance.compHasDoneQTE && RoundManagerLocal.Instance.player1HasDoneQTE)
+        // Both players have spells to cast, so we will check who was faster and move them on to the next state
+        else if (RoundManagerLocal.Instance.player1ChosenSpells.Count > 0 && RoundManagerLocal.Instance.compChosenSpells.Count > 0)
         {
+            // Player 2 was faster, so we will move them on to the next state
             if (RoundManagerLocal.Instance.WhoWasFasterInQTE() == PlayerType.Player)
             {
-                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+                // Player 1 has not done QTE yet, so we will move to the QTE state
+                if (!RoundManagerLocal.Instance.player1HasDoneQTE)
+                {
+                    RoundManagerLocal.Instance.NextState(PlayerType.Player, true, false);
+                }
+                // Player 1 has done QTE, so we will move to the casting state
+                else if (RoundManagerLocal.Instance.player1HasDoneQTE)
+                {
+                    RoundManagerLocal.Instance.NextState(PlayerType.Player, false, true);
+                }
             }
+            // Player 2 was faster, so we will move them on to the next state
             else if (RoundManagerLocal.Instance.WhoWasFasterInQTE() == PlayerType.AI)
             {
-                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
+                // Player 2 has not done QTE yet, so we will move to the QTE state
+                if (!RoundManagerLocal.Instance.compHasDoneQTE)
+                {
+                    RoundManagerLocal.Instance.NextState(PlayerType.AI, true, false);
+                }
+                // Player 2 has done QTE, so we will move to the casting state
+                else if (RoundManagerLocal.Instance.compHasDoneQTE)
+                {
+                    RoundManagerLocal.Instance.NextState(PlayerType.AI, false, true);
+                }
             }
-
+        }
+        // Player 1 has not run out of spells to cast
+        else if (RoundManagerLocal.Instance.player1ChosenSpells.Count > 0)
+        {
+            // Player 1 has not done QTE yet, so we will move to the QTE state
+            if (!RoundManagerLocal.Instance.player1HasDoneQTE)
+            {
+                RoundManagerLocal.Instance.NextState(PlayerType.Player, true, false);
+            }
+            // Player 1 has done QTE, so we will move to the casting state
+            else if (RoundManagerLocal.Instance.player1HasDoneQTE)
+            {
+                RoundManagerLocal.Instance.NextState(PlayerType.Player, false, true);
+            }
+        }
+        // Player 2 has not run out of spells to cast
+        else if (RoundManagerLocal.Instance.compChosenSpells.Count > 0)
+        {
+            // Player 2 has not done QTE yet, so we will move to the QTE state
+            if (!RoundManagerLocal.Instance.compHasDoneQTE)
+            {
+                RoundManagerLocal.Instance.NextState(PlayerType.AI, true, false);
+            }
+            // Player 2 has done QTE, so we will move to the casting state
+            else if (RoundManagerLocal.Instance.compHasDoneQTE)
+            {
+                RoundManagerLocal.Instance.NextState(PlayerType.AI, false, true);
+            }
         }
     }
 }

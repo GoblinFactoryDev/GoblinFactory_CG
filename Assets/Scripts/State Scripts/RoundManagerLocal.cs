@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class RoundManagerLocal : MonoBehaviour
 {
@@ -23,13 +24,30 @@ public class RoundManagerLocal : MonoBehaviour
         }
     }
 
-    private RoundStates playerState, computerState;
-    public RoundStates PlayerState { get => playerState; set => playerState = value; }
-    public RoundStates ComputerState { get => computerState; set => computerState = value; }
+    /// <summary>
+    /// What state the player and computer are in during the round. What state they should be moving to
+    /// </summary>
+    public RoundStates PlayerState, ComputerState;
 
+    /// <summary>
+    /// Whether both players have finished this state
+    /// </summary>
     public bool playerReady, computerReady;
 
-    public bool readyToMoveOn = false;
+    public bool PlayersAreReady
+    { 
+        get
+        {
+            if (playerReady == true && computerReady == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 
     /// <summary>
     /// The stack of spells that player 1 has chosen to cast this round. This is used to determine the order of spell effects and the spells that will be casted by player 1.
@@ -174,6 +192,84 @@ public class RoundManagerLocal : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The call to Advance the game state to the next appropriate round state based on the current state and whether the player needs to perform a QTE or cast a spell. 
+    /// </summary>
+    /// <param name="pType">Which player am I</param>
+    /// <param name="needToDoQTE">SHOULD BE FALSE IF NOT IN CONFIGURATION STATE, Does the player need to do a QTE</param>
+    /// <param name="needToCast">SHOULD BE FALSE IF NOT IN CONFIGURATION STATE, Does the player need to do a cast there spell</param>
+    public void NextState(PlayerType pType, bool needToDoQTE, bool needToCast)
+    {
+        if (pType == PlayerType.Player)
+        {
+            MoveToNextState(ref PlayerState, needToDoQTE, needToCast);
+        }
+        else if (pType == PlayerType.AI)
+        {
+            MoveToNextState(ref ComputerState, needToDoQTE, needToCast);
+        }
+    }
+
+    /// <summary>
+    /// Actually Advances the game state to the next appropriate round state based on the current state and whether the player needs to perform a QTE or cast a spell. 
+    /// </summary>
+    /// <param name="stateLocation">What State we are in and where we are going, this is a reference variable that ubtates with the function</param>
+    /// <param name="needToDoQTE">SHOULD BE FALSE IF NOT IN CONFIGURATION STATE, Does the player need to do a QTE</param>
+    /// <param name="needToCast">SHOULD BE FALSE IF NOT IN CONFIGURATION STATE, Does the player need to do a cast there spell</param>
+    public void MoveToNextState(ref RoundStates stateLocation, bool needToDoQTE, bool needToCast)
+    {
+        // Checking if the player is doing a QTE or casting a spell
+        if (needToDoQTE == false && needToCast == false)
+        {
+            //The game has begun or the a new round is beginning
+            if (stateLocation == RoundStates.ConfiguringSpells)
+            {
+                // The start of the round, both players are being dealt there cards
+                stateLocation = RoundStates.DealingStats;
+            }
+            //Both players have been delt cards to get back to 5 cards in there hand
+            else if (stateLocation == RoundStates.DealingStats)
+            {
+                // Round effects are being activated and resolved, this is where certain rings and sigils will trigger.
+                // Any rings/sigils that have reached the end of there lifespan will be removed
+                stateLocation = RoundStates.RoundEffects;
+            }
+            // Round effects have finished
+            else if (stateLocation == RoundStates.RoundEffects)
+            {
+                // Both players are now choosing which spells they wish to cast this round
+                stateLocation = RoundStates.PlayerIsChoosingSpells;
+            }
+            // Both players have chosen there spells and have ready'd up
+            else if (stateLocation == RoundStates.PlayerIsChoosingSpells || stateLocation == RoundStates.PlayerQTE || stateLocation == RoundStates.PlayerIsCasting)
+            {
+                // ----- There are three main reasons for the player to be in this state -----
+                // ONE: The game is sending the players to do there QTE's for there spell
+                // TWO: The game is sending players to actually cast there spell and resolve the effects of the spell
+                // THREE: The game is figuring out if both players have finished casting all there spells and are ready to move on to the next round if not
+                //        players who have chosen multiple spells will repeat ONE and TWO until all spells are casted, once all spells are casted the game will move on to the next round
+                stateLocation = RoundStates.ConfiguringSpells;
+            }
+        }
+        else
+        {
+            // The player is being sent to do there QTE for there spell
+            if (stateLocation == RoundStates.ConfiguringSpells && needToDoQTE == true && needToCast == false)
+            {
+                // Player is doing a QTE for there spell
+                // This will decide whether the player has failed, half succeeded or fully succeeded in casting there spell
+                stateLocation = RoundStates.PlayerQTE;
+            }
+            // The player is being sent to cast there spell
+            else if (stateLocation == RoundStates.ConfiguringSpells && needToDoQTE == false && needToCast == true)
+            {
+                // Player is casting there spell and resolving the effects of the spell
+                stateLocation = RoundStates.PlayerIsCasting;
+            }
+        }
+        
+    }
+
     private void Update()
     {
         // Checks if either player has died, if one player has died both players move to the dead state to show the winner and loser of the match
@@ -181,122 +277,6 @@ public class RoundManagerLocal : MonoBehaviour
         {
             PlayerState = RoundStates.Died;
             ComputerState = RoundStates.Died;
-        }
-        // Both players have finished casting all there spells and are ready to move on to the next round
-        else if (player1ChosenSpells.Count <= 0 && compChosenSpells.Count <= 0 && playerReady && computerReady &&
-            (PlayerState == RoundStates.ConfiguringSpells && ComputerState == RoundStates.ConfiguringSpells))
-        {
-            playerReady = false;
-            computerReady = false;
-
-            PlayerState = RoundStates.DealingStats;
-            ComputerState = RoundStates.DealingStats;
-        }
-        // This is the casting, qte and spell effect loop , this loop will continue until both players have casted all there spells and the stacks of chosen spells are empty
-        else if (playerReady && computerReady && configStatesTime == false)
-        {
-            // Players are being delt there spells and other stats if needed
-            if (PlayerState == RoundStates.DealingStats)
-            {
-                playerReady = false;
-                computerReady = false;
-
-                PlayerState = RoundStates.RoundEffects;
-                ComputerState = RoundStates.RoundEffects;
-            }
-            // The round effects are being activated and resolved
-            else if (PlayerState == RoundStates.RoundEffects)
-            {
-                playerReady = false;
-                computerReady = false;
-
-                PlayerState = RoundStates.PlayerIsChoosingSpells;
-                ComputerState = RoundStates.PlayerIsChoosingSpells;
-            }
-            // The players are choosing which spells they want to cast this round
-            else if (PlayerState == RoundStates.PlayerIsChoosingSpells)
-            {
-                playerReady = false;
-                computerReady = false;
-
-                readyToMoveOn = true;
-
-                firstPlayer1QTEDone = true;
-                configStatesTime = true;
-
-                PlayerState = RoundStates.ConfiguringSpells;
-                ComputerState = RoundStates.ConfiguringSpells;
-            }
-            // All the spells from both players have been casted and resolved, its time to end the round and start a new one
-            else if (PlayerState == RoundStates.ConfiguringSpells)
-            {
-                playerReady = false;
-                computerReady = false;
-
-                PlayerState = RoundStates.DealingStats;
-                ComputerState = RoundStates.DealingStats;
-            }
-        }
-        if (playerReady && configStatesTime == true)
-        {
-            // The local player is either getting sent to do there QTE or is being sent to cast there spell
-            if (PlayerState == RoundStates.ConfiguringSpells && player1ChosenSpells.Count > 0)
-            {
-                playerReady = false;
-                // Local Player is being sent to do there QTE
-                if (!player1HasDoneQTE)
-                {
-                    PlayerState = RoundStates.PlayerQTE;
-                }
-                // Local Player is being sent to cast there spell
-                else
-                {
-                    player1HasDoneQTE = false;
-                    PlayerState = RoundStates.PlayerIsCasting;
-                }
-            }
-            // the local player has finished there Qte
-            else if (PlayerState == RoundStates.PlayerQTE)
-            {
-                playerReady = false;
-                PlayerState = RoundStates.ConfiguringSpells;
-            }
-            else if (PlayerState == RoundStates.PlayerIsCasting)
-            {
-                playerReady = false;
-                PlayerState = RoundStates.ConfiguringSpells;
-            }
-        }
-        // 
-        if (computerReady && configStatesTime == true)
-        {
-            // The computer or online player is either getting sent to do there QTE or is being sent to cast there spell
-            if (ComputerState == RoundStates.ConfiguringSpells && compChosenSpells.Count > 0)
-            {
-                computerReady = false;
-                // Computer or Online Player is being sent to do there QTE
-                if (!compHasDoneQTE)
-                {
-                    ComputerState = RoundStates.PlayerQTE;
-                }
-                // Computer or Online Player is being sent to cast there spell
-                else
-                {
-                    compHasDoneQTE = false;
-                    ComputerState = RoundStates.PlayerIsCasting;
-                }
-            }
-            // the Computer or Online player has finished there Qte
-            else if (ComputerState == RoundStates.PlayerQTE)
-            {
-                computerReady = false;
-                ComputerState = RoundStates.ConfiguringSpells;
-            }
-            else if (ComputerState == RoundStates.PlayerIsCasting)
-            {
-                computerReady = false;
-                ComputerState = RoundStates.ConfiguringSpells;
-            }
         }
     }
 
