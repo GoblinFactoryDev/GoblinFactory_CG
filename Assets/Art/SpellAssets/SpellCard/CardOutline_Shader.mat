@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RingCardOutline_Shader
+  m_Name: CardOutline_Shader
   m_Shader: {fileID: -6465566751694194690, guid: 5bcebbe16f0825a45bc728f620abd3fb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -38,11 +38,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 60
+    - _Brightness: 40
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 0.26713127, g: 0.053266283, b: 0.5377358, a: 0}
+    - _Color: {r: 0.509434, g: 0.06245073, b: 0.040850844, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &7558057430423928539
