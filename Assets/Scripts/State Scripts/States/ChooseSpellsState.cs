@@ -24,18 +24,12 @@ public class ChooseSpellState : FSMState
     {
         spellsChosen = false;
         playerState.player.playerCardHand.HaveMovedToDeck = false;
-
-        if (playerState.player.playerType == PlayerType.AI)
-        {
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, false);
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, false);
-        }
     }
 
     //Reason
     public override void Reason()
     {
-        if (RoundManagerLocal.Instance.PlayersAreReady)
+        if (RoundManagerLocal.Instance.PlayersAreReadyOne)
         {
             // Add the chosen spells to the Round Manager's list of chosen spells for this round, and mark the slots as no longer in use
             // We add the spells in reverse order to ensure the correct order of spell effects during the round
@@ -71,9 +65,9 @@ public class ChooseSpellState : FSMState
         {
             playerState.chosenRoundCards.selectedCards = playerState.player.playerCardHand.SlotsInUse;
             if (playerState.player.playerType == PlayerType.Player)
-                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, true);
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, 1, true);
             else if (playerState.player.playerType == PlayerType.AI)
-                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, true);
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, 1, true);
 
             if (!playerState.player.playerCardHand.HaveMovedToDeck)
             {

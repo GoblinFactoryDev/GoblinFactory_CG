@@ -21,17 +21,12 @@ public class RoundEffectsState : FSMState
 
     public void enterStateInit()
     {
-        if (playerState.player.playerType == PlayerType.AI)
-        {
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, false);
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, false);
-        }
     }
 
     //Reason
     public override void Reason()
     {
-        if (RoundManagerLocal.Instance.PlayersAreReady)
+        if (RoundManagerLocal.Instance.PlayersAreReadyTwo)
         {
             RoundManagerLocal.Instance.NextState(playerState.player.playerType, false, false);
             playerState.PerformTransition(Transition.RoundEffectsDone);
@@ -40,6 +35,6 @@ public class RoundEffectsState : FSMState
     //Act
     public override void Act()
     {
-        RoundManagerLocal.Instance.ReadyToMoveOn(playerState.player.playerType, true);
+        RoundManagerLocal.Instance.ReadyToMoveOn(playerState.player.playerType, 2, true);
     }
 }

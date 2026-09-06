@@ -78,10 +78,10 @@ public class PlayerState : AdvancedFSM
         CurrentState.Reason();
         CurrentState.Act();
 
-        if (player.playerType == PlayerType.Player)
+        if (player.playerType == PlayerType.AI)
         {
-            test_text.text = "RoundState: " + RoundManagerLocal.Instance.PlayerState.ToString() + " | State: " + GetStateString();
-            //test_text.text = "RoundState: " + RoundManagerLocal.Instance.ComputerState.ToString() + " | State: " + GetStateString(); // AI Testing
+            //test_text.text = "RoundState: " + RoundManagerLocal.Instance.PlayerState.ToString() + " | State: " + GetStateString();
+            test_text.text = "RoundState: " + RoundManagerLocal.Instance.ComputerState.ToString() + " | State: " + GetStateString(); // AI Testing
         }
             //test_text.text = "State: " + GetStateString();
         }

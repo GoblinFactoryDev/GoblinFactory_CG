@@ -29,17 +29,22 @@ public class RoundManagerLocal : MonoBehaviour
     /// </summary>
     public RoundStates PlayerState, ComputerState;
 
-    /// <summary>
-    /// Whether both players have finished this state
-    /// </summary>
-    public bool playerReady, computerReady;
+    #region Player and Computer Ready Management
+    // This is kinda bullshit and not gonna lie I'm kinda lazy because I dont have the time to reserch a way to check who is consistently arraving at each state first and second
+    // so we are going to have 2 versions of ready checks to go inbetween
 
-    public bool PlayersAreReady
+    /// <summary>
+    /// Whether both players have finished this state version One (There are 2 versions do to the code needing to have a buffer in between using each one)
+    /// </summary>
+    public bool playerReadyOne, computerReadyOne;
+    public bool PlayersAreReadyOne
     { 
         get
         {
-            if (playerReady == true && computerReady == true)
+            if (playerReadyOne == true && computerReadyOne == true)
             {
+                playerReadyTwo = false;
+                computerReadyTwo = false;
                 return true;
             }
             else
@@ -48,6 +53,28 @@ public class RoundManagerLocal : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Whether both players have finished this state version Two (There are 2 versions do to the code needing to have a buffer in between using each one)
+    /// </summary>
+    public bool playerReadyTwo, computerReadyTwo;
+    public bool PlayersAreReadyTwo
+    {
+        get
+        {
+            if (playerReadyTwo == true && computerReadyTwo == true)
+            {
+                playerReadyOne = false;
+                computerReadyOne = false;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+    #endregion
 
     /// <summary>
     /// The stack of spells that player 1 has chosen to cast this round. This is used to determine the order of spell effects and the spells that will be casted by player 1.
@@ -180,15 +207,29 @@ public class RoundManagerLocal : MonoBehaviour
     }
     #endregion
 
-    public void ReadyToMoveOn(PlayerType pType, bool isReady)
+    public void ReadyToMoveOn(PlayerType pType, int whatType, bool isReady)
     {
         if (pType == PlayerType.Player)
         {
-            playerReady = isReady;
+            if (whatType == 1)
+            {
+                playerReadyOne = isReady;
+            }
+            else if (whatType == 2)
+            {
+                playerReadyTwo = isReady;
+            }
         }
         else if (pType == PlayerType.AI)
         {
-            computerReady = isReady;
+            if (whatType == 1)
+            {
+                computerReadyOne = isReady;
+            }
+            else if (whatType == 2)
+            {
+                computerReadyTwo = isReady;
+            }
         }
     }
 

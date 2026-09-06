@@ -42,6 +42,12 @@ public class ConfigureState : FSMState
             }
             else if (RoundManagerLocal.Instance.PlayerState == RoundStates.DealingStats)
             {
+                // Some clean up stuff to make sure the next round is good
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, 1, false);
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, 1, false);
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, 2, false);
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, 2, false);
+
                 playerState.PerformTransition(Transition.dealingStats);
             }
         }
@@ -58,6 +64,12 @@ public class ConfigureState : FSMState
             }
             else if (RoundManagerLocal.Instance.ComputerState == RoundStates.DealingStats)
             {
+                // Some clean up stuff to make sure the next round is good
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, 1, false);
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, 1, false);
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, 2, false);
+                RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, 2, false);
+
                 playerState.PerformTransition(Transition.dealingStats);
             }
         }

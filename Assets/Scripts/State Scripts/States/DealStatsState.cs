@@ -29,17 +29,12 @@ public class DealStatsState : FSMState
         // Remove the cards from the hand and move them back to the deck here seb ////////////////////////////////////////////////////////////////////////////////
         playerState.player.playerCardHand.MoveCardsBackToHand();
 
-        if (playerState.player.playerType == PlayerType.AI)
-        {
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.Player, false);
-            RoundManagerLocal.Instance.ReadyToMoveOn(PlayerType.AI, false);
-        }
     }
 
     //Reason
     public override void Reason()
     {
-        if (RoundManagerLocal.Instance.PlayersAreReady)
+        if (RoundManagerLocal.Instance.PlayersAreReadyOne)
         {
             RoundManagerLocal.Instance.NextState(playerState.player.playerType, false, false);
             playerState.PerformTransition(Transition.StatsDealt);
@@ -91,7 +86,7 @@ public class DealStatsState : FSMState
         }
         else
         {
-          RoundManagerLocal.Instance.ReadyToMoveOn(playerState.player.playerType, true);
+          RoundManagerLocal.Instance.ReadyToMoveOn(playerState.player.playerType, 1, true);
         }
     }
 }
