@@ -81,13 +81,14 @@ public class DealStatsState : FSMState
                 }
             }
 
-           
-            cardObj.SetActive(true);
             cardDisplay.InitializeInfo();
+            cardObj.SetActive(true);
         }
         else
         {
-          RoundManagerLocal.Instance.ReadyToMoveOn(playerState.player.playerType, 1, true);
+            RoundManagerLocal.Instance.ReadyToMoveOn(playerState.player.playerType, 1, true);
+            cardHandRef.CardsInHand[0].CardActions.OnHoverCard();
+
         }
     }
 }

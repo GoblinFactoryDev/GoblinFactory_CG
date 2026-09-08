@@ -34,19 +34,19 @@ public class CameraTesting : MonoBehaviour
             slotOn = false;
         }
 
-        if(playerInputHandler.cardSelectAction.triggered && !fingersViewOn)
-        {
-            camera1.Priority = 9;
-            cameraFingers.Priority = 10;
-            fingersViewOn = true;
-        }
+        //if(playerInputHandler.cardSelectAction.triggered && !fingersViewOn)
+        //{
+        //    camera1.Priority = 9;
+        //    cameraFingers.Priority = 10;
+        //    fingersViewOn = true;
+        //}
         
-        if(playerInputHandler.fingerSelectAction.triggered &&  fingersViewOn)
-        {
-            camera1.Priority = 10;
-            cameraFingers.Priority = 9;
-            fingersViewOn = false;
-        }
+        //if(playerInputHandler.fingerSelectAction.triggered &&  fingersViewOn)
+        //{
+        //    camera1.Priority = 10;
+        //    cameraFingers.Priority = 9;
+        //    fingersViewOn = false;
+        //}
     }
 
 

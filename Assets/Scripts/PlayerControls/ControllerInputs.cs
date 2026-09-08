@@ -46,6 +46,11 @@ public class ControllerInputs : MonoBehaviour
     public bool GetConfirmSelection { get { return _confirmSelection; } }
     public void SetConfirmSelection(bool setValue) { _confirmSelection = setValue; }
 
+    private void Start()
+    {
+        cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OnHoverCard();
+    }
+
     /// <summary>
     /// This is used to transfer the cards slot position over to the finger select mode
     /// </summary>
