@@ -49,7 +49,6 @@ public class Spell_FOH : CardEffects
         switch(castLevel)
         {
             case CastRating.Fail:
-                //hello
 
                 break;
 
