@@ -55,6 +55,7 @@ public class ControllerInputs : MonoBehaviour
     private void Update()
     {
         ControllerNavHand();
+        //add a check for no cards in slot
         SlotAndCardMovementSystemSwitch();
         SelectingInput();
         DeselectingInput();
@@ -132,7 +133,6 @@ public class ControllerInputs : MonoBehaviour
                 if (!SkipSelection)
                 {
                     cardsOwned.CardToSlot();
-                    SlotsMode = true;
                 }
 
                 // Moving to the finger select mode
@@ -289,13 +289,13 @@ public class ControllerInputs : MonoBehaviour
 
     private void SlotAndCardMovementSystemSwitch()
     {
-        if (playerInputHandler.slotModeMoveDownAction.triggered && !SlotsMode)
+        if (playerInputHandler.cardSlotModeAction.triggered && !SlotsMode)
         {
             SlotsMode = true;
             cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OffHoverCard();
             cardsOwned.SlotsInUse[cardsOwned.SlotIndexGet].CardActions.OnHoverCard();
         }
-        else if (playerInputHandler.cardModeMoveUpAction.triggered && SlotsMode)
+        else if (playerInputHandler.cardSlotModeAction.triggered && SlotsMode)
         {
             SlotsMode = false;
             cardsOwned.SlotsInUse[cardsOwned.SlotIndexGet].CardActions.OffHoverCard();
