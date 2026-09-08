@@ -1,12 +1,12 @@
 //----------------------------------------------------------------
-//  Author:         Keller
-//  Co-Author:
+//  Author:         Keller, Wyatt
 //
 //  Instance:       No
 //-----------------------------------------------------------------
 
 using UnityEngine;
 using static Slot;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Card : MonoBehaviour
 {
@@ -14,7 +14,11 @@ public class Card : MonoBehaviour
 
     public CardData CardData { get => _cardData; set { _cardData = value; } }
 
-    [SerializeField] private CardActions _cardActions;
+    [SerializeField] 
+    public CardActions _cardActions;
+
+    [SerializeField]
+    private GameObject _cardOutline;
 
     // public properties
     // TODO: add more properties as needed
@@ -37,6 +41,38 @@ public class Card : MonoBehaviour
     private int _currentSlotUsed;
     public int GetCurrentSlotUsed { get { return _currentSlotUsed; } }
     public void SetCurrentSlotUsed(int setValue) { _currentSlotUsed = setValue; }
+
+    public Vector4 CardOutlineColour
+    {
+        get { return _cardOutline.GetComponent<Renderer>().material.GetVector("_Color"); }
+        set { _cardOutline.GetComponent<Renderer>().material.SetVector("_Color", value); }
+    }
+
+    public void SetCardOutlineActive(bool isActive)
+    {
+        if (isActive)
+        {
+            int alpha = 0;
+            _cardOutline.GetComponent<Renderer>().material.SetInt("_Brightness", alpha);
+            _cardOutline.SetActive(isActive);
+            while (alpha < 40)
+            {
+                 alpha++;
+                _cardOutline.GetComponent<Renderer>().material.SetInt("_Brightness", alpha);
+            }
+        }
+        else
+        {
+            int alpha = 40;
+            _cardOutline.GetComponent<Renderer>().material.SetInt("_Brightness", alpha);
+            while (alpha > 0)
+            {
+                alpha--;
+                _cardOutline.GetComponent<Renderer>().material.SetInt("_Brightness", alpha);
+            }
+            _cardOutline.SetActive(isActive);
+        }
+    }
 
     private void Awake()
     {

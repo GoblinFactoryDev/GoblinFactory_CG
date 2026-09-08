@@ -2976,9 +2976,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c8c0bee4214cf45beae56aaa986e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerReady: 0
-  computerReady: 0
-  readyToMoveOn: 0
+  PlayerState: 0
+  ComputerState: 0
+  playerReadyOne: 0
+  computerReadyOne: 0
+  playerReadyTwo: 0
+  computerReadyTwo: 0
   player1HasDoneQTE: 0
   compHasDoneQTE: 0
   firstPlayer1QTEDone: 0

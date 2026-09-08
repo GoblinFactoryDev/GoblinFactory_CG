@@ -43,6 +43,8 @@ public class CardDisplay : MonoBehaviour
         difficultyText.text = _card.Difficulty.ToString();
         descText.text = _card.Description;
         SetUpCost(_card.Cost);
+        _card.SetCardOutlineActive(false);
+        _card.CardActions.IsCardInDetailedMode(false);
     }
 
     /// <summary>

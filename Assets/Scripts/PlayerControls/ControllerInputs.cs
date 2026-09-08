@@ -172,11 +172,11 @@ public class ControllerInputs : MonoBehaviour
 
                 if (targetSelf)
                 {
-                    p1.playerAnimHandler.PlayHandAnimation(p1.playerAnimHandler.hand_Idle_AnimName);
+                    //p1.playerAnimHandler.PlayHandAnimation(p1.playerAnimHandler.hand_Idle_AnimName);
                 }
                 else
                 {
-                    p2.playerAnimHandler.PlayHandAnimation(p2.playerAnimHandler.hand_Idle_AnimName);
+                    //p2.playerAnimHandler.PlayHandAnimation(p2.playerAnimHandler.hand_Idle_AnimName);
                 }
 
                     p1.playerSlotHandler.AssignFingerTargetInfoToSlot(fingerCardInfo.GetCurrentSlotUsed, (HandType)fingerHandIndex, (FingerType)fingerIndex);

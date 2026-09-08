@@ -17,6 +17,22 @@ public class CardActions : MonoBehaviour
     private Renderer render;
     private Color ogColour;
 
+    [SerializeField]
+    private Card _card;
+
+    [SerializeField]
+    private CardDisplaySwap _cardDisplaySwap;
+
+    /// <summary>
+    /// This determines whether the icon takes up the whole card or not. When not the currently selected card this should be false. When the card is the currently selected card this should be true.
+    /// </summary>
+    public void IsCardInDetailedMode(bool isIt)
+    {
+       _cardDisplaySwap.detailedMode = isIt;
+       _cardDisplaySwap.UpdateCardLook();
+
+    }
+
     private void Start()
     {
         ogColour = render.material.color;
@@ -27,7 +43,9 @@ public class CardActions : MonoBehaviour
     /// </summary>
     public void OnHoverCard()
     {
-        render.material.color = Color.red;
+        IsCardInDetailedMode(true);
+        _card.SetCardOutlineActive(true);
+        //render.material.color = Color.red;
     }
 
     /// <summary>
@@ -35,6 +53,8 @@ public class CardActions : MonoBehaviour
     /// </summary>
     public void OffHoverCard()
     {
+        IsCardInDetailedMode(false);
+        _card.SetCardOutlineActive(false);
         render.material.color = ogColour;
     }
 }

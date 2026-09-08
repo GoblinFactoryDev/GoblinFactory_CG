@@ -81,8 +81,9 @@ public class DealStatsState : FSMState
                 }
             }
 
-            cardDisplay.InitializeInfo();
+           
             cardObj.SetActive(true);
+            cardDisplay.InitializeInfo();
         }
         else
         {

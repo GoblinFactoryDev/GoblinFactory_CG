@@ -17,7 +17,7 @@ public class CardDisplaySwap : MonoBehaviour
     //Variables
     //====================================
     [SerializeField]
-    bool detailedMode; //To determine what should be shown to the player
+    public bool detailedMode; //To determine what should be shown to the player
 
     [SerializeField]
     Animator dividerAnimator;
@@ -40,16 +40,16 @@ public class CardDisplaySwap : MonoBehaviour
         dividerAnimator.Play(detailedMode ? "CardDividerCenter" : "CardDividerDown", 0, 1.0f);
         dividerAnimator.Update(0f);
 
-        dividerAnimator.SetBool("CardDetailMode", detailedMode);
-        DetermineDisplayDetails(detailedMode);
+        //dividerAnimator.SetBool("CardDetailMode", detailedMode);
+        //DetermineDisplayDetails(detailedMode);
     }
 
-    private void OnMouseDown()
-    {
+    //private void OnMouseDown()
+    //{
 
-        UpdateCardLook();
+    //    UpdateCardLook();
 
-    }
+    //}
 
     public void DetermineDisplayDetails(bool detailedMode)
     {
@@ -72,7 +72,7 @@ public class CardDisplaySwap : MonoBehaviour
     public void UpdateCardLook()
     {
         //Update the look of the card based if its in detail mode or not when clicked
-        detailedMode = !detailedMode;
+        //detailedMode = !detailedMode;
 
         dividerAnimator.SetBool("CardDetailMode", detailedMode);
         DetermineDisplayDetails(detailedMode);
