@@ -4,6 +4,7 @@
 //  Instance:       No
 //-----------------------------------------------------------------
 
+using System.Collections;
 using UnityEngine;
 using static Slot;
 using static UnityEngine.Rendering.DebugUI;
@@ -50,28 +51,7 @@ public class Card : MonoBehaviour
 
     public void SetCardOutlineActive(bool isActive)
     {
-        if (isActive)
-        {
-            int alpha = 0;
-            _cardOutline.GetComponent<Renderer>().material.SetInt("_Brightness", alpha);
-            _cardOutline.SetActive(isActive);
-            while (alpha < 40)
-            {
-                 alpha++;
-                _cardOutline.GetComponent<Renderer>().material.SetInt("_Brightness", alpha);
-            }
-        }
-        else
-        {
-            int alpha = 40;
-            _cardOutline.GetComponent<Renderer>().material.SetInt("_Brightness", alpha);
-            while (alpha > 0)
-            {
-                alpha--;
-                _cardOutline.GetComponent<Renderer>().material.SetInt("_Brightness", alpha);
-            }
-            _cardOutline.SetActive(isActive);
-        }
+       _cardOutline.SetActive(isActive);
     }
 
     private void Awake()

@@ -11,16 +11,24 @@ public class AnimationHandler : MonoBehaviour
     #region Hand Animation Names
     ///////////////////////////////////
     /// THE FORMAT FOR THE STRING NAMES OF THE ANIMATIONS SHOULD BE AS FOLLOWS:
-    /// public string hand_[what the animation is doing]_AnimeName = "The name of the animation in the animator";
+    /// public string hand_[what the animation is doing]_Who it is for;
     ///////////////////////////////////
-
+    [Header("Hand Animations")]
     // Animation everyone use
-    public string hand_Idle_AnimName = "Hand_Armature_Hands_DecidingIdle";
-    public string hand_Inspect_AnimName = "Hand_Armature_Hands_Inspect";
+    [Header("Everyones Hand Animations")]
+    [SerializeField] public string hand_Inspect_All;
+    [SerializeField] public string hand_SelfInspect_All;
+    [SerializeField] public string hand_ReadyUp_All;
+    [SerializeField] public string[] hand_Casting_All;
+    [SerializeField] public string[] hand_Hurt_All;
 
     // Dragon Animations
+    [Header("Dragon Hand Animations")]
+    [SerializeField] public string hand_Idle_Dragon;
 
     // Dwarf Animations
+    [Header("Dwarf Hand Animations")]
+    [SerializeField] public string hand_Idle_Dwarf;
 
     #endregion
 
@@ -28,16 +36,14 @@ public class AnimationHandler : MonoBehaviour
     #region Body Animation Names
     ///////////////////////////////////
     /// THE FORMAT FOR THE STRING NAMES OF THE ANIMATIONS SHOULD BE AS FOLLOWS:
-    /// public string body_[what the animation is doing]_AnimeName = "The name of the animation in the animator";
-    ///////////////////////////////////
+    /// public string hand_[what the animation is doing]_Who it is for;
+    //////////////////////////////////////
     // Animation everyone use
-    public string bodyIdle_AnimName = "";
+    private string body_Idle_All;
 
     // Dragon Animations
 
     // Dwarf Animations
-
-
     #endregion
 
 
@@ -75,7 +81,7 @@ public class AnimationHandler : MonoBehaviour
     /// </summary>
     public void StopBodyAnimation()
     {
-        bodyAnimator.Play(bodyIdle_AnimName);
+        bodyAnimator.Play(body_Idle_All);
     }
 
     /// <summary>
@@ -83,7 +89,7 @@ public class AnimationHandler : MonoBehaviour
     /// </summary>
     public void StopHandAnimation()
     {
-        handAnimator.Play(hand_Idle_AnimName);
+        //handAnimator.Play(hand_Idle_AnimName);
     }
 
     /// <summary>
@@ -92,8 +98,8 @@ public class AnimationHandler : MonoBehaviour
     /// </summary>
     public void StopAllAnimations()
     {
-        bodyAnimator.Play(bodyIdle_AnimName);
-        handAnimator.Play(hand_Idle_AnimName);
+       // bodyAnimator.Play(bodyIdle_AnimName);
+       // handAnimator.Play(hand_Idle_AnimName);
     }
 
 }

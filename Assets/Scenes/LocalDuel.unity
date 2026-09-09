@@ -4804,6 +4804,74 @@ PrefabInstance:
     - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: handAnimator
       value: 
+      objectReference: {fileID: 1543246742}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: hand_Idle_Dwarf
+      value: Hands_DwarfIdle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: hand_Idle_Dragon
+      value: Hands_DragonIdle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: hand_Inspect_All
+      value: Hands_Inspect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: hand_ReadyUp_All
+      value: Hands_ReadyUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: hand_SelfInspect_All
+      value: Hands_SelfInspect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: hand_Hurt_All.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: hand_Casting_All.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: 'hand_Hurt_All.Array.data[0]'
+      value: Hands_HurtT1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: 'hand_Hurt_All.Array.data[1]'
+      value: Hands_HurtT2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: 'hand_Hurt_All.Array.data[2]'
+      value: Hands_HurtT3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: 'hand_Hurt_All.Array.data[3]'
+      value: Hands_HurtT4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: 'hand_Hurt_All.Array.data[4]'
+      value: Hands_HurtT5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: 'hand_Casting_All.Array.data[0]'
+      value: Hands_CastingT1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: 'hand_Casting_All.Array.data[1]'
+      value: Hands_CastingT2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: 'hand_Casting_All.Array.data[2]'
+      value: Hands_CastingT3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: 'hand_Casting_All.Array.data[3]'
+      value: Hands_CastingT4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630155459419506273, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: 'hand_Casting_All.Array.data[4]'
+      value: Hands_CastingT5
       objectReference: {fileID: 0}
     - target: {fileID: 4103111253211215747, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

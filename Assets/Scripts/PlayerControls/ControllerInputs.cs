@@ -145,15 +145,19 @@ public class ControllerInputs : MonoBehaviour
                 {
                     p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
                     fingerReach.ChangeAllSegments(p1, selectColour, HandType.Left, FingerType.Pinky);
+
+                    // Calling the animation to select the fingers of the enemy
+                    p1.playerAnimHandler.PlayHandAnimation(p1.playerAnimHandler.hand_SelfInspect_All);
+
                     fingerOn = true;
                 }
                 else if (targetSelf == false) // the card is targeting the enemy's fingers
                 {
                     p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
-                    fingerReach.ChangeAllSegments(p2, p1.outlineColour, HandType.Left, FingerType.Pinky);
+                    fingerReach.ChangeAllSegments(p2, selectColour, HandType.Left, FingerType.Pinky);
 
                     // Calling the animation to select the fingers of the enemy
-                    p2.playerAnimHandler.PlayHandAnimation(p1.playerAnimHandler.hand_Inspect_AnimName);
+                   p2.playerAnimHandler.PlayHandAnimation(p1.playerAnimHandler.hand_Inspect_All);
 
                     fingerp2On = true;
                 }
