@@ -1252,6 +1252,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2112630571774535576, guid: 84018fa8144d54847ad6613a4a1db6c6, type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3135586830892405022, guid: 84018fa8144d54847ad6613a4a1db6c6, type: 3}
       propertyPath: m_Name
       value: vfx_TheWarden_01
@@ -1329,6 +1333,14 @@ PrefabInstance:
     - target: {fileID: 852239562789150885, guid: d3ea7cf13eec1f24b860f5f80c350fd6, type: 3}
       propertyPath: m_Name
       value: vfx_Summoning_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329805826871079894, guid: d3ea7cf13eec1f24b860f5f80c350fd6, type: 3}
+      propertyPath: lengthInSec
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329805826871079894, guid: d3ea7cf13eec1f24b860f5f80c350fd6, type: 3}
+      propertyPath: startDelay.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7418302313545182313, guid: d3ea7cf13eec1f24b860f5f80c350fd6, type: 3}
       propertyPath: m_LocalPosition.x
