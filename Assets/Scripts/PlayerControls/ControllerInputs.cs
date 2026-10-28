@@ -16,8 +16,6 @@ public class ControllerInputs : MonoBehaviour
 {
     //reference to the input handler
     [SerializeField] private PlayerInputHandler playerInputHandler;
-    //QTE Handler reference
-    [SerializeField] private QTEHandler playerQTEHandler;
     //player 1 reference
     [SerializeField] private Player p1;
     //player 2 reference
@@ -64,7 +62,7 @@ public class ControllerInputs : MonoBehaviour
         SlotAndCardMovementSystemSwitch();
         SelectingInput();
         DeselectingInput();
-        ReadyUpInput();
+        //ReadyUpInput();
         FingeringATest();
         if (fingerOn)
         {
@@ -75,11 +73,6 @@ public class ControllerInputs : MonoBehaviour
         {
             fingerOn = false;
             MoveFingers(p2, selectColour, p2.outlineColour);
-        }
-
-        if(playerQTEHandler.QTEMode)
-        {
-            playerQTEHandler.ChallengeInputTracker(playerInputHandler);
         }
       
     }

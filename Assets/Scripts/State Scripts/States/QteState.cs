@@ -23,9 +23,6 @@ public class QteState : FSMState
     public override void EnterStateInit()
     {
         compFiguredQTE = false;
-
-        if (playerState.player.playerType == PlayerType.Player)
-           playerState.player.GetComponent<QTEHandler>().createSequence = true;
     }
 
     //Reason
@@ -49,19 +46,7 @@ public class QteState : FSMState
     //Act
     public override void Act()
     {
-        if(RoundManagerLocal.Instance.player1HasDoneQTE && RoundManagerLocal.Instance.compHasDoneQTE)
-        {
-            RoundManagerLocal.Instance.NextState(playerState.player.playerType, false, false);
-        }
-
-        //this is for testing
-        if(playerState.player.playerType == PlayerType.AI && compFiguredQTE == false)
-        {
-            RoundManagerLocal.Instance.SetCurrentPlayerTwoQTESpeed(888);
-            RoundManagerLocal.Instance.compQTERating = CastRating.Full;
-            RoundManagerLocal.Instance.compHasDoneQTE = true;
-            compFiguredQTE = true;
-        }
+        
 
     }
 }
