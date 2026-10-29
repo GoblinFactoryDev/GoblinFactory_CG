@@ -6,6 +6,7 @@
 //  Instance:       No
 //-----------------------------------------------------------------
 
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
@@ -131,6 +132,19 @@ public class ControllerInputs : MonoBehaviour
                 if (!SkipSelection)
                 {
                     cardsOwned.CardToSlot();
+                    cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OffHoverCard();
+                    //check for index limit and shift index to a rechable index within the hand 1. check if my current index is at an edge limit, 2. run a check thru the list of cards and find the nearest card that is not on the slot, 3. assigns that value to the index
+                    //Get current Index
+                    cardIndexTracking = cardsOwned.CardIndexGet;
+                    for (int i = 0; i < cardsOwned.CardsInHand.Count; i++)
+                    {
+                        //if the current card index is not in a slot then we can break the loop and send the proper index
+                        if (!cardsOwned.CardsInHand[i].IsInSlot)
+                        {
+                            cardsOwned.CardIndexSet(i);
+                            break;
+                        }
+                    }
                 }
 
                 // Moving to the finger select mode
@@ -171,6 +185,7 @@ public class ControllerInputs : MonoBehaviour
                     fingerReach.ChangeAllSegments(p2, p2.outlineColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
                 }
                 p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("CardGame");
+                cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OnHoverCard();
 
                 if (targetSelf)
                 {
