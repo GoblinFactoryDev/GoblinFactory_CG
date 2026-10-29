@@ -63,7 +63,7 @@ public class ControllerInputs : MonoBehaviour
         SlotAndCardMovementSystemSwitch();
         SelectingInput();
         DeselectingInput();
-        //ReadyUpInput();
+        ReadyUpInput();
         FingeringATest();
         if (fingerOn)
         {

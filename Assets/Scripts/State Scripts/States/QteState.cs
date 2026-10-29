@@ -12,6 +12,7 @@ public class QteState : FSMState
 {
     PlayerState playerState;
     bool compFiguredQTE = false;
+    QTEManager qteManager;
 
     //Constructor
     public QteState(PlayerState ps)
@@ -23,6 +24,9 @@ public class QteState : FSMState
     public override void EnterStateInit()
     {
         compFiguredQTE = false;
+        qteManager = playerState.player.GetComponentInChildren<QTEManager>();
+
+        qteManager.startQTE();
     }
 
     //Reason
@@ -46,7 +50,7 @@ public class QteState : FSMState
     //Act
     public override void Act()
     {
-        
+        //qteManager.checkDone();
 
     }
 }
