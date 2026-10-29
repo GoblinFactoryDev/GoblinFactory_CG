@@ -8,12 +8,24 @@ public class QTEManager : MonoBehaviour
     [SerializeField] private List<GameObject> qteButtons;
     private int difficulty;
 
-    public bool qteStart;
+    public bool qteStart = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
+    }
+
+    private void Update()
+    {
+        //if is checking if the player is in the right section and the bool qteStart is making sure we only generate 1 sequence
+        if(this.GetComponent<PlayerInput>().currentActionMap.name == "QTE" && qteStart)
+        {
+            //run sequence generator
+            startQTE();
+            //turn off sequence generator after you make it once
+            qteStart = false;
+        }
     }
 
     public void startQTE()

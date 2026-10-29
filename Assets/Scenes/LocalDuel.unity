@@ -2857,7 +2857,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 211231814656042788, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
   m_PrefabInstance: {fileID: 8071298063386247482}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1274716236}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15f2d3af9c3c25a48a936f1ab5bddad8, type: 3}
@@ -3206,6 +3206,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fingerType: 0
   _boneSegments: []
+--- !u!1 &1274716236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7601322119329541314, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+  m_PrefabInstance: {fileID: 8071298063386247482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1280251063
 GameObject:
   m_ObjectHideFlags: 0
@@ -5279,19 +5284,48 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6079695430807401972, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1390149341}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7601322119329541314, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8071298063386247491}
   m_SourcePrefab: {fileID: 100100000, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
 --- !u!114 &8071298063386247483 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 156989379026825622, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
   m_PrefabInstance: {fileID: 8071298063386247482}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1274716236}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6abcc520e3fa14649a4a0ce83c3b3b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8071298063386247491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274716236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 641a3495fdcc4814789479c84a9ff55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qteButtons:
+  - {fileID: 1280251063}
+  - {fileID: 464434784}
+  - {fileID: 255987335}
+  - {fileID: 566302625}
+  - {fileID: 1098979246}
+  - {fileID: 569815502}
+  - {fileID: 1755889838}
+  - {fileID: 1688244247}
+  - {fileID: 662236651}
+  - {fileID: 902798110}
+  - {fileID: 864546933}
+  - {fileID: 13138529}
+  qteStart: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

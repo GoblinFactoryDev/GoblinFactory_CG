@@ -24,9 +24,6 @@ public class QteState : FSMState
     public override void EnterStateInit()
     {
         compFiguredQTE = false;
-        qteManager = playerState.player.GetComponentInChildren<QTEManager>();
-
-        qteManager.startQTE();
     }
 
     //Reason
