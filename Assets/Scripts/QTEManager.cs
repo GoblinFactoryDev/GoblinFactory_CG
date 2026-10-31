@@ -6,11 +6,12 @@ using static QTEButton;
 public class QTEManager : MonoBehaviour
 {
     [SerializeField] private List<QTEButton> qteButtons;
+    private List<QTEButton> activeButtonList = new List<QTEButton>();
 
     private int difficulty;
+    private int succTotal;
 
     public bool qteStart = true;
-
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,7 +41,30 @@ public class QTEManager : MonoBehaviour
         for (int i = 0; i < difficulty; i++)
         {
             qteButtons[i].gameObject.SetActive(true);
-            qteButtons[i].SetInputType((QTEButton.QTETYPE)Random.Range(0, 7));
+            qteButtons[i].SetInputType((QTEType)Random.Range(0, 7));
+
+            activeButtonList.Add(qteButtons[i]);
         }
+    }
+
+    public QTEType GetCurrentInput()
+    {
+        return activeButtonList[0].getCurrentType;
+    }
+
+    public void InputDetected(bool didGood)
+    {
+        //If they did good, succtotal goes up;
+        if(didGood)
+        {
+            succTotal++;
+            activeButtonList[0].SetButtonState(QTEButtonState.Success);
+        }
+        else
+        {
+            activeButtonList[0].SetButtonState(QTEButtonState.Failure);
+        }
+
+        activeButtonList.RemoveAt(0);
     }
 }

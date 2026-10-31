@@ -4747,6 +4747,10 @@ PrefabInstance:
       value: Challenge Input Up
       objectReference: {fileID: 0}
     - target: {fileID: 156989379026825622, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: challengeInputAll.m_Name
+      value: Challenge Input All
+      objectReference: {fileID: 0}
+    - target: {fileID: 156989379026825622, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: cardSlotModeAction.m_Name
       value: Card Slot Mode
       objectReference: {fileID: 0}
@@ -5174,6 +5178,10 @@ PrefabInstance:
       propertyPath: p2
       value: 
       objectReference: {fileID: 1943930453}
+    - target: {fileID: 6223526802709940347, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
+      propertyPath: qteManager
+      value: 
+      objectReference: {fileID: 8071298063386247491}
     - target: {fileID: 6223526802709940347, guid: c7c4d804ec03af1459b24c9f20bf64de, type: 3}
       propertyPath: playerQTEHandler
       value: 

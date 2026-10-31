@@ -114,3 +114,16 @@ public enum QTEButtonState
     Success,
     Failure
 }
+
+public enum QTEType
+{ 
+    NONE = -1, 
+    dirDOWN, 
+    dirLEFT, 
+    dirRIGHT, 
+    dirUP, 
+    A, 
+    B, 
+    X, 
+    Y 
+}

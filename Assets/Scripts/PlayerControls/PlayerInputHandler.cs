@@ -69,6 +69,7 @@ public class PlayerInputHandler : MonoBehaviour
     public InputAction challengeInputDown;
     public InputAction challengeInputRight;
     public InputAction challengeInputLeft;
+    public InputAction challengeInputAll;
 
 
     void Awake()
@@ -102,6 +103,7 @@ public class PlayerInputHandler : MonoBehaviour
         challengeInputDown = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_Down");
         challengeInputRight = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_Right");
         challengeInputLeft = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_Left");
+        challengeInputAll = _playerInputActionAsset.FindActionMap("QTE").FindAction("Challenge_All");
 
     }
 
@@ -133,6 +135,7 @@ public class PlayerInputHandler : MonoBehaviour
         challengeInputDown.Enable();
         challengeInputRight.Enable();
         challengeInputLeft.Enable();
+        challengeInputAll.Enable();
     }
 
     private void OnDisable()
@@ -163,5 +166,6 @@ public class PlayerInputHandler : MonoBehaviour
         challengeInputDown.Disable();
         challengeInputRight.Disable();
         challengeInputLeft.Disable();
+        challengeInputAll.Disable();
     }
 }

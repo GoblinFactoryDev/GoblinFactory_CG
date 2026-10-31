@@ -6,6 +6,7 @@
 //  Instance:       No
 //-----------------------------------------------------------------
 
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,6 +18,8 @@ public class ControllerInputs : MonoBehaviour
 {
     //reference to the input handler
     [SerializeField] private PlayerInputHandler playerInputHandler;
+    //reference to QTEManager
+    [SerializeField] private QTEManager qteManager;
     //player 1 reference
     [SerializeField] private Player p1;
     //player 2 reference
@@ -58,24 +61,34 @@ public class ControllerInputs : MonoBehaviour
     bool targetSelf = false;
     private void Update()
     {
-        ControllerNavHand();
-        //add a check for no cards in slot
-        SlotAndCardMovementSystemSwitch();
-        SelectingInput();
+        if (this.GetComponent<PlayerInput>().currentActionMap.name == "CardGame")
+        {
+            ControllerNavHand();
+            //add a check for no cards in slot
+            SlotAndCardMovementSystemSwitch();
+            ReadyUpInput();
+        }
+        else if (this.GetComponent<PlayerInput>().currentActionMap.name == "FingerSelection")
+        {
+            if (fingerOn)
+            {
+                fingerp2On = false;
+                MoveFingers(p1, selectColour, p1.outlineColour);
+            }
+            if (fingerp2On)
+            {
+                fingerOn = false;
+                MoveFingers(p2, selectColour, p2.outlineColour);
+            }
+        }
+        else if(this.GetComponent<PlayerInput>().currentActionMap.name == "QTE")
+        {
+            QTEInput();
+        }
+            SelectingInput();
         DeselectingInput();
-        ReadyUpInput();
-        FingeringATest();
-        if (fingerOn)
-        {
-            fingerp2On = false;
-            MoveFingers(p1, selectColour, p1.outlineColour);
-        }
-        if (fingerp2On)
-        {
-            fingerOn = false;
-            MoveFingers(p2, selectColour, p2.outlineColour);
-        }
-      
+        //FingeringATest();
+
     }
 
     public void ReadyUpInput()
@@ -387,6 +400,89 @@ public class ControllerInputs : MonoBehaviour
         }
     }
 
-   
+    private void QTEInput()
+    {
+        switch (qteManager.GetCurrentInput())
+        {
+            case QTEType.A:
+                if(playerInputHandler.challengeInputAll.WasPressedThisFrame())
+                {
+                    if (playerInputHandler.challengeInputA.WasPressedThisFrame())
+                        qteManager.InputDetected(true);
+                    else
+                        qteManager.InputDetected(false);
+                }
+                break;
 
+            case QTEType.B:
+                if (playerInputHandler.challengeInputAll.WasPressedThisFrame())
+                {
+                    if (playerInputHandler.challengeInputB.WasPressedThisFrame())
+                        qteManager.InputDetected(true);
+                    else
+                        qteManager.InputDetected(false);
+                }
+                break;
+
+            case QTEType.X:
+                if (playerInputHandler.challengeInputAll.WasPressedThisFrame())
+                {
+                    if (playerInputHandler.challengeInputX.WasPressedThisFrame())
+                        qteManager.InputDetected(true);
+                    else
+                        qteManager.InputDetected(false);
+                }
+                break;
+
+            case QTEType.Y:
+                if (playerInputHandler.challengeInputAll.WasPressedThisFrame())
+                {
+                    if (playerInputHandler.challengeInputY.WasPressedThisFrame())
+                        qteManager.InputDetected(true);
+                    else
+                        qteManager.InputDetected(false);
+                }
+                break;
+
+            case QTEType.dirUP:
+                if (playerInputHandler.challengeInputAll.WasPressedThisFrame())
+                {
+                    if (playerInputHandler.challengeInputUp.WasPressedThisFrame())
+                        qteManager.InputDetected(true);
+                    else
+                        qteManager.InputDetected(false);
+                }
+                break;
+
+            case QTEType.dirDOWN:
+                if (playerInputHandler.challengeInputAll.WasPressedThisFrame())
+                {
+                    if (playerInputHandler.challengeInputDown.WasPressedThisFrame())
+                        qteManager.InputDetected(true);
+                    else
+                        qteManager.InputDetected(false);
+                }
+                break;
+
+            case QTEType.dirLEFT:
+                if (playerInputHandler.challengeInputAll.WasPressedThisFrame())
+                {
+                    if (playerInputHandler.challengeInputLeft.WasPressedThisFrame())
+                        qteManager.InputDetected(true);
+                    else
+                        qteManager.InputDetected(false);
+                }
+                break;
+
+            case QTEType.dirRIGHT:
+                if (playerInputHandler.challengeInputAll.WasPressedThisFrame())
+                {
+                    if (playerInputHandler.challengeInputRight.WasPressedThisFrame())
+                        qteManager.InputDetected(true);
+                    else
+                        qteManager.InputDetected(false);
+                }
+                break;
+        }
+    }
 }
