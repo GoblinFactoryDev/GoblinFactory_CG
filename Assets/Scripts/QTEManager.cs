@@ -1,14 +1,17 @@
-using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using static QTEButton;
 
 public class QTEManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> qteButtons;
+    [SerializeField] private List<QTEButton> qteButtons;
+
     private int difficulty;
 
     public bool qteStart = true;
+
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,15 +39,8 @@ public class QTEManager : MonoBehaviour
 
         for (int i = 0; i < difficulty; i++)
         {
-            qteButtons[i].SetActive(true);
+            qteButtons[i].gameObject.SetActive(true);
+            qteButtons[i].SetInputType((QTEButton.QTETYPE)Random.Range(0, 7));
         }
-    }
-
-
-    public bool checkDone()
-    {
-
-
-        return false;
     }
 }
