@@ -86,7 +86,7 @@ public class ControllerInputs : MonoBehaviour
         {
             QTEInput();
         }
-            SelectingInput();
+        SelectingInput();
         DeselectingInput();
         //FingeringATest();
 
@@ -164,6 +164,10 @@ public class ControllerInputs : MonoBehaviour
                 // Moving to the finger select mode
                 if (targetSelf == true) // the card is targeting your fingers
                 {
+                    //reset the index of the finger to the pinky on the right side
+                    fingerIndex = 4;
+                    //reset the index to put us in the right hand
+                    fingerHandIndex = 0;
                     p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
                     fingerReach.ChangeAllSegments(p1, selectColour, HandType.Left, FingerType.Pinky);
 
@@ -174,6 +178,8 @@ public class ControllerInputs : MonoBehaviour
                 }
                 else if (targetSelf == false) // the card is targeting the enemy's fingers
                 {
+                    fingerIndex = 4;
+                    fingerHandIndex = 0;
                     p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("FingerSelection");
                     fingerReach.ChangeAllSegments(p2, selectColour, HandType.Left, FingerType.Pinky);
 
