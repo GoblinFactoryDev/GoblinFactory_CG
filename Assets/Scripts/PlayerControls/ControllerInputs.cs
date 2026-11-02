@@ -61,6 +61,7 @@ public class ControllerInputs : MonoBehaviour
     bool targetSelf = false;
     private void Update()
     {
+        //this if checks is just making sure code doesnt run when an action map is not needed
         if (this.GetComponent<PlayerInput>().currentActionMap.name == "CardGame")
         {
             ControllerNavHand();
@@ -360,43 +361,93 @@ public class ControllerInputs : MonoBehaviour
 
     private void MoveFingers(Player pRef, Vector4 SelectColour, Vector4 DefaultColour)
     {
-        if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex < MAX_FINGER_SIZE && fingerHandIndex == 0)
+        //check for what hand is being asked to move, the players or the opponents
+        if (fingerOn)
         {
-            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-            fingerIndex++;
-            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            //match the right value in this case left input into the index and verify that it wont go beyond the possible amount
+            if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex < MAX_FINGER_SIZE && fingerHandIndex == 0)
+            {
+                //change the finger you where just hovering
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                //add to your moving index (this is the value that tracks where youa re in the hand)
+                fingerIndex++;
+                //set the new finger highlight
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
+            else if (playerInputHandler.fingerMoveRightAction.triggered && fingerIndex > MIN_FINGER_SIZE && fingerHandIndex == 0)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerIndex--;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
+            //transition else if statement to the next hand
+            else if (playerInputHandler.fingerMoveRightAction.triggered && fingerIndex == MIN_FINGER_SIZE && fingerHandIndex == 0)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerHandIndex++;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
+            //transition else if statement to the next hand
+            else if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex == MIN_FINGER_SIZE && fingerHandIndex == 1)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerHandIndex--;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
+            else if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex > MIN_FINGER_SIZE && fingerHandIndex == 1)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerIndex--;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
+            else if (playerInputHandler.fingerMoveRightAction.triggered && fingerIndex < MAX_FINGER_SIZE && fingerHandIndex == 1)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerIndex++;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
         }
-        else if (playerInputHandler.fingerMoveRightAction.triggered && fingerIndex > MIN_FINGER_SIZE && fingerHandIndex == 0)
+        else
         {
-            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-            fingerIndex--;
-            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-        }
-        //transition else if statement to the next hand
-        else if(playerInputHandler.fingerMoveRightAction.triggered && fingerIndex == MIN_FINGER_SIZE && fingerHandIndex == 0)
-        {
-            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-            fingerHandIndex++;
-            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-        }
-        //transition else if statement to the next hand
-        else if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex == MIN_FINGER_SIZE && fingerHandIndex == 1)
-        {
-            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-            fingerHandIndex--;
-            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-        }
-        else if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex > MIN_FINGER_SIZE && fingerHandIndex == 1)
-        {
-            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-            fingerIndex--;
-            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-        }
-        else if(playerInputHandler.fingerMoveRightAction.triggered && fingerIndex < MAX_FINGER_SIZE && fingerHandIndex == 1)
-        {
-            fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
-            fingerIndex++;
-            fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            //values for left and right are reversed for opponent usage
+            if (playerInputHandler.fingerMoveRightAction.triggered && fingerIndex < MAX_FINGER_SIZE && fingerHandIndex == 0)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerIndex++;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
+            else if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex > MIN_FINGER_SIZE && fingerHandIndex == 0)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerIndex--;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
+            //transition else if statement to the next hand
+            else if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex == MIN_FINGER_SIZE && fingerHandIndex == 0)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerHandIndex++;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
+            //transition else if statement to the next hand
+            else if (playerInputHandler.fingerMoveRightAction.triggered && fingerIndex == MIN_FINGER_SIZE && fingerHandIndex == 1)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerHandIndex--;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
+            else if (playerInputHandler.fingerMoveRightAction.triggered && fingerIndex > MIN_FINGER_SIZE && fingerHandIndex == 1)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerIndex--;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
+            else if (playerInputHandler.fingerMoveLeftAction.triggered && fingerIndex < MAX_FINGER_SIZE && fingerHandIndex == 1)
+            {
+                fingerReach.ChangeAllSegments(pRef, DefaultColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+                fingerIndex++;
+                fingerReach.ChangeAllSegments(pRef, SelectColour, (HandType)fingerHandIndex, (FingerType)fingerIndex);
+            }
         }
     }
 
