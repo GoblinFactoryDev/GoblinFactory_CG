@@ -16,6 +16,20 @@ public class CameraTesting : MonoBehaviour
     private void Update()
     {
         CameraTestingMovement();
+        if(slotOn)
+        {
+            DeselectMovement();
+        }
+    }
+
+    private void DeselectMovement()
+    {
+        if(playerInputHandler.cardDeselectAction.triggered)
+        {
+            camera1.Priority = 10;
+            camera2.Priority = 9;
+            slotOn = false;
+        }
     }
 
     private void CameraTestingMovement()
