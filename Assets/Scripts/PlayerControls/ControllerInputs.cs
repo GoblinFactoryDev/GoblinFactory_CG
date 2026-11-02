@@ -102,7 +102,7 @@ public class ControllerInputs : MonoBehaviour
                     {
                         _confirmSelection = true;
                          //this will change into the state machine later
-                        p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("QTE");
+                        //p1.GetComponent<PlayerInput>().SwitchCurrentActionMap("QTE");
                         //this will change into the state machine later
                     }
                 }

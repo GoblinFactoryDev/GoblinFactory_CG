@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 using UnityEngine.Rendering;
 using static QTEButton;
 
@@ -30,15 +31,6 @@ public class QTEManager : MonoBehaviour
 
     private void Update()
     {
-        //if is checking if the player is in the right section and the bool qteStart is making sure we only generate 1 sequence
-        if (this.GetComponent<PlayerInput>().currentActionMap.name == "QTE" && qteStart)
-        {
-            //run sequence generator
-            startQTE();
-            //turn off sequence generator after you make it once
-            qteStart = false;
-        }
-
         if (inputTotal == difficulty)
         {
             FinishQTE();
@@ -61,6 +53,7 @@ public class QTEManager : MonoBehaviour
 
         StartCoroutine(QTETimer());
         qteCurrentTime = qteTimerLength;
+        this.GetComponent<PlayerInput>().SwitchCurrentActionMap("QTE");
     }
 
     public QTEType GetCurrentInput()
@@ -95,8 +88,23 @@ public class QTEManager : MonoBehaviour
             qteButtons[i].SetButtonState(QTEButtonState.Default);
             qteButtons[i].gameObject.SetActive(false);
         }
+        GPACalc();
         inputTotal = 0;
         difficulty = -1;
+        succTotal = 0;
+        //Confirm to RoundManager your QTE state (so just confirm you finished the qte here)
+        //this will run at the end of the timer 
+        if(this.GetComponent<Player>().playerType == PlayerType.Player)
+        {
+            RoundManagerLocal.Instance.SetCurrentPlayerOneQTESpeed(qteCurrentTime);
+            RoundManagerLocal.Instance.player1HasDoneQTE = true;
+        }
+        else //pretty sure this never runs until we have PVP since the computer wont ever be "this"
+        {
+            RoundManagerLocal.Instance.SetCurrentPlayerTwoQTESpeed(qteCurrentTime);
+            RoundManagerLocal.Instance.compHasDoneQTE = true;
+        }
+        this.GetComponent<PlayerInput>().SwitchCurrentActionMap("CardGame");
     }
 
     IEnumerator QTETimer()
@@ -114,6 +122,26 @@ public class QTEManager : MonoBehaviour
         FinishQTE();
         qteStop = true;
     }
+
+    //Calculate Results to send to RoundManager (also calc is short for calculator, also GPA I guess lol)
+    private void GPACalc()
+    {
+        if(succTotal == difficulty)
+        {
+            //once PVP is starting/worked on change this to a else if statement changing between P1 and P2, for now it will only represent P1 which is player against machine AI
+            RoundManagerLocal.Instance.player1QTERating = CastRating.Full;
+        }
+        else if(succTotal <  difficulty / 2)
+        {
+            RoundManagerLocal.Instance.player1QTERating = CastRating.Half;
+        }
+        else
+        {
+            RoundManagerLocal.Instance.player1QTERating = CastRating.Fail;
+        }
+    }
+
+
 
     
 }
