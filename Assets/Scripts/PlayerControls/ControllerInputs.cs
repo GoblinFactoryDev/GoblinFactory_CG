@@ -226,8 +226,11 @@ public class ControllerInputs : MonoBehaviour
         if (playerInputHandler.cardDeselectAction.WasPressedThisFrame())
         {
             Debug.Log("deselect");
+            cardsOwned.SlotsInUse[cardsOwned.SlotIndexGet].CardActions.OffHoverCard();
             cardsOwned.DeselectCard();
             SlotsMode = false;
+            cardsOwned.CardIndexSet(0);
+            cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OnHoverCard();
         }
     }
 
