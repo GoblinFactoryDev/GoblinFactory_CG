@@ -61,7 +61,7 @@ public class QteState : FSMState
         //this is for testing
         if(playerState.player.playerType == PlayerType.AI && compFiguredQTE == false)
         {
-            RoundManagerLocal.Instance.SetCurrentPlayerTwoQTESpeed(880);
+            RoundManagerLocal.Instance.SetCurrentPlayerTwoQTESpeed(10);
             RoundManagerLocal.Instance.compQTERating = CastRating.Full;
             RoundManagerLocal.Instance.compHasDoneQTE = true;
             compFiguredQTE = true;

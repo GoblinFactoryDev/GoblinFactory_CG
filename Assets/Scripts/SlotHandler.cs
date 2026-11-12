@@ -154,6 +154,15 @@ public class SlotHandler : MonoBehaviour
             slot.fingerTargetInfo.whichHand = HandType.None;
             slot.fingerTargetInfo.whichFinger = FingerType.None;
         }
+        
+        if (_cardsInSlots.Count > 0)
+        {
+            _cardsInSlots.Clear();
+            for (int i = 0; i < slotsBlocked.Count; i++)
+            {
+                slotsBlocked[i] = false;
+            }
+        }
     }
 
     

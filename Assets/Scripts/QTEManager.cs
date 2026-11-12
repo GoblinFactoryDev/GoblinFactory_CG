@@ -117,6 +117,11 @@ public class QTEManager : MonoBehaviour
             startTimeValue--;
             Debug.Log($"Countdown: " + startTimeValue + "s");
             qteCurrentTime = startTimeValue;
+            //added this since we didnt make a check for set up if players cant complete QTE in time, this prevents the speed value to go -1 at the end of the timer
+            if (qteCurrentTime == 0)
+            {
+                break;
+            }
         }
 
         FinishQTE();

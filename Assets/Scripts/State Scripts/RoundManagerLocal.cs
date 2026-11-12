@@ -337,11 +337,12 @@ public class RoundManagerLocal : MonoBehaviour
 
         public PlayerType WhoWasFaster()
         {
-            if (playerOneSpeed < playerTwoSpeed)
+            //wyatt I reversed this values because cooper made the timer value backwards (meaning higher the number the faster the player was)
+            if (playerOneSpeed > playerTwoSpeed)
             {
                 return PlayerType.Player;
             }
-            else if (playerTwoSpeed < playerOneSpeed)
+            else if (playerTwoSpeed > playerOneSpeed)
             {
                 return PlayerType.AI;
             }

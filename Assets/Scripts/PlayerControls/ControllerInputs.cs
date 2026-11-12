@@ -50,7 +50,7 @@ public class ControllerInputs : MonoBehaviour
 
     private void Start()
     {
-        cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OnHoverCard();
+        //cardsOwned.CardsInHand[cardsOwned.CardIndexGet].CardActions.OnHoverCard();
     }
 
     /// <summary>

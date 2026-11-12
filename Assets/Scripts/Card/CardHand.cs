@@ -166,6 +166,16 @@ public class CardHand : MonoBehaviour
         cardToDeselect.gameObject.transform.position = _previousPosition[_currentSlotIndex].position;
         //this changes the sprite and visual inspector on the script to show available slots
         DeselectSlotReset();
+        int i = 0;
+        foreach (Transform previousPos in _previousPosition)
+        {
+            if(previousPos == _cardPositions[i].placement)
+            {
+                _cardPositions[i].isOccupied = true;
+                break;
+            }
+            i++;
+        }
         _previousPosition.RemoveAt(_currentSlotIndex); //transform
         _cardsInSlots.RemoveAt(_currentSlotIndex); // controller index
         player.playerSlotHandler.RemoveCardFromSlot(cardToDeselect.GetCurrentSlotUsed); //info
@@ -202,6 +212,7 @@ public class CardHand : MonoBehaviour
             player.playerSlotHandler.SetNewCardInSlot(cardtoSlot);
             player.playerSlotHandler.AssignCardToSlot(cardtoSlot);
             _previousPosition.Add(_cardPositions[cardIndex].placement);
+            _cardPositions[cardIndex].isOccupied = false;
             cardtoSlot.IsInSlot = true;
             skipSelection = false;
 
@@ -430,13 +441,15 @@ public class CardHand : MonoBehaviour
 
     public void MoveCardsBackToHand()
     {
+        ShiftCardsInHand();
+        //grabs the cards back to the front of the player
         foreach (Card card in _cardsInHand)
         {
             if (!card.IsInSlot)
             {
                 foreach (CardPosition cardPos in _cardPositions)
                 {
-                    if (cardPos.posNumber == card.handPosition)
+                    if (!cardPos.isOccupied)
                     {
                         Vector3 tempCardRot;
                         tempCardRot.x = cardPos.placement.position.x;
@@ -463,13 +476,42 @@ public class CardHand : MonoBehaviour
         }
     }
 
-    //make a function to sned all slot cards back into the pool and reset all visual changes
-    //call wyatt's slot handler clear all function to remove all info in slots
-    //ask if we want/need a card by card clear while casting or if an all clear at the end of round is enough/good
-    //this could be a function on the scriptable object card itself if need be
-
-    // Update is called once per frame
-    void Update()
+    public void SlotReset()
     {
+        if(_cardsInSlots.Count > 0) 
+        { 
+            foreach (Card card in _cardsInSlots)
+            {
+                card.transform.position = DeckWaypoint.position;
+                card.gameObject.SetActive(false);
+                //for now its hard coded but I want to make it a global variable or a variable handled by the player that can be edited if a card temporarily changes the max slot value
+                _currentSlotValueLeft = 4;
+                _currentSlotOpen = 0;
+                ChangeSlotSprite(4, true);
+                card.IsInSlot = false;
+            }
+            _cardsInSlots.Clear();
+            _previousPosition.Clear();
+        }
+    }
+
+    public void ShiftCardsInHand()
+    {
+        _cardPositions.Clear();
+        Transform[] waypoints = cardWaypoints.GetComponentsInChildren<Transform>();
+        int waypointCount = 0;
+        foreach (Transform waypoint in waypoints)
+        {
+            if (waypoint != cardWaypoints.transform) // Excludes the parent object
+            {
+                waypointCount++;
+
+                CardPosition newCardPos = new CardPosition();
+                newCardPos.placement = waypoint;
+                newCardPos.isOccupied = false;
+                newCardPos.posNumber = waypointCount;
+                _cardPositions.Add(newCardPos);
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@ public class DealStatsState : FSMState
 {
     PlayerState playerState;
     CardHand cardHandRef;
+    SlotHandler slotHandlerRef;
 
     //Constructor
     public DealStatsState(PlayerState ps)
@@ -21,14 +22,16 @@ public class DealStatsState : FSMState
         playerState = ps;
         stateID = FSMStateID.DealStats;
         cardHandRef = ps.player.playerCardHand;
+        slotHandlerRef = ps.player.playerSlotHandler;
     }
 
     
     public override void EnterStateInit()
     {
         // Remove the cards from the hand and move them back to the deck here seb ////////////////////////////////////////////////////////////////////////////////
+        playerState.player.playerCardHand.SlotReset();
+        playerState.player.playerSlotHandler.ClearAllSlots();
         playerState.player.playerCardHand.MoveCardsBackToHand();
-
     }
 
     //Reason

@@ -30,6 +30,13 @@ public class CameraTesting : MonoBehaviour
             camera2.Priority = 9;
             slotOn = false;
         }
+
+        if(playerInputHandler.cardConfirmSelectAction.triggered)
+        {
+            camera1.Priority = 10;
+            camera2.Priority = 9;
+            slotOn = false;
+        }
     }
 
     private void CameraTestingMovement()

@@ -74,6 +74,7 @@ public class ChooseSpellState : FSMState
                 playerState.player.playerCardHand.HaveMovedToDeck = true;
                 foreach (Card card in playerState.player.playerCardHand.CardsInHand)
                 {
+                    //moves any card that is not in a slot away to clear screen space
                     if (!card.IsInSlot)
                     {
                         card.gameObject.transform.position = playerState.player.playerCardHand.DeckWaypoint.position;
